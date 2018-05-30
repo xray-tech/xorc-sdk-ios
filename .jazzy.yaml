@@ -1,0 +1,7 @@
+author: Xray
+author_url: http://alamofire.org/
+github_url: https://github.com/360dialog/xorc-sdk-ios
+module: XrayKit
+output: docs
+theme: apple
+#xcodebuild_arguments: [-workspace, 'Alamofire.xcworkspace', -scheme, 'Alamofire iOS']
