@@ -85,6 +85,8 @@ docs/
 
 
 # Carthage - A simple, decentralized dependency manager for Cocoa
+Carthage
+
 XraySampleApp/Carthage/Checkouts/
 XraySampleApp/Carthage/Build/
 
