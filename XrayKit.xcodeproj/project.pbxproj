@@ -122,9 +122,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8A47521E20C7E9B700DD81F3 /* XrayKit */ = {
+		8A47521E20C7E9B700DD81F3 /* XrayKit-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A47522420C7E9B700DD81F3 /* Build configuration list for PBXNativeTarget "XrayKit" */;
+			buildConfigurationList = 8A47522420C7E9B700DD81F3 /* Build configuration list for PBXNativeTarget "XrayKit-iOS" */;
 			buildPhases = (
 				8A47521A20C7E9B700DD81F3 /* Sources */,
 				8A47521B20C7E9B700DD81F3 /* Frameworks */,
@@ -135,7 +135,7 @@
 			);
 			dependencies = (
 			);
-			name = XrayKit;
+			name = "XrayKit-iOS";
 			productName = XrayKit;
 			productReference = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -169,7 +169,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8A47521E20C7E9B700DD81F3 /* XrayKit */,
+				8A47521E20C7E9B700DD81F3 /* XrayKit-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -223,7 +223,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.360dialog.XrayKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = XrayKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -251,7 +251,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.360dialog.XrayKit;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = XrayKit;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -381,7 +381,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8A47522420C7E9B700DD81F3 /* Build configuration list for PBXNativeTarget "XrayKit" */ = {
+		8A47522420C7E9B700DD81F3 /* Build configuration list for PBXNativeTarget "XrayKit-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A47522520C7E9B700DD81F3 /* Debug */,

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8AAA44A120BE8E850055D7B9"
-               BuildableName = "XrayKit.framework"
-               BlueprintName = "XrayKit"
+               BlueprintIdentifier = "8A47521E20C7E9B700DD81F3"
+               BuildableName = "XrayKit_iOS.framework"
+               BlueprintName = "XrayKit-iOS"
                ReferencedContainer = "container:XrayKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8AAA44A120BE8E850055D7B9"
-            BuildableName = "XrayKit.framework"
-            BlueprintName = "XrayKit"
+            BlueprintIdentifier = "8A47521E20C7E9B700DD81F3"
+            BuildableName = "XrayKit_iOS.framework"
+            BlueprintName = "XrayKit-iOS"
             ReferencedContainer = "container:XrayKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8AAA44A120BE8E850055D7B9"
-            BuildableName = "XrayKit.framework"
-            BlueprintName = "XrayKit"
+            BlueprintIdentifier = "8A47521E20C7E9B700DD81F3"
+            BuildableName = "XrayKit_iOS.framework"
+            BlueprintName = "XrayKit-iOS"
             ReferencedContainer = "container:XrayKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
