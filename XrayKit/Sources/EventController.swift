@@ -37,7 +37,7 @@ class EventController {
     public var transmitter: EventTransmitter?
     
     public func log(event: Event) {
-        
+        print("Logging event \(event.name)")
         // run event through the rule engine
         // call delegates if needed
         

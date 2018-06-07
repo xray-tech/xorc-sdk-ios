@@ -18,6 +18,10 @@
 		8A47523620C7EA0800DD81F3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522E20C7EA0800DD81F3 /* DataService.swift */; };
 		8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */; };
 		8A47523820C7EA0800DD81F3 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47523020C7EA0800DD81F3 /* EventController.swift */; };
+		8A47523E20C7F5F400DD81F3 /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47523D20C7F5F400DD81F3 /* EventStore.swift */; };
+		8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524020C8034300DD81F3 /* SQLTables.swift */; };
+		8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524220C803B200DD81F3 /* SQLConnection.swift */; };
+		8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524520C809C100DD81F3 /* SQLRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,10 @@
 		8A47522E20C7EA0800DD81F3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTransmitter.swift; sourceTree = "<group>"; };
 		8A47523020C7EA0800DD81F3 /* EventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		8A47523D20C7F5F400DD81F3 /* EventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStore.swift; sourceTree = "<group>"; };
+		8A47524020C8034300DD81F3 /* SQLTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLTables.swift; sourceTree = "<group>"; };
+		8A47524220C803B200DD81F3 /* SQLConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnection.swift; sourceTree = "<group>"; };
+		8A47524520C809C100DD81F3 /* SQLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,7 @@
 		8A47522820C7E9F200DD81F3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8A47523C20C7F5A100DD81F3 /* Store */,
 				8A47523B20C7F56300DD81F3 /* Transmitters */,
 				8A47523A20C7F54F00DD81F3 /* Data */,
 				8A47523920C7F53900DD81F3 /* Events */,
@@ -122,6 +131,25 @@
 				8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */,
 			);
 			name = Transmitters;
+			sourceTree = "<group>";
+		};
+		8A47523C20C7F5A100DD81F3 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				8A47523F20C7F64900DD81F3 /* SQL */,
+				8A47523D20C7F5F400DD81F3 /* EventStore.swift */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		8A47523F20C7F64900DD81F3 /* SQL */ = {
+			isa = PBXGroup;
+			children = (
+				8A47524020C8034300DD81F3 /* SQLTables.swift */,
+				8A47524220C803B200DD81F3 /* SQLConnection.swift */,
+				8A47524520C809C100DD81F3 /* SQLRequest.swift */,
+			);
+			name = SQL;
 			sourceTree = "<group>";
 		};
 		8AAA449820BE8E850055D7B9 = {
@@ -278,8 +306,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */,
+				8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */,
 				8A47523420C7EA0800DD81F3 /* Event.swift in Sources */,
 				8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */,
+				8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */,
+				8A47523E20C7F5F400DD81F3 /* EventStore.swift in Sources */,
 				8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */,
 				8A47523220C7EA0800DD81F3 /* Xray.swift in Sources */,
 				8A47523620C7EA0800DD81F3 /* DataService.swift in Sources */,
