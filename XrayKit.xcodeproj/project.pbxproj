@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A2AFAA120C92F1E002A0B2B /* XrayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2AFAA020C92F1E002A0B2B /* XrayKitTests.swift */; };
+		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
 		8A47522320C7E9B700DD81F3 /* XrayKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A47522120C7E9B700DD81F3 /* XrayKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522920C7EA0800DD81F3 /* XrayHTTPBuilder.swift */; };
 		8A47523220C7EA0800DD81F3 /* Xray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522A20C7EA0800DD81F3 /* Xray.swift */; };
@@ -18,7 +20,20 @@
 		8A47523820C7EA0800DD81F3 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47523020C7EA0800DD81F3 /* EventController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8A2AFAA420C92F1E002A0B2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AAA449920BE8E850055D7B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A47521E20C7E9B700DD81F3;
+			remoteInfo = "XrayKit-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A2AFAA020C92F1E002A0B2B /* XrayKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayKitTests.swift; sourceTree = "<group>"; };
+		8A2AFAA220C92F1E002A0B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A47521F20C7E9B700DD81F3 /* XrayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XrayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A47522120C7E9B700DD81F3 /* XrayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XrayKit.h; sourceTree = "<group>"; };
 		8A47522220C7E9B700DD81F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -33,6 +48,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8A2AFA9B20C92F1E002A0B2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A47521B20C7E9B700DD81F3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -43,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				8A2AFAA020C92F1E002A0B2B /* XrayKitTests.swift */,
+				8A2AFAA220C92F1E002A0B2B /* Info.plist */,
+			);
+			path = XrayKitTests;
+			sourceTree = "<group>";
+		};
 		8A47522020C7E9B700DD81F3 /* XrayKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				8A47522020C7E9B700DD81F3 /* XrayKit */,
+				8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */,
 				8AAA44A320BE8E850055D7B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				8A47521F20C7E9B700DD81F3 /* XrayKit.framework */,
+				8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +156,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		8A2AFA9D20C92F1E002A0B2B /* XrayKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8A2AFAA620C92F1E002A0B2B /* Build configuration list for PBXNativeTarget "XrayKitTests" */;
+			buildPhases = (
+				8A2AFA9A20C92F1E002A0B2B /* Sources */,
+				8A2AFA9B20C92F1E002A0B2B /* Frameworks */,
+				8A2AFA9C20C92F1E002A0B2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A2AFAA520C92F1E002A0B2B /* PBXTargetDependency */,
+			);
+			name = XrayKitTests;
+			productName = XrayKitTests;
+			productReference = 8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8A47521E20C7E9B700DD81F3 /* XrayKit-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A47522420C7E9B700DD81F3 /* Build configuration list for PBXNativeTarget "XrayKit-iOS" */;
@@ -146,10 +198,13 @@
 		8AAA449920BE8E850055D7B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = 360dialog;
 				TargetAttributes = {
+					8A2AFA9D20C92F1E002A0B2B = {
+						CreatedOnToolsVersion = 9.4;
+					};
 					8A47521E20C7E9B700DD81F3 = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 0940;
@@ -170,11 +225,19 @@
 			projectRoot = "";
 			targets = (
 				8A47521E20C7E9B700DD81F3 /* XrayKit-iOS */,
+				8A2AFA9D20C92F1E002A0B2B /* XrayKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8A2AFA9C20C92F1E002A0B2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A47521D20C7E9B700DD81F3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -185,6 +248,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8A2AFA9A20C92F1E002A0B2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A2AFAA120C92F1E002A0B2B /* XrayKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A47521A20C7E9B700DD81F3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,7 +273,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8A2AFAA520C92F1E002A0B2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A47521E20C7E9B700DD81F3 /* XrayKit-iOS */;
+			targetProxy = 8A2AFAA420C92F1E002A0B2B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		8A2AFAA720C92F1E002A0B2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G9MA9G2SST;
+				INFOPLIST_FILE = XrayKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.xorc.XrayKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8A2AFAA820C92F1E002A0B2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G9MA9G2SST;
+				INFOPLIST_FILE = XrayKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = io.xorc.XrayKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		8A47522520C7E9B700DD81F3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -216,13 +333,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = XrayKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.360dialog.XrayKit;
+				PRODUCT_BUNDLE_IDENTIFIER = io.xorc.XrayKit;
 				PRODUCT_NAME = XrayKit;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -244,13 +361,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = XrayKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.360dialog.XrayKit;
+				PRODUCT_BUNDLE_IDENTIFIER = io.xorc.XrayKit;
 				PRODUCT_NAME = XrayKit;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -381,6 +498,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8A2AFAA620C92F1E002A0B2B /* Build configuration list for PBXNativeTarget "XrayKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A2AFAA720C92F1E002A0B2B /* Debug */,
+				8A2AFAA820C92F1E002A0B2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8A47522420C7E9B700DD81F3 /* Build configuration list for PBXNativeTarget "XrayKit-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

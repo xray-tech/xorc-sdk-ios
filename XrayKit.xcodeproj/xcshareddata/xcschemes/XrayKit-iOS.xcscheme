@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A47521E20C7E9B700DD81F3"
-               BuildableName = "XrayKit_iOS.framework"
+               BuildableName = "XrayKit.framework"
                BlueprintName = "XrayKit-iOS"
                ReferencedContainer = "container:XrayKit.xcodeproj">
             </BuildableReference>
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8A2AFA9D20C92F1E002A0B2B"
+               BuildableName = "XrayKitTests.xctest"
+               BlueprintName = "XrayKitTests"
+               ReferencedContainer = "container:XrayKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8A47521E20C7E9B700DD81F3"
+            BuildableName = "XrayKit.framework"
+            BlueprintName = "XrayKit-iOS"
+            ReferencedContainer = "container:XrayKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -46,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A47521E20C7E9B700DD81F3"
-            BuildableName = "XrayKit_iOS.framework"
+            BuildableName = "XrayKit.framework"
             BlueprintName = "XrayKit-iOS"
             ReferencedContainer = "container:XrayKit.xcodeproj">
          </BuildableReference>
@@ -64,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8A47521E20C7E9B700DD81F3"
-            BuildableName = "XrayKit_iOS.framework"
+            BuildableName = "XrayKit.framework"
             BlueprintName = "XrayKit-iOS"
             ReferencedContainer = "container:XrayKit.xcodeproj">
          </BuildableReference>
