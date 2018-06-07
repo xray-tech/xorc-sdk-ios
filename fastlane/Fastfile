@@ -20,6 +20,7 @@ default_platform :ios
 @sdk_scheme = 'XrayKit-iOS'
 @sdk_project_dir = 'XrayKit'
 @sdk_project_name = 'XrayKit.xcodeproj'
+@sdk_xcode_version = '9.3'
 
 
 platform :ios do
@@ -27,22 +28,13 @@ platform :ios do
     desc 'Runs all unit the tests and generates reports in `fastlane/reports`'
     desc 'You can optionnaly specify the xcode version'
     desc "e.g 'fastlane test xc_version:8.2'"
-    lane :test do |options|
+    lane :sdk_test do |options|
         # Sometimes the mac-mini hangs on
-        # https://github.com/fastlane/fastlane/issues/1943
-        sh "killall 'Simulator' || true"
-
-        xc_version = options[:xc_version] ? options[:xc_version] : "8.3"
+        xc_version = options[:xc_version] ? options[:xc_version] : @sdk_xcode_version
         xcversion(version: "~> #{xc_version}")
 
         UI.message "Running tests with xcversion #{xc_version}"
-        carthage_sdk_unarchive(xc_version: xc_version)
         scan(scheme: @sdk_scheme, workspace: "#{@sdk_workspace}", output_directory: @test_reports_dir, device: "iPhone 5s")
-
-    end
-
-    lane :sdk_build do
-        xcodebuild(workspace: "#{@sdk_workspace}", scheme: @sdk_scheme, xcargs: "-configuration \"Release\"")
     end
 
     #
@@ -52,7 +44,7 @@ platform :ios do
     desc "e.g: fastlane sdk_compile xc_version:7.3.1"
     desc "To list all versions: xcenv versions"
     lane :sdk_compile do |options|
-        xc_version = options[:xc_version] ? options[:xc_version] : "9.3"
+        xc_version = options[:xc_version] ? options[:xc_version] : @sdk_xcode_version
         xcversion(version: "~> #{xc_version}")
 
         # ENV["XCENV_VERSION"] = xc_version

@@ -16,20 +16,15 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios test
+### ios sdk_test
 ```
-fastlane ios test
+fastlane ios sdk_test
 ```
 Runs all unit the tests and generates reports in `fastlane/reports`
 
 You can optionnaly specify the xcode version
 
 e.g 'fastlane test xc_version:8.2'
-### ios sdk_build
-```
-fastlane ios sdk_build
-```
-
 ### ios sdk_compile
 ```
 fastlane ios sdk_compile
