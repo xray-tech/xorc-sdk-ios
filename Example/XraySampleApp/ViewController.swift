@@ -27,4 +27,3 @@ class ViewController: UIViewController {
         Xray.events.log(event: Event(name: "my_event"))
     }
 }
-
