@@ -14,13 +14,27 @@ protocol Table {
 
 struct EventTable: Table {
     
-    var tableName = "events"
-    var columnId = "id"
-    var columnName = "name"
+    var tableName           = "events"
+    var columnId            = "id"
+    var columnName          = "name"
+    var columndCreatedAt    = "createdAt"
+    var columndUpdatedAt    = "updatedAt"
+    var columndStatus       = "status"
+    var columndPayload      = "payload"
     
     var createRequest: SQLRequest {
 
-        return SQLRequest(sql: "CREATE TABLE IF NOT EXISTS \(tableName)(\(columnId) INTEGER PRIMARY KEY AUTOINCREMENT, \(columnName) TEXT NOT NULL)"
+        return SQLRequest(sql: """
+            CREATE TABLE IF NOT EXISTS \(tableName)
+            (
+                \(columnId) INTEGER PRIMARY KEY AUTOINCREMENT,
+                \(columnName) TEXT NOT NULL,
+                \(columndCreatedAt) INTEGER DEFAULT 0,
+                \(columndUpdatedAt) INTEGER DEFAULT 0,
+                \(columndStatus) INTEGER DEFAULT 0,
+                \(columndPayload) TEXT NOT NULL
+            )
+            """
         )
     }
     

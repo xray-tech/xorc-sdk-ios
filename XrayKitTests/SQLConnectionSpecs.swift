@@ -42,24 +42,45 @@ class SQLConnectionSpecs: QuickSpec {
                 }
                 
                 it("does not have a insertId") {
-                    expect(result!.insertId).to(equal(0))
+                    expect(result?.insertId).to(beNil())
                 }
             }
             
-            // MARK: - INSERT request
             context("event table is created") {
+                var result: SQLResult?
+                let date = Date()
+                let binds: [String: AnyObject] = [
+                    "name": "my_event" as NSString,
+                    "status": 1 as NSNumber,
+                    "payload": "" as NSString,
+                    "updatedAt": date.timeIntervalSince1970 as NSNumber,
+                    "createdAt": date.timeIntervalSince1970 as NSNumber
+                ]
                 beforeEach {
-                    _ = try? sut.execute(request: EventTable().createRequest)
+                    let table = EventTable()
+                    
+                    result = try? sut.execute(request: table.createRequest)
                 }
                 
+                // MARK: - INSERT request
                 
-                describe("insert request") {
-                    
+                fdescribe("insert request") {
                     beforeEach {
-                        
+//                        do {
+                            result = try? sut.execute(request: SQLRequest(insertInto: "events", binds: binds))
+//                        } catch let error as SQLConnection.SQLError {
+//                            //fail(error)
+//                        }
+                    }
+                    
+                    it("has an insertId") {
+                        expect(result?.insertId).notTo(beNil())
+                    }
+                    
+                    it("has correct changed rows count" ) {
+                        expect(result?.rowsChanged).to(equal(1))
                     }
                 }
-                
             }
         }
     }
