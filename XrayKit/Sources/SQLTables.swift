@@ -19,8 +19,8 @@ struct EventTable: Table {
     var name = "name"
     
     var createRequest: SQLRequest {
-        return SQLRequest(sql:
-            "CREATE TABLE IF NOT EXISTS \(tableName)(\(id) INTEGER PRIMARY KEY AUTOINCREMENT, \(name) TEXT NOT NULL)"
+
+        return SQLRequest(sql: "CREATE TABLE IF NOT EXISTS \(tableName)(\(id) INTEGER PRIMARY KEY AUTOINCREMENT, \(name) TEXT NOT NULL)"
         )
     }
     

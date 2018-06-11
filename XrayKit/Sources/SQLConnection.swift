@@ -11,6 +11,7 @@ class SQLConnection {
     enum SQLError: Error {
         case openError(String)
         case executeError(String)
+        case closeError(String)
     }
     
     let path: String
@@ -19,7 +20,7 @@ class SQLConnection {
         self.path = path
     }
     
-    func execute(request: SQLRequest) throws {
+    func execute(request: SQLRequest) throws -> SQLResult {
         let db = try open()
         print("SQL: \(request.build())")
         
@@ -35,8 +36,11 @@ class SQLConnection {
             ret = sqlite3_step(statement)
         } while ret == SQLITE_ROW
         
+        sqlite3_finalize(statement)
         
-        close(db)
+        try close(db)
+        
+        return SQLResult()
     }
     
     // MARK: - Private
@@ -53,11 +57,11 @@ class SQLConnection {
         return db
     }
     
-    private func close(_ db: OpaquePointer?) {
+    private func close(_ db: OpaquePointer?) throws {
         let ret = sqlite3_close(db)
         if ret != SQLITE_OK {
             let message = "sqlite3_close failed: \(String(cString: sqlite3_errstr(ret)))"
-            print(message)
+            throw SQLError.closeError(message)
         }
     }
 }

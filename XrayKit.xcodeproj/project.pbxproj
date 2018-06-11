@@ -29,6 +29,8 @@
 		8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524020C8034300DD81F3 /* SQLTables.swift */; };
 		8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524220C803B200DD81F3 /* SQLConnection.swift */; };
 		8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524520C809C100DD81F3 /* SQLRequest.swift */; };
+		8A57F44520CA89190047B021 /* String+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44420CA89190047B021 /* String+SQL.swift */; };
+		8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44620CA89890047B021 /* SQLStringSpecs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		8A47524020C8034300DD81F3 /* SQLTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLTables.swift; sourceTree = "<group>"; };
 		8A47524220C803B200DD81F3 /* SQLConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnection.swift; sourceTree = "<group>"; };
 		8A47524520C809C100DD81F3 /* SQLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLRequest.swift; sourceTree = "<group>"; };
+		8A57F44420CA89190047B021 /* String+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SQL.swift"; sourceTree = "<group>"; };
+		8A57F44620CA89890047B021 /* SQLStringSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLStringSpecs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				8A2AFAAC20C936E6002A0B2B /* SQLConnectionSpecs.swift */,
+				8A57F44620CA89890047B021 /* SQLStringSpecs.swift */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				8A47524020C8034300DD81F3 /* SQLTables.swift */,
 				8A47524220C803B200DD81F3 /* SQLConnection.swift */,
 				8A47524520C809C100DD81F3 /* SQLRequest.swift */,
+				8A57F44420CA89190047B021 /* String+SQL.swift */,
 			);
 			name = SQL;
 			sourceTree = "<group>";
@@ -357,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A2AFAA120C92F1E002A0B2B /* XrayKitTests.swift in Sources */,
+				8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */,
 				8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +378,7 @@
 				8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */,
 				8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */,
 				8A47523E20C7F5F400DD81F3 /* EventStore.swift in Sources */,
+				8A57F44520CA89190047B021 /* String+SQL.swift in Sources */,
 				8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */,
 				8A47523220C7EA0800DD81F3 /* Xray.swift in Sources */,
 				8A47523620C7EA0800DD81F3 /* DataService.swift in Sources */,

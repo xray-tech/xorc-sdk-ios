@@ -10,19 +10,56 @@ import Nimble
 
 
 class SQLConnectionSpecs: QuickSpec {
-    
+    let path = "/tmp/xray.sqlite"
     override func spec() {
+        
+        let sut = SQLConnection(path: path)
         
         describe("SQLConnection") {
             
+            var result: SQLResult?
+            
             beforeEach {
-                
+                result = nil
             }
             
-            context("when executing a plain request") {
-                it("works") {
-                      expect(1).to(equal(1))
+            afterEach {
+                if FileManager.default.fileExists(atPath: self.path) {
+                    try! FileManager.default.removeItem(atPath: self.path)
                 }
+            }
+            
+            // MARK: - PLAIN request
+            
+            context("when executing a plain request") {
+                
+                beforeEach {
+                    let table = EventTable()
+                    result = try? sut.execute(request: table.createRequest)
+                }
+                it("returns a result") {
+                    expect(result).notTo(beNil())
+                }
+                
+                it("does not have a insertId") {
+                    expect(result!.insertId).to(equal(0))
+                }
+            }
+            
+            // MARK: - INSERT request
+            context("event table is created") {
+                beforeEach {
+                    try? sut.execute(request: EventTable().createRequest)
+                }
+                
+                
+                describe("insert request") {
+                    
+                    beforeEach {
+                        
+                    }
+                }
+                
             }
         }
     }
