@@ -31,6 +31,10 @@
 		8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524520C809C100DD81F3 /* SQLRequest.swift */; };
 		8A57F44520CA89190047B021 /* String+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44420CA89190047B021 /* String+SQL.swift */; };
 		8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44620CA89890047B021 /* SQLStringSpecs.swift */; };
+		8A57F44C20CE92E80047B021 /* Foundation+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */; };
+		8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */; };
+		C4D8751227EA93A59B626723 /* SQLDatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */; };
+		C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +87,10 @@
 		8A47524520C809C100DD81F3 /* SQLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLRequest.swift; sourceTree = "<group>"; };
 		8A57F44420CA89190047B021 /* String+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SQL.swift"; sourceTree = "<group>"; };
 		8A57F44620CA89890047B021 /* SQLStringSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLStringSpecs.swift; sourceTree = "<group>"; };
+		8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+SQL.swift"; sourceTree = "<group>"; };
+		8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLEventSpecs.swift; sourceTree = "<group>"; };
+		C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLDatabaseController.swift; sourceTree = "<group>"; };
+		C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+SQL.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +131,7 @@
 			children = (
 				8A2AFAAC20C936E6002A0B2B /* SQLConnectionSpecs.swift */,
 				8A57F44620CA89890047B021 /* SQLStringSpecs.swift */,
+				8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -210,6 +219,9 @@
 				8A47524220C803B200DD81F3 /* SQLConnection.swift */,
 				8A47524520C809C100DD81F3 /* SQLRequest.swift */,
 				8A57F44420CA89190047B021 /* String+SQL.swift */,
+				C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */,
+				C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */,
+				8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */,
 			);
 			name = SQL;
 			sourceTree = "<group>";
@@ -364,6 +376,7 @@
 			files = (
 				8A2AFAA120C92F1E002A0B2B /* XrayKitTests.swift in Sources */,
 				8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */,
+				8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */,
 				8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */,
+				8A57F44C20CE92E80047B021 /* Foundation+SQL.swift in Sources */,
 				8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */,
 				8A47523420C7EA0800DD81F3 /* Event.swift in Sources */,
 				8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */,
@@ -385,6 +399,8 @@
 				8A47523520C7EA0800DD81F3 /* EventService.swift in Sources */,
 				8A47523820C7EA0800DD81F3 /* EventController.swift in Sources */,
 				8A47523320C7EA0800DD81F3 /* DataPayload.swift in Sources */,
+				C4D8751227EA93A59B626723 /* SQLDatabaseController.swift in Sources */,
+				C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

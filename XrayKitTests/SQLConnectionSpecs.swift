@@ -34,8 +34,7 @@ class SQLConnectionSpecs: QuickSpec {
             context("when executing a plain request") {
                 
                 beforeEach {
-                    let table = EventTable()
-                    result = try? sut.execute(request: table.createRequest)
+                    result = try? sut.execute(request: EventTable.createRequest)
                 }
                 it("returns a result") {
                     expect(result).notTo(beNil())
@@ -57,20 +56,14 @@ class SQLConnectionSpecs: QuickSpec {
                     "createdAt": date.timeIntervalSince1970 as NSNumber
                 ]
                 beforeEach {
-                    let table = EventTable()
-                    
-                    result = try? sut.execute(request: table.createRequest)
+                    result = try? sut.execute(request: EventTable.createRequest)
                 }
                 
                 // MARK: - INSERT request
                 
-                fdescribe("insert request") {
+                describe("insert request") {
                     beforeEach {
-//                        do {
                             result = try? sut.execute(request: SQLRequest(insertInto: "events", binds: binds))
-//                        } catch let error as SQLConnection.SQLError {
-//                            //fail(error)
-//                        }
                     }
                     
                     it("has an insertId") {

@@ -7,35 +7,41 @@ import Foundation
 
 
 protocol Table {
- 
-    var tableName: String { get }
-    var createRequest: SQLRequest { get }
+
+    static var tableName: String { get }
+    static var createRequest: SQLRequest { get }
+}
+
+protocol Insertable {
+
+    static var tableName: String { get }
+
+    static var identField: String { get }
+
+    var binds: [String: AnyObject] { get }
+
 }
 
 struct EventTable: Table {
-    
-    var tableName           = "events"
-    var columnId            = "id"
-    var columnName          = "name"
-    var columndCreatedAt    = "createdAt"
-    var columndUpdatedAt    = "updatedAt"
-    var columndStatus       = "status"
-    var columndPayload      = "payload"
-    
-    var createRequest: SQLRequest {
 
-        return SQLRequest(sql: """
+    static let tableName          = "events"
+    static let columnId           = "id"
+    static let columnName         = "name"
+    static let columnCreatedAt    = "createdAt"
+    static let columnUpdatedAt    = "updatedAt"
+    static let columnStatus       = "status"
+    static let columnPayload      = "payload"
+
+    static let createRequest = SQLRequest(sql: """
             CREATE TABLE IF NOT EXISTS \(tableName)
             (
                 \(columnId) INTEGER PRIMARY KEY AUTOINCREMENT,
                 \(columnName) TEXT NOT NULL,
-                \(columndCreatedAt) INTEGER DEFAULT 0,
-                \(columndUpdatedAt) INTEGER DEFAULT 0,
-                \(columndStatus) INTEGER DEFAULT 0,
-                \(columndPayload) TEXT NOT NULL
+                \(columnCreatedAt) INTEGER DEFAULT 0,
+                \(columnUpdatedAt) INTEGER DEFAULT 0,
+                \(columnStatus) INTEGER DEFAULT 0,
+                \(columnPayload) TEXT NOT NULL
             )
             """
         )
-    }
-    
 }
