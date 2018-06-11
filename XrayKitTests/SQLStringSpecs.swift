@@ -33,7 +33,7 @@ class SQLStringSpecs: QuickSpec {
                 let fields = ["status", "updatedAt"]
                 let order = [
                     ("status", SQLRequest.Order.asc),
-                    ("updatedAt", SQLRequest.Order.desc),
+                    ("updatedAt", SQLRequest.Order.desc)
                 ]
                 context("and given a table name") {
                     beforeEach {

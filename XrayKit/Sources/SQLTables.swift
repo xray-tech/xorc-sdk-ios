@@ -8,19 +8,19 @@ import Foundation
 
 protocol Table {
  
-    var name: String { get }
+    var tableName: String { get }
     var createRequest: SQLRequest { get }
 }
 
 struct EventTable: Table {
     
     var tableName = "events"
-    var id = "id"
-    var name = "name"
+    var columnId = "id"
+    var columnName = "name"
     
     var createRequest: SQLRequest {
 
-        return SQLRequest(sql: "CREATE TABLE IF NOT EXISTS \(tableName)(\(id) INTEGER PRIMARY KEY AUTOINCREMENT, \(name) TEXT NOT NULL)"
+        return SQLRequest(sql: "CREATE TABLE IF NOT EXISTS \(tableName)(\(columnId) INTEGER PRIMARY KEY AUTOINCREMENT, \(columnName) TEXT NOT NULL)"
         )
     }
     

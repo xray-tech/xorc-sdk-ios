@@ -26,8 +26,8 @@ extension String {
         if let whereSQL = whereSQL {
             sql += " WHERE \(whereSQL)"
         }
-        if let order = order, order.count > 0 {
-            let values = order.map() { $0 + " " + $1.rawValue }
+        if let order = order, !order.isEmpty {
+            let values = order.map { $0 + " " + $1.rawValue }
             sql += " ORDER BY \(values.joined(separator: ", "))"
         }
         

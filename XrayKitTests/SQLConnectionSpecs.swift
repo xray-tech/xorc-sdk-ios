@@ -25,7 +25,7 @@ class SQLConnectionSpecs: QuickSpec {
             
             afterEach {
                 if FileManager.default.fileExists(atPath: self.path) {
-                    try! FileManager.default.removeItem(atPath: self.path)
+                    try? FileManager.default.removeItem(atPath: self.path)
                 }
             }
             
@@ -49,7 +49,7 @@ class SQLConnectionSpecs: QuickSpec {
             // MARK: - INSERT request
             context("event table is created") {
                 beforeEach {
-                    try? sut.execute(request: EventTable().createRequest)
+                    _ = try? sut.execute(request: EventTable().createRequest)
                 }
                 
                 

@@ -21,11 +21,11 @@ class SQLConnection {
     }
     
     func execute(request: SQLRequest) throws -> SQLResult {
-        let db = try open()
+        let database = try open()
         print("SQL: \(request.build())")
         
         var statement: OpaquePointer?
-        var ret = sqlite3_prepare_v2(db, (request.sql as NSString).utf8String, -1, &statement, nil)
+        var ret = sqlite3_prepare_v2(database, (request.sql as NSString).utf8String, -1, &statement, nil)
         if ret != SQLITE_OK {
             let message = "sqlite3_prepare_v2 failed: \(String(cString: sqlite3_errstr(ret)))"
             throw SQLError.executeError(message)
@@ -38,27 +38,27 @@ class SQLConnection {
         
         sqlite3_finalize(statement)
         
-        try close(db)
+        try close(database)
         
         return SQLResult()
     }
     
     // MARK: - Private
     
-    private func open() throws -> OpaquePointer?  {
-        var db: OpaquePointer?
-        let ret = sqlite3_open(path, &db)
+    private func open() throws -> OpaquePointer? {
+        var database: OpaquePointer?
+        let ret = sqlite3_open(path, &database)
         if ret == SQLITE_OK {
             print("Successfully opened connection to database at \(path)")
         } else {
             let message = "sqlite3_open failed: \(String(cString: sqlite3_errstr(ret)))"
             throw SQLError.openError(message)
         }
-        return db
+        return database
     }
     
-    private func close(_ db: OpaquePointer?) throws {
-        let ret = sqlite3_close(db)
+    private func close(_ database: OpaquePointer?) throws {
+        let ret = sqlite3_close(database)
         if ret != SQLITE_OK {
             let message = "sqlite3_close failed: \(String(cString: sqlite3_errstr(ret)))"
             throw SQLError.closeError(message)

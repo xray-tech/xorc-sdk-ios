@@ -13,9 +13,7 @@ let connection = SQLConnection(path: path.absoluteString)
 let table = EventTable()
 
 //do {
-    try! connection.execute(request: table.createRequest)
+    try? connection.execute(request: table.createRequest)
 //} catch let error {
 //    print(error)
 //}
-
-
