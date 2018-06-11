@@ -7,33 +7,32 @@ import Foundation
 
 class SQLDatabaseController: EventStore {
 
-    private let connection: SQLConnection
+    private let connection: Connection
     
     /// queue that ensures that all requests to the DB are made in a serial order
     private let queue = DispatchQueue(label: "io.xorc")
 
-    init(connection: SQLConnection) {
+    init(connection: Connection) {
         self.connection = connection
     }
+    
+    // MARK: - Private
 
-    // MARK: - EventStore
-
-    func insert(event: Event) -> Event {
-
-        let request = SQLRequest(insertInto: type(of: event).tableName, binds: event.binds)
+    func insert<Element: Insertable>(element: Element) -> Element {
+        var element = element
+        
+        let request = SQLRequest(insertInto: type(of: element).tableName, binds: element.binds)
 
         queue.sync {
             do {
                 let result = try self.connection.execute(request: request)
                 if let insertId = result.insertId {
-                    event.sequenceId = insertId
+                    element.sequenceId = insertId
                 }
             } catch let error {
                 print("SQL request failed: \(error)")
             }
         }
-        return event
+        return element
     }
-    
-    // MARK: - Private
 }

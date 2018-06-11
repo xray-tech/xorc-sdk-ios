@@ -8,8 +8,11 @@ import SQLite3
 
 let SQLITETRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
+protocol Connection {
+    func execute(request: SQLRequest) throws  -> SQLResult
+}
 
-class SQLConnection {
+class SQLConnection: Connection {
     
     enum SQLError: Error {
         case openError(String)

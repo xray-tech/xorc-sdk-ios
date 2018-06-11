@@ -7,5 +7,5 @@ import Foundation
 
 protocol EventStore {
     
-    func insert(event: Event) -> Event
+    func insert(element: Event) -> Event
 }

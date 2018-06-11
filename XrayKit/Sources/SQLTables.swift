@@ -18,6 +18,7 @@ protocol Insertable {
 
     static var identField: String { get }
 
+    var sequenceId: Int64 { get set }
     var binds: [String: AnyObject] { get }
 
 }
