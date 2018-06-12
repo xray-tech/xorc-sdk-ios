@@ -11,6 +11,7 @@ import Nimble
 
 class SQLConnectionSpecs: QuickSpec {
     let path = "/tmp/xray.sqlite"
+    
     override func spec() {
         
         let sut = SQLConnection(path: path)
@@ -29,32 +30,66 @@ class SQLConnectionSpecs: QuickSpec {
                 }
             }
             
-            // MARK: - PLAIN request
+            describe("generic entities") {
             
-            context("when executing a plain request") {
+                // MARK: - PLAIN request
                 
-                beforeEach {
-                    result = try? sut.execute(request: EventTable.createRequest)
-                }
-                it("returns a result") {
-                    expect(result).notTo(beNil())
+                context("when executing a plain request") {
+                    
+                    beforeEach {
+                        result = try? sut.execute(request: EventTable.createRequest)
+                    }
+                    it("returns a result") {
+                        expect(result).notTo(beNil())
+                    }
+                    
+                    it("does not have a insertId") {
+                        expect(result?.insertId).to(beNil())
+                    }
                 }
                 
-                it("does not have a insertId") {
-                    expect(result?.insertId).to(beNil())
+                context("a table is created") {
+                    var result: SQLResult?
+                    let date = Date()
+                    let binds: [String: AnyObject] = [
+                        EventTable.columnName: "my_event" as NSString,
+                        EventTable.columnStatus: 1 as NSNumber,
+                        EventTable.columnProperties: "" as NSString,
+                        EventTable.columnUpdatedAt: date.timeIntervalSince1970 as NSNumber,
+                        EventTable.columnCreatedAt: date.timeIntervalSince1970 as NSNumber
+                    ]
+                    beforeEach {
+                        result = try? sut.execute(request: EventTable.createRequest)
+                    }
+                    
+                    // MARK: - INSERT request
+                    
+                    describe("insert request") {
+                        beforeEach {
+                            do {
+                                result = try sut.execute(request: SQLRequest(insertInto: "events", binds: binds))
+                            } catch {
+                                fail("execute failed: \(error)")
+                            }
+                            
+                        }
+                        
+                        it("has an insertId") {
+                            expect(result?.insertId).notTo(beNil())
+                        }
+                        
+                        it("has correct changed rows count" ) {
+                            expect(result?.rowsChanged).to(equal(1))
+                        }
+                    }
+
+                    context("and DB has data") {
+
+                    }
                 }
             }
             
-            context("event table is created") {
-                var result: SQLResult?
-                let date = Date()
-                let binds: [String: AnyObject] = [
-                    EventTable.columnName: "my_event" as NSString,
-                    EventTable.columnStatus: 1 as NSNumber,
-                    EventTable.columnProperties: "" as NSString,
-                    EventTable.columnUpdatedAt: date.timeIntervalSince1970 as NSNumber,
-                    EventTable.columnCreatedAt: date.timeIntervalSince1970 as NSNumber
-                ]
+            describe("event entities") {
                 beforeEach {
                     result = try? sut.execute(request: EventTable.createRequest)
                 }
@@ -64,11 +99,15 @@ class SQLConnectionSpecs: QuickSpec {
                 describe("insert request") {
                     beforeEach {
                         do {
-                            result = try sut.execute(request: SQLRequest(insertInto: "events", binds: binds))
+                            let event = Event(name: "my_event", properties: [
+                                "myStringKey": "myStringValue",
+                                "myImtKey": 100,
+                                "myFloatKey": 101.1
+                                ])
+                            result = try sut.execute(request: event.insertRequest)
                         } catch {
                             fail("execute failed: \(error)")
                         }
-                        
                     }
                     
                     it("has an insertId") {
@@ -79,14 +118,11 @@ class SQLConnectionSpecs: QuickSpec {
                         expect(result?.rowsChanged).to(equal(1))
                     }
                 }
-
+                
                 context("and DB has data") {
-
+                    
                 }
-
             }
-
-
         }
     }
 }

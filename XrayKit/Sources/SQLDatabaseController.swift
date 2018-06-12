@@ -21,12 +21,9 @@ class SQLDatabaseController: EventStore {
     func insert<Element: Insertable>(element: Element) -> Element {
         var element = element
         
-        let request = SQLRequest(insertInto: type(of: element).tableName, binds: element.binds)
-        
         let insertId: Int64? = queue.sync {
             do {
-                let result = try self.connection.execute(request: request)
-                return result.insertId
+                return try self.connection.execute(request: element.insertRequest).insertId
             } catch let error {
                 print("SQL request failed: \(error)")
             }

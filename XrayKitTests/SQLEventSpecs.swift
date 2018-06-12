@@ -20,8 +20,7 @@ class SQLEventSpecs: QuickSpec {
                         expect(sut.binds["name"] as? String).to(equal("my_event"))
                     }
                     
-                    it("contains createdAt") {
-                        
+                    it("contains createdAt") {   
                         expect(sut.binds[EventTable.columnCreatedAt] as? NSNumber).notTo(equal(0))
                     }
                     

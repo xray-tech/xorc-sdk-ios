@@ -20,7 +20,15 @@ protocol Insertable {
 
     var sequenceId: Int64 { get set }
     var binds: [String: AnyObject] { get }
+    
+    var insertRequest: SQLRequest { get }
+}
 
+extension Insertable {
+    
+    var insertRequest: SQLRequest {
+        return SQLRequest(insertInto: type(of: self).tableName, binds: binds)
+    }
 }
 
 struct EventTable: Table {

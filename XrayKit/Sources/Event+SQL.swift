@@ -17,6 +17,7 @@ extension Event: Insertable {
         binds[table.columnName] = name as NSString
         binds[table.columnCreatedAt] = createdAt.toSql()
         binds[table.columnUpdatedAt] = updatedAt.toSql()
+        binds[table.columnStatus] = status.rawValue as NSNumber
         
         if
             let properties = properties,
@@ -28,5 +29,4 @@ extension Event: Insertable {
 
         return binds
     }
-
 }
