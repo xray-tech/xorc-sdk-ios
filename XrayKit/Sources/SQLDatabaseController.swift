@@ -22,17 +22,18 @@ class SQLDatabaseController: EventStore {
         var element = element
         
         let request = SQLRequest(insertInto: type(of: element).tableName, binds: element.binds)
-
-        queue.sync {
+        
+        let insertId: Int64? = queue.sync {
             do {
                 let result = try self.connection.execute(request: request)
-                if let insertId = result.insertId {
-                    element.sequenceId = insertId
-                }
+                return result.insertId
             } catch let error {
                 print("SQL request failed: \(error)")
             }
+            return nil
         }
+        
+        element.sequenceId = insertId ?? 0
         return element
     }
 }
