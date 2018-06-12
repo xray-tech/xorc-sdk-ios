@@ -26,7 +26,7 @@ public protocol EventTransmitter {
     /**
      This method is called internally by the Xray SDK when the event is ready to be transmitted.
      - parameter events: The `Event`s to be transmitted.
-     - parameter completion: The `EventResult` complition closure telling the SDK whether the events were transmitted correctly or not.
+     - parameter completion: The `EventResult` completion closure telling the SDK whether the events were transmitted correctly or not.
      - warning: Do not call this method. It is meant to be called by the SDK at the right time.
     */
     func transmit(events: [Event], completion: @escaping (EventResult) -> Void)
@@ -35,6 +35,12 @@ public protocol EventTransmitter {
 class EventController {
     
     public var transmitter: EventTransmitter?
+
+    private var eventStore: EventStore
+
+    init(eventStore: EventStore) {
+        self.eventStore = eventStore
+    }
     
     public func log(event: Event) {
         print("Logging event \(event.name)")
@@ -45,11 +51,14 @@ class EventController {
             // nothing else to do. We do not persist at all
             return
         }
-        
-        // check for connection
-        // check for app state
-        // persist if needed
-        // based on options: send now or batch
+
+
+        // todo check for connection
+        // todo check for app state
+        // todo persist if needed
+        // todo based on options: send now or batch
+        //
+
         transmitter.transmit(events: [event], completion: { result in
             switch result {
             case .success:
