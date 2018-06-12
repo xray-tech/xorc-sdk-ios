@@ -31,7 +31,7 @@ struct EventTable: Table {
     static let columnCreatedAt    = "createdAt"
     static let columnUpdatedAt    = "updatedAt"
     static let columnStatus       = "status"
-    static let columnPayload      = "payload"
+    static let columnProperties   = "properties"
 
     static let createRequest = SQLRequest(sql: """
             CREATE TABLE IF NOT EXISTS \(tableName)
@@ -41,7 +41,7 @@ struct EventTable: Table {
                 \(columnCreatedAt) INTEGER DEFAULT 0,
                 \(columnUpdatedAt) INTEGER DEFAULT 0,
                 \(columnStatus) INTEGER DEFAULT 0,
-                \(columnPayload) TEXT NOT NULL
+                \(columnProperties) TEXT
             )
             """
         )

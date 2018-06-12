@@ -12,9 +12,19 @@ extension Event: Insertable {
 
     var binds: [String: AnyObject] {
         var binds = [String: AnyObject]()
-        binds[EventTable.columnName] = name as NSString
-        binds[EventTable.columnCreatedAt] = createdAt.toSql()
-        binds[EventTable.columnUpdatedAt] = updatedAt.toSql()
+        
+        let table = EventTable.self
+        binds[table.columnName] = name as NSString
+        binds[table.columnCreatedAt] = createdAt.toSql()
+        binds[table.columnUpdatedAt] = updatedAt.toSql()
+        
+        if
+            let properties = properties,
+            let data = try? JSONSerialization.data(withJSONObject: properties, options: []),
+            let json = String(data: data, encoding: .utf8)
+        {
+            binds[table.columnProperties] = json as NSString
+        }
 
         return binds
     }

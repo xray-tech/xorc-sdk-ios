@@ -10,12 +10,12 @@ public class Event: NSObject {
 
     var sequenceId: Int64
     let name: String
-    let properties: [String: AnyObject]?
+    let properties: [String: Codable]?
     let createdAt: Date
     let updatedAt: Date
     
-    @objc
-    public init(name: String, properties: [String: AnyObject]? = nil, sequenceId: Int64 = 0, createdAt: Date = Date(), updatedAt: Date = Date()) {
+    
+    public init(name: String, properties: [String: Codable]? = nil, sequenceId: Int64 = 0, createdAt: Date = Date(), updatedAt: Date = Date()) {
         self.sequenceId = sequenceId
         self.name = name
         self.properties = properties
@@ -24,7 +24,7 @@ public class Event: NSObject {
         
     }
 
-    convenience init(name: String, properties: [String: AnyObject]? = nil) {
+    convenience init(name: String, properties: [String: Codable]? = nil) {
         self.init(name: name, properties: properties, sequenceId: 0)
     }
 }

@@ -33,7 +33,7 @@ class SQLConnection: Connection {
         var statement: OpaquePointer?
         var ret = sqlite3_prepare_v2(database, (request.sql as NSString).utf8String, -1, &statement, nil)
         if ret != SQLITE_OK {
-            let message = "sqlite3_prepare_v2 failed: \(String(cString: sqlite3_errstr(ret)))"
+            let message = "sqlite3_prepare_v2 failed: \(String(cString: sqlite3_errstr(ret))). \(String(cString: sqlite3_errmsg(database)))"
             throw SQLError.executeError(message)
         }
         

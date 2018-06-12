@@ -49,11 +49,11 @@ class SQLConnectionSpecs: QuickSpec {
                 var result: SQLResult?
                 let date = Date()
                 let binds: [String: AnyObject] = [
-                    "name": "my_event" as NSString,
-                    "status": 1 as NSNumber,
-                    "payload": "" as NSString,
-                    "updatedAt": date.timeIntervalSince1970 as NSNumber,
-                    "createdAt": date.timeIntervalSince1970 as NSNumber
+                    EventTable.columnName: "my_event" as NSString,
+                    EventTable.columnStatus: 1 as NSNumber,
+                    EventTable.columnProperties: "" as NSString,
+                    EventTable.columnUpdatedAt: date.timeIntervalSince1970 as NSNumber,
+                    EventTable.columnCreatedAt: date.timeIntervalSince1970 as NSNumber
                 ]
                 beforeEach {
                     result = try? sut.execute(request: EventTable.createRequest)
@@ -63,7 +63,12 @@ class SQLConnectionSpecs: QuickSpec {
                 
                 describe("insert request") {
                     beforeEach {
-                            result = try? sut.execute(request: SQLRequest(insertInto: "events", binds: binds))
+                        do {
+                            result = try sut.execute(request: SQLRequest(insertInto: "events", binds: binds))
+                        } catch {
+                            fail("execute failed: \(error)")
+                        }
+                        
                     }
                     
                     it("has an insertId") {
@@ -74,7 +79,14 @@ class SQLConnectionSpecs: QuickSpec {
                         expect(result?.rowsChanged).to(equal(1))
                     }
                 }
+
+                context("and DB has data") {
+
+                }
+
             }
+
+
         }
     }
 }
