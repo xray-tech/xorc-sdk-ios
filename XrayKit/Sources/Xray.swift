@@ -11,4 +11,16 @@ public class Xray: NSObject {
     public static let data = DataService()
     
     public static let events = EventService()
+
+    // MARK: - Private
+
+    let eventController: EventController
+
+
+    override init() {
+        let connection = SQLConnection(path: FileManager.databaseFilePath())
+        let store = SQLDatabaseController(connection: connection)
+        self.eventController = EventController(eventStore: store)
+
+    }
 }
