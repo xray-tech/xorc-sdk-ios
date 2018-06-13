@@ -223,9 +223,9 @@
 			children = (
 				8A47524020C8034300DD81F3 /* SQLTables.swift */,
 				8A47524220C803B200DD81F3 /* SQLConnection.swift */,
+				C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */,
 				8A47524520C809C100DD81F3 /* SQLRequest.swift */,
 				8A57F44420CA89190047B021 /* String+SQL.swift */,
-				C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */,
 				C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */,
 				8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */,
 			);

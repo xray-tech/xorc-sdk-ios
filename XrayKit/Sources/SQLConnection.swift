@@ -37,7 +37,7 @@ class SQLConnection: Connection {
             throw SQLError.executeError(message)
         }
         
-
+        // If INSERT, bind the values
         if let binds = request.binds {
             for (key, value) in binds {
                 let index =  sqlite3_bind_parameter_index(statement, (":\(key)" as NSString).utf8String)
@@ -45,10 +45,23 @@ class SQLConnection: Connection {
             }
         }
         
-        
+        var resultSet = [[String: AnyObject]]()
         repeat {
             ret = sqlite3_step(statement)
+            if ret == SQLITE_ROW {
+                // if count
+                // result.count = sqlite3_column_int(statement, 0);
+                // else
+                let rowObject = row(fromStatement: statement)
+                resultSet.append(rowObject)
+                
+            }
+            
         } while ret == SQLITE_ROW
+        
+        if !resultSet.isEmpty {
+            
+        }
         
         if ret != SQLITE_DONE {
             let message = "sqlite3_step failed: \(String(cString: sqlite3_errstr(ret))). \(String(cString: sqlite3_errmsg(database)))"
@@ -62,6 +75,10 @@ class SQLConnection: Connection {
         if request.type == .insert {
             let resultId = sqlite3_last_insert_rowid(database)
             result = SQLResult(insertId: resultId, rowsChanged: rowsChanged)
+        }
+        
+        if request.type == .select && !resultSet.isEmpty {
+            result = SQLResult(resultSet: resultSet)
         }
         
         sqlite3_finalize(statement)
@@ -93,7 +110,6 @@ class SQLConnection: Connection {
         }
     }
     
-    
     private func bind(object: AnyObject, toStatement statement: OpaquePointer?, atParamIndex index: Int32) {
         switch object {
         case let number as NSNumber:
@@ -113,5 +129,46 @@ class SQLConnection: Connection {
             sqlite3_bind_null(statement, index)
             
         }
+    }
+    
+    /**
+     Extracts the SQL row into a dictionary with columns as keys.
+     Should be called after a sqlite3_step that returns SQLITE_ROW
+    */
+    private func row(fromStatement statement: OpaquePointer?) -> [String: AnyObject] {
+        var row = [String: AnyObject]()
+        let columnCount = sqlite3_data_count(statement)
+        for columnIndex in 0..<columnCount {
+            let columName = String(cString: sqlite3_column_name(statement, columnIndex))
+            if let value = object(from: statement, atColumnIndex: columnIndex) {
+                row[columName] = value
+            }
+        }
+        return row
+    }
+    
+    /// Extracts the object from a result statement at the given column index
+    private func object(from statement: OpaquePointer?, atColumnIndex columnIndex: Int32) -> AnyObject? {
+        let columnType = sqlite3_column_type(statement, columnIndex)
+        
+        var value: AnyObject?
+        switch columnType {
+        case SQLITE_INTEGER:
+            value = sqlite3_column_int64(statement, columnIndex) as NSNumber
+        case SQLITE_FLOAT:
+            value = sqlite3_column_double(statement, columnIndex) as NSNumber
+        case SQLITE_TEXT:
+            if let cString = sqlite3_column_text(statement, columnIndex) {
+                value = String(cString: cString) as NSString
+            }
+            
+        case SQLITE_BLOB:
+            let bytes = sqlite3_column_blob(statement, columnIndex)
+            let length = sqlite3_column_bytes(statement, columnIndex)
+            value = NSData(bytes: bytes, length: Int(length))
+        default:
+            break
+        }
+        return value
     }
 }

@@ -38,6 +38,10 @@ struct SQLRequest {
         self.init(sql: String.sqlInsert(tableName: table, fields: Array(binds.keys)), type: .insert, binds: binds)
     }
 
+    init(selectFrom table: String, fields: [String]? = nil, whereSQL: String? = nil, order: [(String, SQLRequest.Order)]? = nil) {
+        let sql = String.sqlSelect(tableName: table, fields: fields, whereSQL: whereSQL, order: order)
+        self.init(sql: sql, type: .select)
+    }
     
     func build() -> String {
         return sql
@@ -47,10 +51,14 @@ struct SQLRequest {
 struct SQLResult {
     let insertId: Int64?
     let rowsChanged: Int32
+    let resultSet: [[String: AnyObject]]?
     
-    
-    init(insertId: Int64? = nil, rowsChanged: Int32 = 0) {
+    init(insertId: Int64? = nil, rowsChanged: Int32 = 0, resultSet: [[String: AnyObject]]? = nil) {
         self.insertId = insertId
         self.rowsChanged = rowsChanged
+        self.resultSet = resultSet
+    }
+    init (resultSet: [[String: AnyObject]]) {
+        self.init(insertId: nil, rowsChanged: 0, resultSet: resultSet)
     }
 }

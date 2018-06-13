@@ -64,8 +64,6 @@ class SQLStringSpecs: QuickSpec {
                         expect(result).to(equal("SELECT status, updatedAt FROM events WHERE status=1 ORDER BY status ASC, updatedAt DESC"))
                     }
                 }
-                
-                
             }
         }
     }

@@ -83,44 +83,41 @@ class SQLConnectionSpecs: QuickSpec {
                         }
                     }
 
-                    context("and DB has data") {
-
-                    }
-                }
-            }
-            
-            describe("event entities") {
-                beforeEach {
-                    result = try? sut.execute(request: EventTable.createRequest)
-                }
-                
-                // MARK: - INSERT request
-                
-                describe("insert request") {
-                    beforeEach {
-                        do {
-                            let event = Event(name: "my_event", properties: [
-                                "myStringKey": "myStringValue",
-                                "myImtKey": 100,
-                                "myFloatKey": 101.1
-                                ])
-                            result = try sut.execute(request: event.insertRequest)
-                        } catch {
-                            fail("execute failed: \(error)")
+                    // MARK: - SELECT request
+                    
+                    fcontext("and DB has data") {
+                        let allEntries = 50
+                        
+                        beforeEach {
+                            
+                            for i in 0..<allEntries {
+                                
+                                let binds: [String: AnyObject] = [
+                                    EventTable.columnName: "my_event" as NSString,
+                                    EventTable.columnStatus: i as NSNumber,
+                                    EventTable.columnProperties: "" as NSString,
+                                    EventTable.columnUpdatedAt: (100 + i) as NSNumber,
+                                    EventTable.columnCreatedAt: (200 + i) as NSNumber
+                                ]
+                                
+                                result = try? sut.execute(request: SQLRequest.init(insertInto: "events", binds: binds))
+                                expect(result).notTo(beNil()) // just to be sure that we have seed data
+                            }
+                        }
+                        
+                        context("when selecting all data") {
+                            beforeEach {
+                                result = try? sut.execute(request: SQLRequest(selectFrom: EventTable.tableName))
+                            }
+                            
+                            it("succeeds") {
+                                expect(result).notTo(beNil())
+                            }
+                            it("has the correct count") {
+                                expect(result?.resultSet?.count).to(equal(allEntries))
+                            }
                         }
                     }
-                    
-                    it("has an insertId") {
-                        expect(result?.insertId).notTo(beNil())
-                    }
-                    
-                    it("has correct changed rows count" ) {
-                        expect(result?.rowsChanged).to(equal(1))
-                    }
-                }
-                
-                context("and DB has data") {
-                    
                 }
             }
         }
