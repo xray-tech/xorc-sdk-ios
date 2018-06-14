@@ -104,17 +104,33 @@ class SQLConnectionSpecs: QuickSpec {
                                 expect(result).notTo(beNil()) // just to be sure that we have seed data
                             }
                         }
-                        
-                        context("when selecting all data") {
-                            beforeEach {
-                                result = try? sut.execute(request: SQLRequest(selectFrom: EventTable.tableName))
+
+                        describe("select request") {
+
+                            context("all data") {
+                                beforeEach {
+                                    result = try? sut.execute(request: SQLRequest(selectFrom: EventTable.tableName))
+                                }
+
+                                it("succeeds") {
+                                    expect(result).notTo(beNil())
+                                }
+                                it("has the correct count") {
+                                    expect(result?.resultSet?.count).to(equal(allEntries))
+                                }
                             }
-                            
-                            it("succeeds") {
-                                expect(result).notTo(beNil())
-                            }
-                            it("has the correct count") {
-                                expect(result?.resultSet?.count).to(equal(allEntries))
+
+                            context("one entry") {
+                                beforeEach {
+                                    result = try? sut.execute(request: SQLRequest(selectFrom: EventTable.tableName, fields: [], whereSQL: "id=1"))
+                                }
+
+                                it("succeeds") {
+                                    expect(result).notTo(beNil())
+                                }
+                                it("has the correct count") {
+                                    expect(result?.resultSet?.count).to(equal(1))
+                                }
                             }
                         }
                     }
