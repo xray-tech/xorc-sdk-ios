@@ -63,7 +63,10 @@ class SQLDatabaseController {
 }
 
 extension SQLDatabaseController: EventStore {
-    
+    func insert(event: Event) -> Event {
+        return insert(entry: event)
+    }
+
     func select(priority: Event.Priority, nextTryAt: Date, batchMaxSize: Int) {
 
     }

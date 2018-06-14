@@ -7,7 +7,7 @@ import Foundation
 
 protocol EventStore {
     
-    func insert(element: Event) -> Event
+    func insert(event: Event) -> Event
 
     func select(priority: Event.Priority, nextTryAt: Date, batchMaxSize: Int)
 }
