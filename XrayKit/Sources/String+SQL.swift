@@ -18,7 +18,7 @@ extension String {
         var sql = ""
         var fieldsSql = "*"
         
-        if let fields = fields {
+        if let fields = fields, !fields.isEmpty {
             fieldsSql = fields.joined(separator: ", ")
         }
         sql = "SELECT \(fieldsSql) FROM \(tableName)"
@@ -30,8 +30,15 @@ extension String {
             let values = order.map { $0 + " " + $1.rawValue }
             sql += " ORDER BY \(values.joined(separator: ", "))"
         }
-        
+        return sql
+    }
 
+    static func sqlUpdate(tableName: String, fields: [String], whereSQL: String = "1=1") -> String {
+        // all fields to myfield=:myfield
+        let fieldsPairs = fields.map { "\($0)=:\($0)" }.joined(separator: ", ")
+
+        //let fieldsSQL = fields.joined(separator: ",: ")
+        let sql = "UPDATE \(tableName) SET \(fieldsPairs) WHERE \(whereSQL)"
         return sql
     }
 }

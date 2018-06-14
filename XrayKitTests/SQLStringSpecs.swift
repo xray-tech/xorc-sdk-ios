@@ -65,6 +65,30 @@ class SQLStringSpecs: QuickSpec {
                     }
                 }
             }
+
+            describe("when generating UPDATE SQL") {
+                let fields = ["status", "updatedAt"]
+
+                context("and given a table name only") {
+                    beforeEach {
+                        result = String.sqlUpdate(tableName: "my_table", fields: fields)
+                    }
+
+                    it("generates a valid SQL") {
+                        expect(result).to(equal("UPDATE my_table SET status=:status, updatedAt=:updatedAt WHERE 1=1"))
+                    }
+                }
+
+                context("and given a where clause") {
+                    beforeEach {
+                        result = String.sqlUpdate(tableName: "my_table", fields: fields, whereSQL: "status=1")
+                    }
+
+                    it("generates a valid SQL") {
+                        expect(result).to(equal("UPDATE my_table SET status=:status, updatedAt=:updatedAt WHERE status=1"))
+                    }
+                }
+            }
         }
     }
 }
