@@ -12,7 +12,7 @@ protocol Table {
     static var createRequest: SQLRequest { get }
 }
 
-protocol Insertable {
+protocol Insertable {                                                                 
 
     static var tableName: String { get }
 

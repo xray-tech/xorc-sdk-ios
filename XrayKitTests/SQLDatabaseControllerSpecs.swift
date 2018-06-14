@@ -49,7 +49,7 @@ class SQLDatabaseControllerSpecs: QuickSpec {
                 beforeEach {
                     connection = MockConnection(result: SQLResult(insertId: 123))
                     sut = SQLDatabaseController(connection: connection)
-                    insertable = sut.insert(element: insertable)
+                    insertable = sut.insert(entry: insertable)
                 }
                 
                 it("assigns the sequence id") {

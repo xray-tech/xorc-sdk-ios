@@ -24,6 +24,14 @@ public final class Event: NSObject {
         // The event was retried too many times and will be discarded
         case error      = 4
     }
+
+    enum Priority: Int {
+        // The event will be sent with next scheduled batch
+        case normal     = 0
+
+        // The event will be sent immediately
+        case important  = 1
+    }
     
     var sequenceId: Int64
     let name: String

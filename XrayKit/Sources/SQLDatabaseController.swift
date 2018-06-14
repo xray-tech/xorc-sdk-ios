@@ -5,7 +5,7 @@
 
 import Foundation
 
-class SQLDatabaseController: EventStore {
+class SQLDatabaseController {
 
     private let connection: Connection
     
@@ -18,42 +18,53 @@ class SQLDatabaseController: EventStore {
     
     // MARK: - Private
 
-    func insert<Element: Insertable>(element: Element) -> Element {
-        var element = element
+    func insert<Entry: Insertable>(entry: Entry) -> Entry {
+        var entry = entry
         
         let insertId: Int64? = queue.sync {
             do {
-                return try self.connection.execute(request: element.insertRequest).insertId
+                return try self.connection.execute(request: entry.insertRequest).insertId
             } catch let error {
                 print("SQL request failed: \(error)")
             }
             return nil
         }
         
-        element.sequenceId = insertId ?? 0
-        return element
+        entry.sequenceId = insertId ?? 0
+        return entry
     }
     
     
-    func select<Element: Deserializable> (where: String) -> [Element] {
+    func select<Entry: Deserializable> (where: String) -> [Entry] {
         
         let request = SQLRequest(selectFrom: EventTable.tableName)
         
-        var entities = [Element]()
+        var entries = [Entry]()
         queue.sync {
             do {
                 let result = try self.connection.execute(request: request)
                 guard let resultSet = result.resultSet else { return }
                 
                 for resultSet in resultSet {
-                    if let entity = try? Element.deserialize(resultSet) {
-                        entities.append(entity)
+                    if let entity = try? Entry.deserialize(resultSet) {
+                        entries.append(entity)
                     }
                 }
             } catch {
               print("SQL request failed: \(error)")
             }
         }
-        return entities
+        return entries
+    }
+
+    func update() {
+        
+    }
+}
+
+extension SQLDatabaseController: EventStore {
+    
+    func select(priority: Event.Priority, nextTryAt: Date, batchMaxSize: Int) {
+
     }
 }
