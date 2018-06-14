@@ -33,4 +33,27 @@ class SQLDatabaseController: EventStore {
         element.sequenceId = insertId ?? 0
         return element
     }
+    
+    
+    func select<Element: Deserializable> (where: String) -> [Element] {
+        
+        let request = SQLRequest(selectFrom: EventTable.tableName)
+        
+        var entities = [Element]()
+        queue.sync {
+            do {
+                let result = try self.connection.execute(request: request)
+                guard let resultSet = result.resultSet else { return }
+                
+                for resultSet in resultSet {
+                    if let entity = try? Element.deserialize(resultSet) {
+                        entities.append(entity)
+                    }
+                }
+            } catch {
+              print("SQL request failed: \(error)")
+            }
+        }
+        return entities
+    }
 }

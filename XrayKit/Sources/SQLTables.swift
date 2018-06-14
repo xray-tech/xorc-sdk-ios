@@ -31,26 +31,9 @@ extension Insertable {
     }
 }
 
-struct EventTable: Table {
 
-    static let tableName          = "events"
-    static let columnId           = "id"
-    static let columnName         = "name"
-    static let columnCreatedAt    = "createdAt"
-    static let columnUpdatedAt    = "updatedAt"
-    static let columnStatus       = "status"
-    static let columnProperties   = "properties"
+protocol Deserializable {
 
-    static let createRequest = SQLRequest(sql: """
-            CREATE TABLE IF NOT EXISTS \(tableName)
-            (
-                \(columnId) INTEGER PRIMARY KEY AUTOINCREMENT,
-                \(columnName) TEXT NOT NULL,
-                \(columnCreatedAt) INTEGER DEFAULT 0,
-                \(columnUpdatedAt) INTEGER DEFAULT 0,
-                \(columnStatus) INTEGER DEFAULT 0,
-                \(columnProperties) TEXT
-            )
-            """
-        )
+    /// Method for deserializing elements from SQL
+    static func deserialize(_ element: [String: AnyObject]) throws -> Self
 }

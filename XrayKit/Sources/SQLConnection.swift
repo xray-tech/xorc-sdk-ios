@@ -59,9 +59,6 @@ class SQLConnection: Connection {
             
         } while ret == SQLITE_ROW
         
-        if !resultSet.isEmpty {
-            
-        }
         
         if ret != SQLITE_DONE {
             let message = "sqlite3_step failed: \(String(cString: sqlite3_errstr(ret))). \(String(cString: sqlite3_errmsg(database)))"

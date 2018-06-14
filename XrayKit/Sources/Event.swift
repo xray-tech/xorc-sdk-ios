@@ -6,7 +6,7 @@
 import Foundation
 
 @objc
-public class Event: NSObject {
+public final class Event: NSObject {
 
     enum Status: Int {
         /// The event was created and will be sent

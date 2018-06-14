@@ -52,6 +52,10 @@ class EventController {
             return
         }
 
+        var database: SQLDatabaseController!
+        
+        
+        let events: [Event] = database.select(where: "<#T##String#>")
 
         // todo check for connection
         // todo check for app state
