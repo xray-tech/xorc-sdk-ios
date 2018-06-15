@@ -133,7 +133,41 @@ class SQLConnectionSpecs: QuickSpec {
                                 }
                             }
                         }
+
+                        describe("update request") {
+
+                            let updateBinds: [String: AnyObject] = [
+                                EventTable.columnStatus: 10 as NSNumber,
+                                EventTable.columnUpdatedAt: 20 as NSNumber,
+                            ]
+                            context("all data") {
+                                beforeEach {
+                                    result = try? sut.execute(request: SQLRequest(updateTable: EventTable.tableName, binds: updateBinds))
+                                }
+
+                                it("succeeds") {
+                                    expect(result).notTo(beNil())
+                                }
+                                it("has the correct count") {
+                                    expect(result?.rowsChanged).to(equal(Int32(allEntries)))
+                                }
+                            }
+
+                            context("some entries") {
+                                beforeEach {
+                                    result = try? sut.execute(request: SQLRequest(updateTable: EventTable.tableName, binds: updateBinds, whereSQL: "id=1 OR id=2"))
+                                }
+
+                                it("succeeds") {
+                                    expect(result).notTo(beNil())
+                                }
+                                it("has the correct count") {
+                                    expect(result?.rowsChanged).to(equal(2))
+                                }
+                            }
+                        }
                     }
+                }
                 }
             }
         }
