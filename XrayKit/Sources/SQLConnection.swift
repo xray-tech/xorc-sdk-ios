@@ -29,7 +29,7 @@ class SQLConnection: Connection {
     func execute(request: SQLRequest) throws  -> SQLResult {
         let database = try open()
         print("SQL: \(request.build())")
-        
+
         var statement: OpaquePointer?
         var ret = sqlite3_prepare_v2(database, (request.sql as NSString).utf8String, -1, &statement, nil)
         if ret != SQLITE_OK {
@@ -38,13 +38,16 @@ class SQLConnection: Connection {
         }
         
         // If INSERT, bind the values
-        if let binds = request.binds {
+        if request.type == .insert || request.type == .update {
+            guard let binds = request.binds else {
+                fatalError("INSERT or UPDATE requests need to bind values")
+            }
             for (key, value) in binds {
                 let index =  sqlite3_bind_parameter_index(statement, (":\(key)" as NSString).utf8String)
                 bind(object: value, toStatement: statement, atParamIndex: index)
             }
         }
-        
+
         var resultSet = [[String: AnyObject]]()
         repeat {
             ret = sqlite3_step(statement)
