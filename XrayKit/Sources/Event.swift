@@ -37,7 +37,7 @@ public final class Event: NSObject {
     let name: String
     let properties: [String: Codable]?
     let createdAt: Date
-    let updatedAt: Date
+    var updatedAt: Date
     
     var status: Status
     

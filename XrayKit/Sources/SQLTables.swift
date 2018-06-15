@@ -19,18 +19,33 @@ protocol Insertable {
     static var identField: String { get }
 
     var sequenceId: Int64 { get set }
+
     var binds: [String: AnyObject] { get }
     
     var insertRequest: SQLRequest { get }
 }
 
 extension Insertable {
-    
     var insertRequest: SQLRequest {
         return SQLRequest(insertInto: type(of: self).tableName, binds: binds)
     }
 }
 
+protocol Updatable {
+    static var tableName: String { get }
+    static var identField: String { get }
+    var sequenceId: Int64 { get set }
+    var updatedAt: Date { get set }
+    var binds: [String: AnyObject] { get }
+}
+
+extension Updatable {
+
+    mutating func updateRequest() -> SQLRequest {
+        updatedAt = Date()
+        return SQLRequest(updateTable: type(of: self).tableName, binds: binds, whereSQL: "\(type(of: self).identField)=\(sequenceId)")
+    }
+}
 
 protocol Deserializable {
 

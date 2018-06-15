@@ -25,7 +25,7 @@ class SQLDatabaseController {
             do {
                 return try self.connection.execute(request: entry.insertRequest).insertId
             } catch let error {
-                print("SQL request failed: \(error)")
+                print("\(#function) failed: \(error)")
             }
             return nil
         }
@@ -51,14 +51,22 @@ class SQLDatabaseController {
                     }
                 }
             } catch {
-              print("SQL request failed: \(error)")
+                print("\(#function) failed: \(error)")
             }
         }
         return entries
     }
 
-    func update() {
-        
+    func update<Entry: Updatable>(entry: Entry) {
+        var entry = entry
+        queue.sync {
+            do {
+                // todo return updated entries?
+                let _ = try self.connection.execute(request: entry.updateRequest())
+            } catch {
+                print("\(#function) failed: \(error)")
+            }
+        }
     }
 }
 

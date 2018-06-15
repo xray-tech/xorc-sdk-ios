@@ -55,6 +55,10 @@ extension Event: Insertable {
     }
 }
 
+extension Event: Updatable {
+
+}
+
 extension Event: Deserializable {
 
     static func deserialize(_ element: [String: AnyObject]) throws -> Event {

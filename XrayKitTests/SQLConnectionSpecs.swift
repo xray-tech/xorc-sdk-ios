@@ -168,7 +168,6 @@ class SQLConnectionSpecs: QuickSpec {
                         }
                     }
                 }
-                }
             }
         }
     }

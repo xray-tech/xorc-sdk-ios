@@ -39,7 +39,7 @@ class SQLEventSpecs: QuickSpec {
                     "myStringKey": "myStringValue",
                     "myNumberValue": 10
                 ]
-                let sut = Event(name: "my_event", properties: expectedProperties)
+                var sut = Event(name: "my_event", properties: expectedProperties)
 
                 describe("binds") {
                     it("contains a properties") {
@@ -50,7 +50,7 @@ class SQLEventSpecs: QuickSpec {
                         expect(sut.binds[EventTable.columnProperties]).to(beAKindOf(NSString.self))
                     }
                     
-                    describe("when deserialise properties") {
+                    describe("when deserialize properties") {
                         var properties: [String: AnyObject]?
                         beforeEach {
                             if
@@ -64,6 +64,21 @@ class SQLEventSpecs: QuickSpec {
                         it("contains the same properties count") {
                             expect(properties).to(haveCount(expectedProperties.count))
                         }
+                    }
+                }
+                describe("when using Updatable") {
+                    let updatedAt = sut.updatedAt
+                    var updateRequest: SQLRequest!
+
+                    beforeEach {
+                        updateRequest = sut.updateRequest()
+                    }
+                    it("sets a new updatedAt to the event") {
+                        expect(sut.updatedAt).to(beGreaterThan(updatedAt))
+                    }
+
+                    it("creates a request with a where clause") {
+                        expect(updateRequest.sql).to(contain("WHERE \(EventTable.columnId)=\(sut.sequenceId)"))
                     }
                 }
             }
