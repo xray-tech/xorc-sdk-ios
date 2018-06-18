@@ -85,7 +85,7 @@ class SQLConnectionSpecs: QuickSpec {
 
                     // MARK: - SELECT request
                     
-                    fcontext("and DB has data") {
+                    context("and DB has data") {
                         let allEntries = 50
                         
                         beforeEach {

@@ -12,8 +12,12 @@ class SQLDatabaseController {
     /// queue that ensures that all requests to the DB are made in a serial order
     private let queue = DispatchQueue(label: "io.xorc")
 
-    init(connection: Connection) {
+    init(connection: Connection, tables: [Table.Type]) {
         self.connection = connection
+        
+        for table in tables {
+            try? connection.execute(request: table.createRequest)
+        }
     }
     
     // MARK: - Private

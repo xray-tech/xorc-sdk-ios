@@ -48,7 +48,7 @@ class SQLDatabaseControllerSpecs: QuickSpec {
                 
                 beforeEach {
                     connection = MockConnection(result: SQLResult(insertId: 123))
-                    sut = SQLDatabaseController(connection: connection)
+                    sut = SQLDatabaseController(connection: connection, tables: [])
                     insertable = sut.insert(entry: insertable)
                 }
                 
