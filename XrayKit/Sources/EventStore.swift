@@ -9,5 +9,5 @@ protocol EventStore {
     
     func insert(event: Event) -> Event
 
-    func select(priority: Event.Priority, nextTryAt: Date, batchMaxSize: Int)
+    func select(maxNextTryAt: Date, priority: Event.Priority?, batchMaxSize: Int?) -> [Event]
 }

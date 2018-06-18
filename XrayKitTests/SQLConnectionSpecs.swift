@@ -122,7 +122,7 @@ class SQLConnectionSpecs: QuickSpec {
 
                             context("one entry") {
                                 beforeEach {
-                                    result = try? sut.execute(request: SQLRequest(selectFrom: EventTable.tableName, fields: [], whereSQL: "id=1"))
+                                    result = try? sut.execute(request: SQLRequest(selectFrom: EventTable.tableName, whereSQL: "id=1"))
                                 }
 
                                 it("succeeds") {

@@ -39,7 +39,7 @@ struct SQLRequest {
         self.init(sql: String.sqlInsert(tableName: table, fields: Array(binds.keys)), type: .insert, binds: binds)
     }
 
-    init(selectFrom table: String, fields: [String]? = nil, whereSQL: String? = nil, order: [(String, SQLRequest.Order)]? = nil) {
+    init(selectFrom table: String, whereSQL: String? = nil, order: [(String, SQLRequest.Order)]? = nil, fields: [String]? = nil) {
         let sql = String.sqlSelect(tableName: table, fields: fields, whereSQL: whereSQL, order: order)
         self.init(sql: sql, type: .select)
     }
