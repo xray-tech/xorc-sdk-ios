@@ -55,4 +55,22 @@ public final class Event: NSObject {
     convenience public init(name: String, properties: [String: Codable]? = nil) {
         self.init(name: name, properties: properties, sequenceId: 0)
     }
+
+    override public var description: String {
+        var props = ""
+        if let properties = properties {
+            props = properties.description
+        }
+
+        return """
+        
+        sequenceId  : \(sequenceId)"
+        name        : \(name)"
+        properties  : \(props)"
+        createdAt   : \(createdAt)"
+        updatedAt   : \(updatedAt)"
+        status      : \(status)"
+        """
+    }
+
 }
