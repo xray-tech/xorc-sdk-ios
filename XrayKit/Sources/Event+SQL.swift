@@ -12,8 +12,11 @@ struct EventTable: Table {
     static let columnName         = "name"
     static let columnCreatedAt    = "createdAt"
     static let columnUpdatedAt    = "updatedAt"
+    static let columnNextTryAt    = "nextTryAt"
+    static let columnPriority     = "priority"
     static let columnStatus       = "status"
     static let columnProperties   = "properties"
+
 
     static let createRequest = SQLRequest(sql: """
             CREATE TABLE IF NOT EXISTS \(tableName)
@@ -22,6 +25,8 @@ struct EventTable: Table {
                 \(columnName) TEXT NOT NULL,
                 \(columnCreatedAt) INTEGER DEFAULT 0,
                 \(columnUpdatedAt) INTEGER DEFAULT 0,
+                \(columnNextTryAt) INTEGER DEFAULT 0,
+                \(columnPriority) INTEGER DEFAULT 0,
                 \(columnStatus) INTEGER DEFAULT 0,
                 \(columnProperties) TEXT
             )
@@ -62,10 +67,27 @@ extension Event: Updatable {
 extension Event: Deserializable {
 
     static func deserialize(_ element: [String: AnyObject]) throws -> Event {
-        
-        guard let name = element[EventTable.columnName] as? String else { throw SQLConnection.SQLError.executeError("") }
-        
+
+        // todo implement
+        guard let name = element[EventTable.columnName] as? String else { throw SQLConnection.SQLError.parseError("") }
+
         let event = Event(name: name)
         return event
+    }
+}
+
+// MARK: - SQL
+
+extension Event {
+    // MARK: - SQL
+
+    // Returns the WHERE SQL for events that can be sent
+    static func whereSendableSQL(maxNextTryAt: Date, priority: Event.Priority? = nil) -> String {
+        var sql =  "(\(EventTable.columnStatus) = \(Event.Status.queued.rawValue) OR \(EventTable.columnStatus) = \(Event.Status.queued.rawValue)) AND \(EventTable.columnNextTryAt) <= \(maxNextTryAt.timeIntervalSince1970)"
+
+        if let priority = priority {
+            sql += " AND \(EventTable.columnPriority) = \(priority.rawValue)"
+        }
+        return sql
     }
 }
