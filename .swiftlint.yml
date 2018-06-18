@@ -7,6 +7,9 @@ disabled_rules: # rule identifiers to exclude from running
   
   # - trailing_newline
   - line_length
+  
+  # disabled until https://github.com/realm/SwiftLint/issues/2231
+  - identifier_name
   # - force_try
 opt_in_rules: # some rules are only opt-in
   - empty_count
