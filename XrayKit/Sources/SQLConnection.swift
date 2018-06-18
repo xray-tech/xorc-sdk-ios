@@ -9,6 +9,7 @@ import SQLite3
 let SQLITETRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 
 protocol Connection {
+    @discardableResult
     func execute(request: SQLRequest) throws  -> SQLResult
 }
 
@@ -18,6 +19,7 @@ class SQLConnection: Connection {
         case openError(String)
         case executeError(String)
         case closeError(String)
+        case parseError(String)
     }
     
     let path: String
