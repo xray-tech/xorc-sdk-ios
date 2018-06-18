@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A2AFAA120C92F1E002A0B2B /* XrayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2AFAA020C92F1E002A0B2B /* XrayKitTests.swift */; };
 		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
 		8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A2AFAB920C93E28002A0B2B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; };
@@ -66,7 +65,6 @@
 
 /* Begin PBXFileReference section */
 		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A2AFAA020C92F1E002A0B2B /* XrayKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayKitTests.swift; sourceTree = "<group>"; };
 		8A2AFAA220C92F1E002A0B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A2AFAAC20C936E6002A0B2B /* SQLConnectionSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnectionSpecs.swift; sourceTree = "<group>"; };
 		8A2AFAAF20C9371C002A0B2B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = SOURCE_ROOT; };
@@ -124,7 +122,6 @@
 			children = (
 				8A2AFAAE20C93707002A0B2B /* Frameworks */,
 				8A2AFAAB20C936CD002A0B2B /* Store */,
-				8A2AFAA020C92F1E002A0B2B /* XrayKitTests.swift */,
 				8A2AFAA220C92F1E002A0B2B /* Info.plist */,
 			);
 			path = XrayKitTests;
@@ -388,7 +385,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A2AFAA120C92F1E002A0B2B /* XrayKitTests.swift in Sources */,
 				8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */,
 				8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */,
 				8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */,
