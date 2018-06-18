@@ -39,9 +39,7 @@ class SQLDatabaseController {
     }
     
     
-    func select<Entry: Deserializable> (where: String) -> [Entry] {
-        
-        let request = SQLRequest(selectFrom: EventTable.tableName)
+    func select<Entry: Deserializable> (request: SQLRequest) -> [Entry] {
         
         var entries = [Entry]()
         queue.sync {
@@ -61,16 +59,16 @@ class SQLDatabaseController {
         return entries
     }
 
-    func update<Entry: Updatable>(entry: Entry) {
+    func update<Entry: Updatable>(entry: Entry) -> Entry {
         var entry = entry
         queue.sync {
             do {
-                // todo return updated entries?
-                let _ = try self.connection.execute(request: entry.updateRequest())
+                try self.connection.execute(request: entry.updateRequest())
             } catch {
                 print("\(#function) failed: \(error)")
             }
         }
+        return entry
     }
 }
 
@@ -79,7 +77,11 @@ extension SQLDatabaseController: EventStore {
         return insert(entry: event)
     }
 
-    func select(priority: Event.Priority, nextTryAt: Date, batchMaxSize: Int) {
+    func select(maxNextTryAt: Date, priority: Event.Priority?, batchMaxSize: Int?) -> [Event] {
+            let request = SQLRequest(selectFrom: EventTable.tableName,
+                    whereSQL: Event.whereSendableSQL(maxNextTryAt: maxNextTryAt, priority: priority),
+                    order: [(EventTable.columnId, SQLRequest.Order.asc)])
 
+            return select(request: request)
     }
 }

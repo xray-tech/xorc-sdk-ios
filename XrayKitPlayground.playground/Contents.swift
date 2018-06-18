@@ -3,17 +3,20 @@
 //import UIKit
 import Foundation
 import PlaygroundSupport
+
 @testable import XrayKit
 
 var str = "Hello, playground"
 
 let path = playgroundSharedDataDirectory.appendingPathComponent("SQLiteTutorial").resolvingSymlinksInPath().appendingPathComponent("db.sqlite")
 
-let connection = SQLConnection(path: path.absoluteString)
-let table = EventTable()
+try? FileManager.default.removeItem(at: path)
 
-//do {
-    try? connection.execute(request: table.createRequest)
-//} catch let error {
-//    print(error)
-//}
+
+let store = SQLDatabaseController(connection: SQLConnection(path: path.absoluteString), tables: [EventTable.self])
+
+let eventController = EventController(eventStore: store)
+
+eventController.transmitter = PlaygroundTransmitter()
+
+eventController.log(event: Event(name: "my_event", properties: ["foo": "bar"]))

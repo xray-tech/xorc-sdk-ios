@@ -19,7 +19,7 @@ public class Xray: NSObject {
 
     override init() {
         let connection = SQLConnection(path: FileManager.databaseFilePath())
-        let store = SQLDatabaseController(connection: connection)
+        let store = SQLDatabaseController(connection: connection, tables: [EventTable.self])
         self.eventController = EventController(eventStore: store)
 
     }
