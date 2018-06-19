@@ -121,15 +121,26 @@ class SQLConnectionSpecs: QuickSpec {
                             }
 
                             context("one entry") {
+                                var selectedEntry: [String: AnyObject]?
                                 beforeEach {
                                     result = try? sut.execute(request: SQLRequest(selectFrom: EventTable.tableName, whereSQL: "id=1"))
+                                    selectedEntry = result?.resultSet?.first
                                 }
 
                                 it("succeeds") {
                                     expect(result).notTo(beNil())
                                 }
+                                
                                 it("has the correct count") {
                                     expect(result?.resultSet?.count).to(equal(1))
+                                }
+                                
+                                it("has a result set") {
+                                    expect(selectedEntry).notTo(beNil())
+                                }
+                                it("has a result set id") {
+                                    let id = selectedEntry?[EventTable.columnId] as? NSNumber
+                                    expect(id).to(equal(1))
                                 }
                             }
                         }
