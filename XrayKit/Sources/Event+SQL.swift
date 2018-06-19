@@ -48,6 +48,10 @@ extension Event: Insertable {
         binds[table.columnUpdatedAt] = updatedAt.toSql()
         binds[table.columnStatus] = status.rawValue as NSNumber
         
+        if sequenceId != 0 {
+            binds[table.columnId] = sequenceId as NSNumber
+        }
+        
         if
             let properties = properties,
             let data = try? JSONSerialization.data(withJSONObject: properties, options: []),
