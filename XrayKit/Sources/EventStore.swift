@@ -7,7 +7,11 @@ import Foundation
 
 protocol EventStore {
     
+    @discardableResult
     func insert(event: Event) -> Event
 
     func select(maxNextTryAt: Date, priority: Event.Priority?, batchMaxSize: Int?) -> [Event]
+    
+    @discardableResult
+    func update(event: Event) -> Event
 }

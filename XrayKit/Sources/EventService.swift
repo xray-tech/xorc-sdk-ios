@@ -10,8 +10,20 @@ import Foundation
  */
 public class EventService: NSObject {
 
-    private var controller: EventController?
+    private var controller: EventController? {
+        didSet {
+            controller?.transmitter = transmitter
+        }
+    }
+    
+    private var transmitter: EventTransmitter? {
+        didSet {
+            controller?.transmitter = transmitter
+        }
+    }
+    
     // MARK: - Public
+    
     
     /**
      Logs an occurence of an event. The event is processed by the local rule and optionally given to an `EventTransmitter` if you registered one
@@ -30,12 +42,7 @@ public class EventService: NSObject {
     }
     
     public func register(transmitter: EventTransmitter) {
-        guard  let controller = controller else {
-            print("\(#function) called before starting the SDK")
-            return
-        }
-
-        controller.transmitter = transmitter
+        self.transmitter = transmitter
     }
 
     // MARK: - Protected
