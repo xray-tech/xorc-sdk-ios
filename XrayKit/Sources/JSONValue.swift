@@ -8,11 +8,27 @@ import Foundation
 enum ParsingError: Error {
     case invalidJSON(String)
 }
-public enum JSONValue: Decodable {
+public enum JSONValue: Codable {
     case string(String)
     case integer(Int)
     case double(Double)
     case bool(Bool)
+    
+    public init(_ value: String) {
+        self = .string(value)
+    }
+    
+    init(_ value: Int) {
+        self = .integer(value)
+    }
+    
+    init(_ value: Double) {
+        self = .double(value)
+    }
+    
+    init(_ value: Bool) {
+        self = .bool(value)
+    }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -26,6 +42,21 @@ public enum JSONValue: Decodable {
             self = .bool(value)
         } else {
             throw ParsingError.invalidJSON("Not a JSON value at path '\(container.codingPath)'")
+        }
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        
+        switch self {
+        case .string(let value):
+            try container.encode(value)
+        case .integer(let value):
+            try container.encode(value)
+        case .double(let value):
+            try container.encode(value)
+        case .bool(let value):
+            try container.encode(value)
         }
     }
 }

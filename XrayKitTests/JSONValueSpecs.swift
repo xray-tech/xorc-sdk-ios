@@ -71,6 +71,50 @@ class JSONValueSpecs: QuickSpec {
                     }
                 }
             }
+            
+            describe("when encoding") {
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = .prettyPrinted
+                
+                var result: String?
+                
+                context("a valid json") {
+                   
+                    let json: [String: JSONValue] = [
+                        "string": JSONValue("hello"),
+                        "integer": JSONValue(1),
+                        "double": JSONValue(1.1),
+                        "bool": JSONValue(true)
+                    ]
+                    
+                    beforeEach {
+                        if let data = try? encoder.encode(json) {
+                            result = String(data: data, encoding: .utf8)
+                        }
+                    }
+                    
+                    it("does not throw") {
+                        expect(result).notTo(beNil())
+                    }
+                    
+                    it("decodes a string") {
+                        expect(result).to(contain("\"string\" : \"hello\""))
+                    }
+                    
+                    it("decodes a integer") {
+                        expect(result).to(contain("\"integer\" : 1"))
+                    }
+
+                    
+                    it("decodes a double") {
+                        expect(result).to(contain("\"double\" : 1.1"))
+                    }
+                    
+                    it("decodes a boolean") {
+                        expect(result).to(contain("\"bool\" : true"))
+                    }
+                }
+            }
         }
     }
 }
