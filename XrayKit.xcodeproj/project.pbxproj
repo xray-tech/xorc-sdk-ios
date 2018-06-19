@@ -33,6 +33,8 @@
 		8A57F44C20CE92E80047B021 /* Foundation+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */; };
 		8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */; };
 		8A57F45020CEB0670047B021 /* SQLDatabaseControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */; };
+		8A7C07E120D911240075DF97 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E020D911240075DF97 /* JSONValue.swift */; };
+		8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */; };
 		C4D8751227EA93A59B626723 /* SQLDatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */; };
 		C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */; };
 		C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */; };
@@ -90,6 +92,8 @@
 		8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+SQL.swift"; sourceTree = "<group>"; };
 		8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLEventSpecs.swift; sourceTree = "<group>"; };
 		8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLDatabaseControllerSpecs.swift; sourceTree = "<group>"; };
+		8A7C07E020D911240075DF97 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
+		8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValueSpecs.swift; sourceTree = "<group>"; };
 		C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLDatabaseController.swift; sourceTree = "<group>"; };
 		C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+SQL.swift"; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 		8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				8A7C07E220D913680075DF97 /* Other */,
 				8A2AFAAE20C93707002A0B2B /* Frameworks */,
 				8A2AFAAB20C936CD002A0B2B /* Store */,
 				8A2AFAA220C92F1E002A0B2B /* Info.plist */,
@@ -184,6 +189,7 @@
 				8A47522C20C7EA0800DD81F3 /* Event.swift */,
 				8A47523020C7EA0800DD81F3 /* EventController.swift */,
 				8A47522D20C7EA0800DD81F3 /* EventService.swift */,
+				8A7C07E020D911240075DF97 /* JSONValue.swift */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -227,6 +233,14 @@
 				8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */,
 			);
 			name = SQL;
+			sourceTree = "<group>";
+		};
+		8A7C07E220D913680075DF97 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		8AAA449820BE8E850055D7B9 = {
@@ -376,7 +390,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -385,6 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */,
 				8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */,
 				8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */,
 				8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */,
@@ -411,6 +426,7 @@
 				8A47523820C7EA0800DD81F3 /* EventController.swift in Sources */,
 				8A47523320C7EA0800DD81F3 /* DataPayload.swift in Sources */,
 				C4D8751227EA93A59B626723 /* SQLDatabaseController.swift in Sources */,
+				8A7C07E120D911240075DF97 /* JSONValue.swift in Sources */,
 				C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */,
 				C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */,
 			);
