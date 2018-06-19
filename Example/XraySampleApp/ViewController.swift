@@ -15,15 +15,26 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        Xray.events.register(transmitter: LogTransmitter())
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     @IBAction func eventButtonAction(sender: Any) {
-        Xray.events.log(event: Event(name: "my_event"))
+        let event = Event(name: "my_event", properties: ["foo": "bar", "date": 1.1])
+        Xray.events.log(event: event)
+    }
+}
+
+public class LogTransmitter: EventTransmitter {
+    
+    public init() {
+        
+    }
+    
+    public func transmit(events: [Event], completion: @escaping (EventResult) -> Void) {
+        for event in events {
+            print("Debug Transmitting event \(event)")
+        }
     }
 }

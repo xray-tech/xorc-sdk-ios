@@ -44,7 +44,7 @@ class EventController {
     
     public func log(event: Event) {
         var event = event
-        print("Logging event \(event.name)")
+        print("Logging event \(event)")
         // run event through the rule engine
         // call delegates if needed
 
@@ -56,6 +56,13 @@ class EventController {
         }
         
         let events = eventStore.select(maxNextTryAt: Date(), priority: nil, batchMaxSize: nil)
+        
+        // just testing:
+        for event in events {
+            event.status = .sending
+            eventStore.update(event: event)
+        }
+        
 
 //        var database: SQLDatabaseController!
 //
