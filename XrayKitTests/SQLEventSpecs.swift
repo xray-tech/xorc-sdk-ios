@@ -109,6 +109,32 @@ class SQLEventSpecs: QuickSpec {
                     }
                 }
             }
+            
+            describe("when deserialising SQL") {
+                var originalEvent: Event!
+                var deserializedEvent: Event?
+                
+                context("with a valid binds") {
+                    beforeEach {
+                        originalEvent = Event(name: "my_event", properties: ["foo": "bar"])
+                        originalEvent.sequenceId = 10
+                        
+                        deserializedEvent = try? Event.deserialize(originalEvent.binds)
+                    }
+                    
+                    it("retuns a non nil event") {
+                        expect(deserializedEvent).notTo(beNil())
+                    }
+                    
+                    it("set the event properties") {
+                        expect(deserializedEvent?.sequenceId).to(equal(originalEvent.sequenceId))
+                        expect(deserializedEvent?.createdAt.timeIntervalSince1970).to(equal(originalEvent.createdAt.timeIntervalSince1970))
+                        expect(deserializedEvent?.updatedAt.timeIntervalSince1970).to(equal(originalEvent.updatedAt.timeIntervalSince1970))
+                        // todo
+//                        expect(deserializedEvent?.properties?.count).to(equal(originalEvent.properties?.count))
+                    }
+                }
+            }
         }
     }
 }

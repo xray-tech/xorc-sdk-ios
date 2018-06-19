@@ -67,12 +67,7 @@ extension Event: Updatable {
 extension Event: Deserializable {
 
     static func deserialize(_ element: [String: AnyObject]) throws -> Event {
-
-        // todo implement
-        guard let name = element[EventTable.columnName] as? String else { throw SQLConnection.SQLError.parseError("") }
-
-        let event = Event(name: name)
-        return event
+        return try Event(binds: element)
     }
 }
 
