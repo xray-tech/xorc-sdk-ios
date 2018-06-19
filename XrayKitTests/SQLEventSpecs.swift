@@ -35,9 +35,9 @@ class SQLEventSpecs: QuickSpec {
             }
 
             context("with properties") {
-                let expectedProperties: [String: Codable] = [
-                    "myStringKey": "myStringValue",
-                    "myNumberValue": 10
+                let expectedProperties: [String: JSONValue] = [
+                    "myStringKey": JSONValue("myStringValue"),
+                    "myNumberValue": JSONValue(10)
                 ]
                 var sut = Event(name: "my_event", properties: expectedProperties)
 
@@ -116,7 +116,7 @@ class SQLEventSpecs: QuickSpec {
                 
                 context("with a valid binds") {
                     beforeEach {
-                        originalEvent = Event(name: "my_event", properties: ["foo": "bar"])
+                        originalEvent = Event(name: "my_event", properties: ["foo": JSONValue("bar")])
                         originalEvent.sequenceId = 10
                         
                         deserializedEvent = try? Event.deserialize(originalEvent.binds)
@@ -130,8 +130,7 @@ class SQLEventSpecs: QuickSpec {
                         expect(deserializedEvent?.sequenceId).to(equal(originalEvent.sequenceId))
                         expect(deserializedEvent?.createdAt.timeIntervalSince1970).to(equal(originalEvent.createdAt.timeIntervalSince1970))
                         expect(deserializedEvent?.updatedAt.timeIntervalSince1970).to(equal(originalEvent.updatedAt.timeIntervalSince1970))
-                        // todo
-//                        expect(deserializedEvent?.properties?.count).to(equal(originalEvent.properties?.count))
+                        expect(deserializedEvent?.properties?.count).to(equal(originalEvent.properties?.count))
                     }
                 }
             }

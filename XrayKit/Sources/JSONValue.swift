@@ -18,15 +18,15 @@ public enum JSONValue: Codable {
         self = .string(value)
     }
     
-    init(_ value: Int) {
+    public init(_ value: Int) {
         self = .integer(value)
     }
     
-    init(_ value: Double) {
+    public init(_ value: Double) {
         self = .double(value)
     }
     
-    init(_ value: Bool) {
+    public init(_ value: Bool) {
         self = .bool(value)
     }
     

@@ -21,7 +21,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func eventButtonAction(sender: Any) {
-        let event = Event(name: "my_event", properties: ["foo": "bar", "date": 1.1])
+        
+        let event = Event(name: "my_event", properties: [
+            "foo": JSONValue("bar"),
+            "date": JSONValue(1.1)])
         Xray.events.log(event: event)
     }
 }
