@@ -16,7 +16,11 @@ class SQLDatabaseController {
         self.connection = connection
         
         for table in tables {
-            try? connection.execute(request: table.createRequest)
+            do {
+                try connection.execute(request: table.createRequest)
+            } catch {
+                print("Could not create table: \(error)")
+            }
         }
     }
     
@@ -73,6 +77,7 @@ class SQLDatabaseController {
 }
 
 extension SQLDatabaseController: EventStore {
+    
     func insert(event: Event) -> Event {
         return insert(entry: event)
     }
@@ -83,5 +88,9 @@ extension SQLDatabaseController: EventStore {
                     order: [(EventTable.columnId, SQLRequest.Order.asc)])
 
             return select(request: request)
+    }
+    
+    func update(event: Event) -> Event {
+        return update(entry: event)
     }
 }
