@@ -47,6 +47,27 @@ extension Updatable {
     }
 }
 
+
+protocol Deletable {
+    static var tableName: String { get }
+    static var identField: String { get }
+    var sequenceId: Int64 { get set }
+}
+
+extension Deletable {
+    
+    func deleteRequest() -> SQLRequest {
+        return SQLRequest(deleteFromTable: type(of: self).tableName, whereSQL: "\(type(of: self).identField)=\(sequenceId)")
+    }
+}
+
+extension Array where Element: Deletable {
+    func deleteRequest() -> SQLRequest {
+        let wheres = self.map { "\(type(of: $0).identField)=\($0.sequenceId)" }.joined(separator: " OR ")
+        return SQLRequest(deleteFromTable: Element.tableName, whereSQL: wheres)
+    }
+}
+
 protocol Deserializable {
 
     /// Method for deserializing elements from SQL

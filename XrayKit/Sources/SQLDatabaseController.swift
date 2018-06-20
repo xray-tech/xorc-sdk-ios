@@ -74,6 +74,26 @@ class SQLDatabaseController {
         }
         return entry
     }
+    
+    func delete<Entry: Deletable>(entry: Entry) {
+        queue.sync {
+            do {
+                try self.connection.execute(request: entry.deleteRequest())
+            } catch {
+                print("\(#function) failed: \(error)")
+            }
+        }
+    }
+    
+    func delete<Entry: Deletable>(entries: [Entry]) {
+        queue.sync {
+            do {
+                try self.connection.execute(request: entries.deleteRequest())
+            } catch {
+                print("\(#function) failed: \(error)")
+            }
+        }
+    }
 }
 
 extension SQLDatabaseController: EventStore {
