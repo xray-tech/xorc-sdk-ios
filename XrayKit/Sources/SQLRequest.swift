@@ -17,6 +17,7 @@ struct SQLRequest {
         case insert
         case select
         case update
+        case delete
         case count
     }
     
@@ -47,6 +48,11 @@ struct SQLRequest {
     init(updateTable table: String, binds: [String: AnyObject], whereSQL: String = "1=1") {
         let sql = String.sqlUpdate(tableName: table, fields: Array(binds.keys), whereSQL: whereSQL)
         self.init(sql: sql, type: .update, binds: binds)
+    }
+    
+    init(deleteFromTable table: String, whereSQL: String = "1=1") {
+        let sql = String.sqlDelete(tableName: table, whereSQL: whereSQL)
+        self.init(sql: sql, type: .delete)
     }
     
     func build() -> String {

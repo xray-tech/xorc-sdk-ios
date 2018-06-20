@@ -177,6 +177,35 @@ class SQLConnectionSpecs: QuickSpec {
                                 }
                             }
                         }
+                        
+                        describe("delete request") {
+
+                            context("all data") {
+                                beforeEach {
+                                    result = try? sut.execute(request: SQLRequest(deleteFromTable: EventTable.tableName))
+                                }
+
+                                it("succeeds") {
+                                    expect(result).notTo(beNil())
+                                }
+                                it("has the correct count") {
+                                    expect(result?.rowsChanged).to(equal(Int32(allEntries)))
+                                }
+                            }
+                            
+                            context("some entries") {
+                                beforeEach {
+                                    result = try? sut.execute(request: SQLRequest(deleteFromTable: EventTable.tableName, whereSQL: "id=1 OR id=2"))
+                                }
+                                
+                                it("succeeds") {
+                                    expect(result).notTo(beNil())
+                                }
+                                it("has the correct count") {
+                                    expect(result?.rowsChanged).to(equal(2))
+                                }
+                            }
+                        }
                     }
                 }
             }

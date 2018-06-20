@@ -41,4 +41,9 @@ extension String {
         let sql = "UPDATE \(tableName) SET \(fieldsPairs) WHERE \(whereSQL)"
         return sql
     }
+    
+    static func sqlDelete(tableName: String, whereSQL: String = "1=1") -> String {
+        let sql = "DELETE FROM \(tableName) WHERE \(whereSQL)"
+        return sql
+    }
 }
