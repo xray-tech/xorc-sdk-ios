@@ -113,4 +113,12 @@ extension SQLDatabaseController: EventStore {
     func update(event: Event) -> Event {
         return update(entry: event)
     }
+    
+    func delete(event: Event) {
+        delete(entry: event)
+    }
+    
+    func delete(events: [Event]) {
+        delete(entries: events)
+    }
 }

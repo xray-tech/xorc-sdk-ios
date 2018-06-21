@@ -74,6 +74,10 @@ extension Event: Updatable {
 
 }
 
+extension Event: Deletable {
+    
+}
+
 extension Event: Deserializable {
 
     static func deserialize(_ element: [String: AnyObject]) throws -> Event {

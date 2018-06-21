@@ -14,4 +14,8 @@ protocol EventStore {
     
     @discardableResult
     func update(event: Event) -> Event
+    
+    func delete(event: Event)
+    
+    func delete(events: [Event])
 }
