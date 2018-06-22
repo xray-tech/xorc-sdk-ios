@@ -47,6 +47,8 @@ class EventController {
         print("Logging event \(event)")
         // run event through the rule engine
         // call delegates if needed
+        
+        
 
         event = eventStore.insert(event: event)
 
