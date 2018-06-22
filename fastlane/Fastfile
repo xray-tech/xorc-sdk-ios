@@ -66,4 +66,9 @@ platform :ios do
         # we don't care about signing here, we just want to know if all compiles
         xcodebuild(scheme: @sdk_scheme, workspace: @sdk_workspace, build_settings: { "CODE_SIGNING_REQUIRED" => "NO", "CODE_SIGN_IDENTITY" => "" })
     end
+
+    desc "Runs SwiftLint"
+    lane :kit_swift_lint do |options|
+        swiftlint
+    end
 end

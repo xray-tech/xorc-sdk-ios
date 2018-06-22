@@ -43,6 +43,11 @@ Compiles the SDK project
 e.g: fastlane sdk_compile xc_version:7.3.1
 
 To list all versions: xcenv versions
+### ios kit_swift_lint
+```
+fastlane ios kit_swift_lint
+```
+Runs SwiftLint
 
 ----
 
