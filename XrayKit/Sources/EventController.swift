@@ -11,9 +11,12 @@ import Foundation
 public enum EventResult {
     
     /// When the event was transmitted correctly.
-    case success
+    case success([Event])
     
-    /// When the event failed and should be retried in the future
+    /// When the events should be retried.
+    case retry([Event])
+    
+    /// When the event failed and should be discarded
     case failure([Event])
 }
 
@@ -51,7 +54,7 @@ class EventController {
         event = eventStore.insert(event: event)
 
         guard let transmitter = transmitter else {
-            // nothing else to do. We do not persist at all
+            // nothing else to do. We do not transmit at all
             return
         }
         
@@ -78,10 +81,15 @@ class EventController {
 
         transmitter.transmit(events: events, completion: { result in
             switch result {
-            case .success:
-                break
-            case .failure:
-                break
+            case .success(let events):
+                self.eventStore.delete(events: events)
+            case .retry(let events):
+                // update nextRetryAt
+                for _ in events {
+                    
+                }
+            case .failure(let events):
+                self.eventStore.delete(events: events)
             }
         })
     }
