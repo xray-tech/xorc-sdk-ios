@@ -6,6 +6,8 @@
 
 ![badge-languages] ![badge-pms]
 
+[![Build Status](https://www.bitrise.io/app/01757d15657494e3/status.svg?token=kMutwLCTgEtonbVO7_zfPA)](https://www.bitrise.io/app/01757d15657494e3) 
+
 
 ### CocoaPods
 You can install the 360dialog SDK using CocoaPods by adding the following to your Podfile:
