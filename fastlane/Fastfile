@@ -25,20 +25,16 @@ default_platform :ios
 
 platform :ios do
 
-    desc 'Runs all unit the tests and generates reports in `fastlane/reports`'
+    desc 'Builds the Carthage SDK Unit Test dependencies'
     desc 'You can optionnaly specify the xcode version'
     desc "e.g 'fastlane kit_carthage_build xc_version:9.3'"
     lane :kit_carthage_build do |options|
-        xc_version = options[:xc_version] ? options[:xc_version] : @sdk_xcode_version
-        UI.message "Setting xcode version to #{xc_version}"
-        xcversion(version: "~> #{xc_version}")
+        xc_version = options[:xc_version]
+        if xc_version
+            UI.message "Setting xcode version to #{xc_version}"
+            xcversion(version: "~> #{xc_version}")
+        end
         carthage(platform: "iOS", verbose: false, use_binaries: false)
-    end
-
-    desc "Builds the Carthage SDK Unit Test dependencies"
-    lane :carthage_sdk do |options|
-        # use_binaries false beause of Xcode7-8-8.3 swift compatibility
-        
     end
 
     desc 'Runs all unit the tests and generates reports in `fastlane/reports`'
