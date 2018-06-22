@@ -25,11 +25,22 @@ default_platform :ios
 
 platform :ios do
 
+    desc 'Builds the Carthage SDK Unit Test dependencies'
+    desc 'You can optionnaly specify the xcode version'
+    desc "e.g 'fastlane kit_carthage_build xc_version:9.3'"
+    lane :kit_carthage_build do |options|
+        xc_version = options[:xc_version]
+        if xc_version
+            UI.message "Setting xcode version to #{xc_version}"
+            xcversion(version: "~> #{xc_version}")
+        end
+        carthage(platform: "iOS", verbose: false, use_binaries: false)
+    end
+
     desc 'Runs all unit the tests and generates reports in `fastlane/reports`'
     desc 'You can optionnaly specify the xcode version'
     desc "e.g 'fastlane test xc_version:8.2'"
-    lane :sdk_test do |options|
-        # Sometimes the mac-mini hangs on
+    lane :kit_test do |options|
         xc_version = options[:xc_version] ? options[:xc_version] : @sdk_xcode_version
         xcversion(version: "~> #{xc_version}")
 
@@ -43,7 +54,7 @@ platform :ios do
     desc "Compiles the SDK project"
     desc "e.g: fastlane sdk_compile xc_version:7.3.1"
     desc "To list all versions: xcenv versions"
-    lane :sdk_compile do |options|
+    lane :kit_compile do |options|
         xc_version = options[:xc_version] ? options[:xc_version] : @sdk_xcode_version
         xcversion(version: "~> #{xc_version}")
 
@@ -54,5 +65,10 @@ platform :ios do
         xcclean(scheme: @sdk_scheme, workspace: @sdk_workspace)
         # we don't care about signing here, we just want to know if all compiles
         xcodebuild(scheme: @sdk_scheme, workspace: @sdk_workspace, build_settings: { "CODE_SIGNING_REQUIRED" => "NO", "CODE_SIGN_IDENTITY" => "" })
+    end
+
+    desc "Runs SwiftLint"
+    lane :kit_swift_lint do |options|
+        swiftlint
     end
 end
