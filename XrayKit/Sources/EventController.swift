@@ -48,12 +48,16 @@ class EventController {
         // run event through the rule engine
         // call delegates if needed
 
+        
+        
         event = eventStore.insert(event: event)
 
         guard let transmitter = transmitter else {
             // nothing else to do. We do not persist at all
             return
         }
+        
+        
         
         let events = eventStore.select(maxNextTryAt: Date(), priority: nil, batchMaxSize: nil)
         
