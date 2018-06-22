@@ -26,10 +26,12 @@ workflows:
     - git-clone@4.0.11: {}
     - swiftlint@0.4.2:
         inputs:
+        - strict: "yes"
         - linting_path: $BITRISE_SOURCE_DIR
     - github-status@2.1.0:
         inputs:
-        - description: Swift Lint
+        - description: ""
+        - status_identifier: SwiftLint
         - auth_token: $GITHUB_TOKEN
   unit-tests:
     steps:
@@ -46,5 +48,6 @@ workflows:
         - work_dir: $FASTLANE_WORK_DIR
     - github-status@2.1.0:
         inputs:
-        - description: Unit Tests
+        - description: ""
+        - status_identifier: Unit Tests
         - auth_token: $GITHUB_TOKEN
