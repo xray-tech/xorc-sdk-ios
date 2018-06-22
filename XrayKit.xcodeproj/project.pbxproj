@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A2AFAA120C92F1E002A0B2B /* XrayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2AFAA020C92F1E002A0B2B /* XrayKitTests.swift */; };
 		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
+		8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A2AFAB920C93E28002A0B2B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; };
+		8A2AFABA20C93E31002A0B2B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2AFAB120C9371C002A0B2B /* Nimble.framework */; };
+		8A2AFABB20C93E31002A0B2B /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2AFAB020C9371C002A0B2B /* OHHTTPStubs.framework */; };
+		8A2AFABC20C93E34002A0B2B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAB120C9371C002A0B2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A2AFABD20C93E34002A0B2B /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAB020C9371C002A0B2B /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2AFAAC20C936E6002A0B2B /* SQLConnectionSpecs.swift */; };
 		8A47522320C7E9B700DD81F3 /* XrayKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A47522120C7E9B700DD81F3 /* XrayKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522920C7EA0800DD81F3 /* XrayHTTPBuilder.swift */; };
 		8A47523220C7EA0800DD81F3 /* Xray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522A20C7EA0800DD81F3 /* Xray.swift */; };
@@ -18,6 +24,20 @@
 		8A47523620C7EA0800DD81F3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522E20C7EA0800DD81F3 /* DataService.swift */; };
 		8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */; };
 		8A47523820C7EA0800DD81F3 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47523020C7EA0800DD81F3 /* EventController.swift */; };
+		8A47523E20C7F5F400DD81F3 /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47523D20C7F5F400DD81F3 /* EventStore.swift */; };
+		8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524020C8034300DD81F3 /* SQLTables.swift */; };
+		8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524220C803B200DD81F3 /* SQLConnection.swift */; };
+		8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524520C809C100DD81F3 /* SQLRequest.swift */; };
+		8A57F44520CA89190047B021 /* String+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44420CA89190047B021 /* String+SQL.swift */; };
+		8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44620CA89890047B021 /* SQLStringSpecs.swift */; };
+		8A57F44C20CE92E80047B021 /* Foundation+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */; };
+		8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */; };
+		8A57F45020CEB0670047B021 /* SQLDatabaseControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */; };
+		8A7C07E120D911240075DF97 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E020D911240075DF97 /* JSONValue.swift */; };
+		8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */; };
+		C4D8751227EA93A59B626723 /* SQLDatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */; };
+		C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */; };
+		C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,10 +50,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8A2AFAB720C93DF7002A0B2B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */,
+				8A2AFABC20C93E34002A0B2B /* Nimble.framework in CopyFiles */,
+				8A2AFABD20C93E34002A0B2B /* OHHTTPStubs.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A2AFAA020C92F1E002A0B2B /* XrayKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayKitTests.swift; sourceTree = "<group>"; };
 		8A2AFAA220C92F1E002A0B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A2AFAAC20C936E6002A0B2B /* SQLConnectionSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnectionSpecs.swift; sourceTree = "<group>"; };
+		8A2AFAAF20C9371C002A0B2B /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = SOURCE_ROOT; };
+		8A2AFAB020C9371C002A0B2B /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = SOURCE_ROOT; };
+		8A2AFAB120C9371C002A0B2B /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = SOURCE_ROOT; };
 		8A47521F20C7E9B700DD81F3 /* XrayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XrayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A47522120C7E9B700DD81F3 /* XrayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XrayKit.h; sourceTree = "<group>"; };
 		8A47522220C7E9B700DD81F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +83,20 @@
 		8A47522E20C7EA0800DD81F3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTransmitter.swift; sourceTree = "<group>"; };
 		8A47523020C7EA0800DD81F3 /* EventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
+		8A47523D20C7F5F400DD81F3 /* EventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStore.swift; sourceTree = "<group>"; };
+		8A47524020C8034300DD81F3 /* SQLTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLTables.swift; sourceTree = "<group>"; };
+		8A47524220C803B200DD81F3 /* SQLConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnection.swift; sourceTree = "<group>"; };
+		8A47524520C809C100DD81F3 /* SQLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLRequest.swift; sourceTree = "<group>"; };
+		8A57F44420CA89190047B021 /* String+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SQL.swift"; sourceTree = "<group>"; };
+		8A57F44620CA89890047B021 /* SQLStringSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLStringSpecs.swift; sourceTree = "<group>"; };
+		8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+SQL.swift"; sourceTree = "<group>"; };
+		8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLEventSpecs.swift; sourceTree = "<group>"; };
+		8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLDatabaseControllerSpecs.swift; sourceTree = "<group>"; };
+		8A7C07E020D911240075DF97 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
+		8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValueSpecs.swift; sourceTree = "<group>"; };
+		C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLDatabaseController.swift; sourceTree = "<group>"; };
+		C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
+		C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+SQL.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +105,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */,
+				8A2AFAB920C93E28002A0B2B /* Quick.framework in Frameworks */,
+				8A2AFABA20C93E31002A0B2B /* Nimble.framework in Frameworks */,
+				8A2AFABB20C93E31002A0B2B /* OHHTTPStubs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,10 +124,40 @@
 		8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				8A2AFAA020C92F1E002A0B2B /* XrayKitTests.swift */,
+				8A7C07E220D913680075DF97 /* Other */,
+				8A2AFAAE20C93707002A0B2B /* Frameworks */,
+				8A2AFAAB20C936CD002A0B2B /* Store */,
 				8A2AFAA220C92F1E002A0B2B /* Info.plist */,
 			);
 			path = XrayKitTests;
+			sourceTree = "<group>";
+		};
+		8A2AFAAB20C936CD002A0B2B /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				8A2AFAAC20C936E6002A0B2B /* SQLConnectionSpecs.swift */,
+				8A57F44620CA89890047B021 /* SQLStringSpecs.swift */,
+				8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */,
+				8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		8A2AFAAE20C93707002A0B2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A2AFAB120C9371C002A0B2B /* Nimble.framework */,
+				8A2AFAB020C9371C002A0B2B /* OHHTTPStubs.framework */,
+				8A2AFAAF20C9371C002A0B2B /* Quick.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A2AFAB220C93728002A0B2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		8A47522020C7E9B700DD81F3 /* XrayKit */ = {
@@ -88,10 +173,12 @@
 		8A47522820C7E9F200DD81F3 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8A47523C20C7F5A100DD81F3 /* Store */,
 				8A47523B20C7F56300DD81F3 /* Transmitters */,
 				8A47523A20C7F54F00DD81F3 /* Data */,
 				8A47523920C7F53900DD81F3 /* Events */,
 				8A47522A20C7EA0800DD81F3 /* Xray.swift */,
+				C4D87E71D2CD65EDF3970A6E /* Extensions */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -102,6 +189,7 @@
 				8A47522C20C7EA0800DD81F3 /* Event.swift */,
 				8A47523020C7EA0800DD81F3 /* EventController.swift */,
 				8A47522D20C7EA0800DD81F3 /* EventService.swift */,
+				8A7C07E020D911240075DF97 /* JSONValue.swift */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -124,12 +212,44 @@
 			name = Transmitters;
 			sourceTree = "<group>";
 		};
+		8A47523C20C7F5A100DD81F3 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				8A47523F20C7F64900DD81F3 /* SQL */,
+				8A47523D20C7F5F400DD81F3 /* EventStore.swift */,
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		8A47523F20C7F64900DD81F3 /* SQL */ = {
+			isa = PBXGroup;
+			children = (
+				8A47524020C8034300DD81F3 /* SQLTables.swift */,
+				C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */,
+				8A47524220C803B200DD81F3 /* SQLConnection.swift */,
+				C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */,
+				8A47524520C809C100DD81F3 /* SQLRequest.swift */,
+				8A57F44420CA89190047B021 /* String+SQL.swift */,
+				8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */,
+			);
+			name = SQL;
+			sourceTree = "<group>";
+		};
+		8A7C07E220D913680075DF97 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		8AAA449820BE8E850055D7B9 = {
 			isa = PBXGroup;
 			children = (
 				8A47522020C7E9B700DD81F3 /* XrayKit */,
 				8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */,
 				8AAA44A320BE8E850055D7B9 /* Products */,
+				8A2AFAB220C93728002A0B2B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +260,14 @@
 				8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C4D87E71D2CD65EDF3970A6E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,6 +291,7 @@
 				8A2AFA9A20C92F1E002A0B2B /* Sources */,
 				8A2AFA9B20C92F1E002A0B2B /* Frameworks */,
 				8A2AFA9C20C92F1E002A0B2B /* Resources */,
+				8A2AFAB720C93DF7002A0B2B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -261,7 +390,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -270,7 +399,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A2AFAA120C92F1E002A0B2B /* XrayKitTests.swift in Sources */,
+				8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */,
+				8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */,
+				8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */,
+				8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */,
+				8A57F45020CEB0670047B021 /* SQLDatabaseControllerSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,14 +411,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */,
+				8A57F44C20CE92E80047B021 /* Foundation+SQL.swift in Sources */,
+				8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */,
 				8A47523420C7EA0800DD81F3 /* Event.swift in Sources */,
 				8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */,
+				8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */,
+				8A47523E20C7F5F400DD81F3 /* EventStore.swift in Sources */,
+				8A57F44520CA89190047B021 /* String+SQL.swift in Sources */,
 				8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */,
 				8A47523220C7EA0800DD81F3 /* Xray.swift in Sources */,
 				8A47523620C7EA0800DD81F3 /* DataService.swift in Sources */,
 				8A47523520C7EA0800DD81F3 /* EventService.swift in Sources */,
 				8A47523820C7EA0800DD81F3 /* EventController.swift in Sources */,
 				8A47523320C7EA0800DD81F3 /* DataPayload.swift in Sources */,
+				C4D8751227EA93A59B626723 /* SQLDatabaseController.swift in Sources */,
+				8A7C07E120D911240075DF97 /* JSONValue.swift in Sources */,
+				C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */,
+				C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +448,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9MA9G2SST;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = XrayKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -324,6 +471,10 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G9MA9G2SST;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = XrayKitTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -349,6 +500,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = XrayKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -377,6 +532,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = XrayKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

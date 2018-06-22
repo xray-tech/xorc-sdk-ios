@@ -18,10 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let builder = XrayHTTPBuilder()
-        let transmitter = HTTPTransmitter(builder: builder)
-        Xray.events.register(transmitter: transmitter)
-        
+        Xray.start()
         return true
         
         
