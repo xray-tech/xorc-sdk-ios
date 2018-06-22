@@ -16,18 +16,32 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios sdk_test
+### ios kit_carthage_build
 ```
-fastlane ios sdk_test
+fastlane ios kit_carthage_build
+```
+Runs all unit the tests and generates reports in `fastlane/reports`
+
+You can optionnaly specify the xcode version
+
+e.g 'fastlane kit_carthage_build xc_version:9.3'
+### ios carthage_sdk
+```
+fastlane ios carthage_sdk
+```
+Builds the Carthage SDK Unit Test dependencies
+### ios kit_test
+```
+fastlane ios kit_test
 ```
 Runs all unit the tests and generates reports in `fastlane/reports`
 
 You can optionnaly specify the xcode version
 
 e.g 'fastlane test xc_version:8.2'
-### ios sdk_compile
+### ios kit_compile
 ```
-fastlane ios sdk_compile
+fastlane ios kit_compile
 ```
 Compiles the SDK project
 
