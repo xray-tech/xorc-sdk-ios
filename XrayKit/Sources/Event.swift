@@ -47,6 +47,7 @@ public final class Event: NSObject {
     let properties: [String: JSONValue]?
     let createdAt: Date
     var updatedAt: Date
+    var nextRetryAt: Date?
     
     var status: Status
     
@@ -85,6 +86,7 @@ public final class Event: NSObject {
         properties  : \(props)
         createdAt   : \(createdAt)
         updatedAt   : \(updatedAt)
+        nextRetryAt : \(nextRetryAt != nil ? nextRetryAt!.description : "-")
         status      : \(status)
         """
     }

@@ -11,13 +11,13 @@ import Foundation
 public enum EventResult {
     
     /// When the event was transmitted correctly.
-    case success(Event)
+    case success(event: Event)
     
     /// When the events should be retried.
-    case retry(Event)
+    case retry(event: Event, nextRetryAt: Date)
     
     /// When the event failed and should be discarded
-    case failure(Event)
+    case failure(event: Event)
 }
 
 /**
@@ -83,8 +83,8 @@ class EventController {
                 switch result {
                 case .success(let event):
                     self.eventStore.delete(event: event)
-                case .retry(let event):
-                    event.nextRetryAt = Date()
+                case .retry(let event, let nextRetryAt):
+                    event.nextRetryAt = nextRetryAt
                     self.eventStore.update(event: event)
                 case .failure(let event):
                     self.eventStore.delete(event: event)

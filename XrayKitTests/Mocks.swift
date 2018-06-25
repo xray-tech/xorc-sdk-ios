@@ -9,20 +9,42 @@ import Foundation
 
 class MockTrasnmitter: EventTransmitter {
     
+    enum MockBehaviour {
+        case succeed
+        case retry(nextRetryAt: Date)
+        case fail
+        case none // dont call the completion at all
+    }
+    
+    let behaviour: MockBehaviour
+    
+    init(behaviour: MockBehaviour = .none) {
+        self.behaviour = behaviour
+    }
+    
     var events = [Event]()
+    
     
     func transmit(events: [Event], completion: @escaping ([EventResult]) -> Void) {
         self.events += events
-     
-        let event = events.first!
-        event.status = .failed
         
+        switch behaviour {
+        case .succeed:
+            completion(events.map { .success(event: $0) })
+        case .retry(let nextRetryAt):
+            completion(events.map { .retry(event: $0, nextRetryAt: nextRetryAt) })
+        case .fail:
+            completion(events.map { .failure(event: $0) })
+        case .none: break
+        }
     }
 }
 
 class MemoryEventStore: EventStore {
     
     var events = [Event]()
+    var deleted = [Event]()
+    var updated = [Event]()
     
     var sequence: Int64 = 1
     
@@ -38,15 +60,17 @@ class MemoryEventStore: EventStore {
     }
     
     func update(event: Event) -> Event {
+        updated.append(event)
         return event
     }
     
     func delete(event: Event) {
+        deleted.append(event)
         events = events.filter { $0.sequenceId != event.sequenceId }
     }
     
     func delete(events: [Event]) {
-        
+        deleted += events
         let ids = events.map { $0.sequenceId }
         self.events = events.filter { !ids.contains($0.sequenceId) }
     }
