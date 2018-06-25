@@ -21,12 +21,15 @@ public class EventService: NSObject {
             controller?.transmitter = transmitter
         }
     }
+
+    /// serial queue to run any public API calls on
+    private let eventQueue = DispatchQueue(label: "io.xorc.events")
     
     // MARK: - Public
     
     
     /**
-     Logs an occurence of an event. The event is processed by the local rule and optionally given to an `EventTransmitter` if you registered one
+     Logs an occurrence of an event. The event is processed by the local rule and optionally given to an `EventTransmitter` if you registered one
      in order to be sent over the network. Logging events can result into a `DataServiceDelegate` methods to be called if this event is bound to triggers.
 
      - parameter event: The `Event` that has just occurred.
@@ -37,8 +40,9 @@ public class EventService: NSObject {
             print("\(#function) called before starting the SDK")
             return
         }
-        
-        controller.log(event: event)
+        eventQueue.async {
+            controller.log(event: event)
+        }
     }
     
     public func register(transmitter: EventTransmitter) {
