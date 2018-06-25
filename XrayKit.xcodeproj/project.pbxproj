@@ -11,9 +11,7 @@
 		8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A2AFAB920C93E28002A0B2B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; };
 		8A2AFABA20C93E31002A0B2B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2AFAB120C9371C002A0B2B /* Nimble.framework */; };
-		8A2AFABB20C93E31002A0B2B /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2AFAB020C9371C002A0B2B /* OHHTTPStubs.framework */; };
 		8A2AFABC20C93E34002A0B2B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAB120C9371C002A0B2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A2AFABD20C93E34002A0B2B /* OHHTTPStubs.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAB020C9371C002A0B2B /* OHHTTPStubs.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2AFAAC20C936E6002A0B2B /* SQLConnectionSpecs.swift */; };
 		8A47522320C7E9B700DD81F3 /* XrayKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A47522120C7E9B700DD81F3 /* XrayKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522920C7EA0800DD81F3 /* XrayHTTPBuilder.swift */; };
@@ -59,7 +57,6 @@
 			files = (
 				8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */,
 				8A2AFABC20C93E34002A0B2B /* Nimble.framework in CopyFiles */,
-				8A2AFABD20C93E34002A0B2B /* OHHTTPStubs.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +104,6 @@
 				8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */,
 				8A2AFAB920C93E28002A0B2B /* Quick.framework in Frameworks */,
 				8A2AFABA20C93E31002A0B2B /* Nimble.framework in Frameworks */,
-				8A2AFABB20C93E31002A0B2B /* OHHTTPStubs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
