@@ -46,8 +46,9 @@ class EventController {
 
     private var eventStore: EventStore
 
-    init(eventStore: EventStore) {
+    init(eventStore: EventStore, transmitter: EventTransmitter? = nil) {
         self.eventStore = eventStore
+        self.transmitter = transmitter
     }
     
     /// Adds the event to the sending queue
@@ -56,6 +57,10 @@ class EventController {
         print("Logging event \(event)")
         
         // run event through the rule engine
+        
+        if event.scope == .local {
+            return
+        }
 
         event = eventStore.insert(event: event)
 

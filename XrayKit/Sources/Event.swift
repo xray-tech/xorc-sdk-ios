@@ -33,6 +33,15 @@ public final class Event: NSObject {
         case important  = 1
     }
     
+    /// The scope of the event
+    public enum Scope: Int {
+        /// The event will not be send to a `Trasnmitter` and will remain only local to the device
+        case local
+        
+        /// The event will be transmitted to the network via a `Transmitter`
+        case remote
+    }
+    
     var sequenceId: Int64
     let name: String
     let properties: [String: JSONValue]?
@@ -41,19 +50,26 @@ public final class Event: NSObject {
     
     var status: Status
     
+    let scope: Scope
     
-    init(name: String, properties: [String: JSONValue]?, sequenceId: Int64 = 0, createdAt: Date = Date(), updatedAt: Date = Date(), status: Status = .queued) {
+    
+    init(name: String, properties: [String: JSONValue]?, scope: Scope = .remote, sequenceId: Int64 = 0, createdAt: Date = Date(), updatedAt: Date = Date(), status: Status = .queued) {
         self.sequenceId = sequenceId
         self.name = name
         self.properties = properties
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.status = status
+        self.scope = scope
         
     }
 
     convenience public init(name: String, properties: [String: JSONValue]? = nil) {
         self.init(name: name, properties: properties, sequenceId: 0)
+    }
+    
+    convenience public init(name: String, properties: [String: JSONValue]? = nil, scope: Scope = .remote) {
+        self.init(name: name, properties: properties, scope: scope, sequenceId: 0)
     }
     
     override public var description: String {

@@ -33,6 +33,8 @@
 		8A57F45020CEB0670047B021 /* SQLDatabaseControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */; };
 		8A7C07E120D911240075DF97 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E020D911240075DF97 /* JSONValue.swift */; };
 		8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */; };
+		8AAE41CA20E0DF3D008338CF /* EventControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE41C920E0DF3D008338CF /* EventControllerSpecs.swift */; };
+		8AAE41CD20E0E4E1008338CF /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE41CC20E0E4E1008338CF /* Mocks.swift */; };
 		C4D8751227EA93A59B626723 /* SQLDatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */; };
 		C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */; };
 		C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */; };
@@ -91,6 +93,8 @@
 		8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLDatabaseControllerSpecs.swift; sourceTree = "<group>"; };
 		8A7C07E020D911240075DF97 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
 		8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValueSpecs.swift; sourceTree = "<group>"; };
+		8AAE41C920E0DF3D008338CF /* EventControllerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventControllerSpecs.swift; sourceTree = "<group>"; };
+		8AAE41CC20E0E4E1008338CF /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLDatabaseController.swift; sourceTree = "<group>"; };
 		C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+SQL.swift"; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 		8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				8AAE41CB20E0E4AE008338CF /* Mocks */,
+				8AAE41C820E0DF20008338CF /* Events */,
 				8A7C07E220D913680075DF97 /* Other */,
 				8A2AFAAE20C93707002A0B2B /* Frameworks */,
 				8A2AFAAB20C936CD002A0B2B /* Store */,
@@ -256,6 +262,22 @@
 				8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8AAE41C820E0DF20008338CF /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				8AAE41C920E0DF3D008338CF /* EventControllerSpecs.swift */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
+		8AAE41CB20E0E4AE008338CF /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				8AAE41CC20E0E4E1008338CF /* Mocks.swift */,
+			);
+			name = Mocks;
 			sourceTree = "<group>";
 		};
 		C4D87E71D2CD65EDF3970A6E /* Extensions */ = {
@@ -396,8 +418,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */,
+				8AAE41CA20E0DF3D008338CF /* EventControllerSpecs.swift in Sources */,
 				8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */,
 				8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */,
+				8AAE41CD20E0E4E1008338CF /* Mocks.swift in Sources */,
 				8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */,
 				8A57F45020CEB0670047B021 /* SQLDatabaseControllerSpecs.swift in Sources */,
 			);
