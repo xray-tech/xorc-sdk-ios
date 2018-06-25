@@ -37,6 +37,11 @@ public protocol EventTransmitter {
 
 class EventController {
     
+    enum SendingStatus {
+        case sending
+        case paused
+    }
+    
     public var transmitter: EventTransmitter?
 
     private var eventStore: EventStore
@@ -45,40 +50,28 @@ class EventController {
         self.eventStore = eventStore
     }
     
-    public func log(event: Event) {
+    /// Adds the event to the sending queue
+    public func log(event: Event, flush: Bool = true) {
         var event = event
         print("Logging event \(event)")
+        
         // run event through the rule engine
-        // call delegates if needed
 
         event = eventStore.insert(event: event)
 
+        if flush {
+            self.flush()
+        }
+    }
+    
+    /// flushes all persisted events and transmits them
+    public func flush() {
         guard let transmitter = transmitter else {
             // nothing else to do. We do not transmit at all
             return
         }
+        let events = prepareSendableEvents()
         
-        let events = eventStore.select(maxNextTryAt: Date(), priority: nil, batchMaxSize: nil)
-        
-        // just testing:
-        for event in events {
-            event.status = .sending
-            eventStore.update(event: event)
-        }
-        
-
-//        var database: SQLDatabaseController!
-//
-//
-//        let events: [Event] = data)base.select(where: "<#T##String#>")
-        //database.update(entry: <#T##Entry##Entry#>, where: <#T##String##Swift.String#>)
-
-        // todo check for connection
-        // todo check for app state
-        // todo persist if needed
-        // todo based on options: send now or batch
-        //
-
         transmitter.transmit(events: events, completion: { result in
             switch result {
             case .success(let events):
@@ -92,5 +85,15 @@ class EventController {
                 self.eventStore.delete(events: events)
             }
         })
+    }
+
+    /// Selects the sendable events and updates their status to `sending` in the store
+    private func prepareSendableEvents() -> [Event] {
+        let events = eventStore.select(maxNextTryAt: Date(), priority: nil, batchMaxSize: nil)
+        for event in events {
+            event.status = .sending
+            eventStore.update(event: event)
+        }
+        return events
     }
 }
