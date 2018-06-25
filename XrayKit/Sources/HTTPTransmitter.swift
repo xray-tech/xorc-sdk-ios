@@ -18,7 +18,7 @@ public class HTTPTransmitter: EventTransmitter {
         self.builder = builder
     }
 
-    public func transmit(events: [Event], completion: @escaping (EventResult) -> Void) {
+    public func transmit(events: [Event], completion: @escaping ([EventResult]) -> Void) {
         print("Sending events to xray \(events)")
         let request = builder.build(events: events)
 

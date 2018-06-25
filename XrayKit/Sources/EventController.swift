@@ -11,13 +11,13 @@ import Foundation
 public enum EventResult {
     
     /// When the event was transmitted correctly.
-    case success([Event])
+    case success(Event)
     
     /// When the events should be retried.
-    case retry([Event])
+    case retry(Event)
     
     /// When the event failed and should be discarded
-    case failure([Event])
+    case failure(Event)
 }
 
 /**
@@ -32,7 +32,7 @@ public protocol EventTransmitter {
      - parameter completion: The `EventResult` completion closure telling the SDK whether the events were transmitted correctly or not.
      - warning: Do not call this method. It is meant to be called by the SDK at the right time.
     */
-    func transmit(events: [Event], completion: @escaping (EventResult) -> Void)
+    func transmit(events: [Event], completion: @escaping ([EventResult]) -> Void)
 }
 
 class EventController {
@@ -77,17 +77,18 @@ class EventController {
         }
         let events = prepareSendableEvents()
         
-        transmitter.transmit(events: events, completion: { result in
-            switch result {
-            case .success(let events):
-                self.eventStore.delete(events: events)
-            case .retry(let events):
-                // update nextRetryAt
-                for _ in events {
-                    
+        transmitter.transmit(events: events, completion: { results in
+            
+            for result in results {
+                switch result {
+                case .success(let event):
+                    self.eventStore.delete(event: event)
+                case .retry(let event):
+                    event.nextRetryAt = Date()
+                    self.eventStore.update(event: event)
+                case .failure(let event):
+                    self.eventStore.delete(event: event)
                 }
-            case .failure(let events):
-                self.eventStore.delete(events: events)
             }
         })
     }

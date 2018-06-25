@@ -11,8 +11,12 @@ class MockTrasnmitter: EventTransmitter {
     
     var events = [Event]()
     
-    func transmit(events: [Event], completion: @escaping (EventResult) -> Void) {
+    func transmit(events: [Event], completion: @escaping ([EventResult]) -> Void) {
         self.events += events
+     
+        let event = events.first!
+        event.status = .failed
+        
     }
 }
 
