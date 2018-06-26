@@ -85,6 +85,7 @@ class EventController {
                     self.eventStore.delete(event: event)
                 case .retry(let event, let nextRetryAt):
                     event.nextRetryAt = nextRetryAt
+                    event.status = .retry
                     self.eventStore.update(event: event)
                 case .failure(let event):
                     self.eventStore.delete(event: event)

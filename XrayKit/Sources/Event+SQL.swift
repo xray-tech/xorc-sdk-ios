@@ -29,7 +29,8 @@ struct EventTable: Table {
                 \(columnNextTryAt) INTEGER DEFAULT 0,
                 \(columnPriority) INTEGER DEFAULT 0,
                 \(columnStatus) INTEGER DEFAULT 0,
-                \(columnProperties) TEXT
+                \(columnProperties) TEXT,
+                \(columnContext) TEXT
             )
             """
     )

@@ -19,7 +19,7 @@ public final class Event: NSObject {
         case success    = 2
         
         // The event was sent but the backend marked is as failed. It should be retried again
-        case failed     = 3
+        case retry      = 3
         
         // The event was retried too many times and will be discarded
         case error      = 4
