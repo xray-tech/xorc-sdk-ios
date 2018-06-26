@@ -11,10 +11,13 @@ import Foundation
 public enum EventResult {
     
     /// When the event was transmitted correctly.
-    case success
+    case success(event: Event)
     
-    /// When the event failed and should be retried in the future
-    case failure([Event])
+    /// When the events should be retried.
+    case retry(event: Event, nextRetryAt: Date)
+    
+    /// When the event failed and should be discarded
+    case failure(event: Event)
 }
 
 /**
@@ -29,60 +32,74 @@ public protocol EventTransmitter {
      - parameter completion: The `EventResult` completion closure telling the SDK whether the events were transmitted correctly or not.
      - warning: Do not call this method. It is meant to be called by the SDK at the right time.
     */
-    func transmit(events: [Event], completion: @escaping (EventResult) -> Void)
+    func transmit(events: [Event], completion: @escaping ([EventResult]) -> Void)
 }
 
 class EventController {
+    
+    enum SendingStatus {
+        case sending
+        case paused
+    }
     
     public var transmitter: EventTransmitter?
 
     private var eventStore: EventStore
 
-    init(eventStore: EventStore) {
+    init(eventStore: EventStore, transmitter: EventTransmitter? = nil) {
         self.eventStore = eventStore
+        self.transmitter = transmitter
     }
     
-    public func log(event: Event) {
+    /// Adds the event to the sending queue
+    public func log(event: Event, flush: Bool = true) {
         var event = event
         print("Logging event \(event)")
+        
         // run event through the rule engine
-        // call delegates if needed
+        
+        if event.scope == .local {
+            return
+        }
 
         event = eventStore.insert(event: event)
 
+        if flush {
+            self.flush()
+        }
+    }
+    
+    /// flushes all persisted events and transmits them
+    public func flush() {
         guard let transmitter = transmitter else {
-            // nothing else to do. We do not persist at all
+            // nothing else to do. We do not transmit at all
             return
         }
+        let events = prepareSendableEvents()
         
+        transmitter.transmit(events: events, completion: { results in
+            
+            for result in results {
+                switch result {
+                case .success(let event):
+                    self.eventStore.delete(event: event)
+                case .retry(let event, let nextRetryAt):
+                    event.nextRetryAt = nextRetryAt
+                    self.eventStore.update(event: event)
+                case .failure(let event):
+                    self.eventStore.delete(event: event)
+                }
+            }
+        })
+    }
+
+    /// Selects the sendable events and updates their status to `sending` in the store
+    private func prepareSendableEvents() -> [Event] {
         let events = eventStore.select(maxNextTryAt: Date(), priority: nil, batchMaxSize: nil)
-        
-        // just testing:
         for event in events {
             event.status = .sending
             eventStore.update(event: event)
         }
-        
-
-//        var database: SQLDatabaseController!
-//
-//
-//        let events: [Event] = data)base.select(where: "<#T##String#>")
-        //database.update(entry: <#T##Entry##Entry#>, where: <#T##String##Swift.String#>)
-
-        // todo check for connection
-        // todo check for app state
-        // todo persist if needed
-        // todo based on options: send now or batch
-        //
-
-        transmitter.transmit(events: events, completion: { result in
-            switch result {
-            case .success:
-                break
-            case .failure:
-                break
-            }
-        })
+        return events
     }
 }

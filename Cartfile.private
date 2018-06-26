@@ -2,4 +2,4 @@
 # Tests
 github "Quick/Quick"
 github "Quick/Nimble"
-github "AliSoftware/OHHTTPStubs"
+# github "AliSoftware/OHHTTPStubs"
