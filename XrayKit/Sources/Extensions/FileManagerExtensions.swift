@@ -21,7 +21,7 @@ extension FileManager {
             return NSTemporaryDirectory()
         }
 
-        baseStoragePath.append(xrayDirectoryBaseName)
+        baseStoragePath = (baseStoragePath as NSString).appendingPathComponent(xrayDirectoryBaseName)
         do {
             try FileManager.default.createDirectory(atPath: baseStoragePath, withIntermediateDirectories: true)
         } catch {
