@@ -43,9 +43,9 @@ public final class Event: NSObject {
     }
     
     var sequenceId: Int64
-    let name: String
-    let properties: [String: JSONValue]?
-    let context: [String: JSONValue]?
+    public let name: String
+    public let properties: [String: JSONValue]?
+    public let context: [String: JSONValue]?
     let createdAt: Date
     var updatedAt: Date
     var nextRetryAt: Date?
