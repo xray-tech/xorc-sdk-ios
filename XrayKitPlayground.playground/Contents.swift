@@ -8,15 +8,27 @@ import PlaygroundSupport
 
 var str = "Hello, playground"
 
-let path = playgroundSharedDataDirectory.appendingPathComponent("SQLiteTutorial").resolvingSymlinksInPath().appendingPathComponent("db.sqlite")
+//let path = playgroundSharedDataDirectory.appendingPathComponent("SQLiteTutorial").resolvingSymlinksInPath().appendingPathComponent("db.sqlite")
+//
+//try? FileManager.default.removeItem(at: path)
+//
+//
+//let store = SQLDatabaseController(connection: SQLConnection(path: path.absoluteString), tables: [EventTable.self])
+//
+//let eventController = EventController(eventStore: store)
+//
+//eventController.transmitter = PlaygroundTransmitter()
+//
+//eventController.log(event: Event(name: "my_event", properties: ["foo": "bar"]))
 
-try? FileManager.default.removeItem(at: path)
+
+func doSomething(lambda: (() -> Void)) {
+    lambda()
+}
 
 
-let store = SQLDatabaseController(connection: SQLConnection(path: path.absoluteString), tables: [EventTable.self])
+func sayHi() {
+    print("Hi")
+}
 
-let eventController = EventController(eventStore: store)
-
-eventController.transmitter = PlaygroundTransmitter()
-
-eventController.log(event: Event(name: "my_event", properties: ["foo": "bar"]))
+doSomething(lambda: sayHi)
