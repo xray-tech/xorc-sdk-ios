@@ -77,7 +77,7 @@ class EventController {
         }
         let events = prepareSendableEvents()
         
-        transmitter.transmit(events: events, completion: { results in
+        transmitter.transmit(events: events) { results in
             
             for result in results {
                 switch result {
@@ -85,12 +85,13 @@ class EventController {
                     self.eventStore.delete(event: event)
                 case .retry(let event, let nextRetryAt):
                     event.nextRetryAt = nextRetryAt
+                    event.status = .retry
                     self.eventStore.update(event: event)
                 case .failure(let event):
                     self.eventStore.delete(event: event)
                 }
             }
-        })
+        }
     }
 
     /// Selects the sendable events and updates their status to `sending` in the store

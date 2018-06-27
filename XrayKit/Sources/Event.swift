@@ -19,7 +19,7 @@ public final class Event: NSObject {
         case success    = 2
         
         // The event was sent but the backend marked is as failed. It should be retried again
-        case failed     = 3
+        case retry      = 3
         
         // The event was retried too many times and will be discarded
         case error      = 4
@@ -43,8 +43,9 @@ public final class Event: NSObject {
     }
     
     var sequenceId: Int64
-    let name: String
-    let properties: [String: JSONValue]?
+    public let name: String
+    public let properties: [String: JSONValue]?
+    public let context: [String: JSONValue]?
     let createdAt: Date
     var updatedAt: Date
     var nextRetryAt: Date?
@@ -54,23 +55,20 @@ public final class Event: NSObject {
     let scope: Scope
     
     
-    init(name: String, properties: [String: JSONValue]?, scope: Scope = .remote, sequenceId: Int64 = 0, createdAt: Date = Date(), updatedAt: Date = Date(), status: Status = .queued) {
+    init(name: String, properties: [String: JSONValue]?, context: [String: JSONValue]?, scope: Scope = .remote, sequenceId: Int64 = 0, createdAt: Date = Date(), updatedAt: Date = Date(), status: Status = .queued) {
         self.sequenceId = sequenceId
         self.name = name
         self.properties = properties
+        self.context = context
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.status = status
         self.scope = scope
         
     }
-
-    convenience public init(name: String, properties: [String: JSONValue]? = nil) {
-        self.init(name: name, properties: properties, sequenceId: 0)
-    }
     
-    convenience public init(name: String, properties: [String: JSONValue]? = nil, scope: Scope = .remote) {
-        self.init(name: name, properties: properties, scope: scope, sequenceId: 0)
+    convenience public init(name: String, properties: [String: JSONValue]? = nil, context: [String: JSONValue]? = nil, scope: Scope = .remote) {
+        self.init(name: name, properties: properties, context: context, scope: scope, sequenceId: 0)
     }
     
     override public var description: String {

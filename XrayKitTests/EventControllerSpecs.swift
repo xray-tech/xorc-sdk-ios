@@ -127,6 +127,10 @@ class EventControllerSpecs: QuickSpec {
                     it("sets the nextRetryAt date") {
                         expect(store.updated.first?.nextRetryAt).to(equal(expectedNextRetryAt))
                     }
+                    
+                    it("sets the event status to retry") {
+                        expect(store.updated.first?.status).to(equal(Event.Status.retry))
+                    }
                 }
             }
         }

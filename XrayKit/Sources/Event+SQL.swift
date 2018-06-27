@@ -16,6 +16,7 @@ struct EventTable: Table {
     static let columnPriority     = "priority"
     static let columnStatus       = "status"
     static let columnProperties   = "properties"
+    static let columnContext      = "context"
 
 
     static let createRequest = SQLRequest(sql: """
@@ -28,7 +29,8 @@ struct EventTable: Table {
                 \(columnNextTryAt) INTEGER DEFAULT 0,
                 \(columnPriority) INTEGER DEFAULT 0,
                 \(columnStatus) INTEGER DEFAULT 0,
-                \(columnProperties) TEXT
+                \(columnProperties) TEXT,
+                \(columnContext) TEXT
             )
             """
     )
@@ -46,6 +48,10 @@ extension Event: Insertable {
         binds[table.columnName] = name as NSString
         binds[table.columnCreatedAt] = createdAt.toSql()
         binds[table.columnUpdatedAt] = updatedAt.toSql()
+        
+        if let nextTryAt = nextRetryAt {
+            binds[table.columnNextTryAt] = nextTryAt.toSql()
+        }
         binds[table.columnStatus] = status.rawValue as NSNumber
         
         if sequenceId != 0 {
@@ -54,17 +60,22 @@ extension Event: Insertable {
         
         let encoder = JSONEncoder()
         
-        if let properties = properties {
-            do {
-                let data = try encoder.encode(properties)
-                if let json = String(data: data, encoding: .utf8) {
-                    binds[table.columnProperties] = json as NSString
+        let serializeProperties: ((String, [String: JSONValue]?) -> Void) = { columnName, properties in
+            if let properties = properties {
+                do {
+                    let data = try encoder.encode(properties)
+                    if let json = String(data: data, encoding: .utf8) {
+                        binds[columnName] = json as NSString
+                    }
+                } catch {
+                    print("Could not serialise event \(columnName): \(error)")
                 }
-                
-            } catch {
-                print("Could not serialise event properties: \(error)")
             }
         }
+        
+        serializeProperties(EventTable.columnProperties, properties)
+        serializeProperties(EventTable.columnContext, context)
+        
 
         return binds
     }
@@ -96,22 +107,26 @@ extension Event: Deserializable {
             
             else { throw SQLConnection.SQLError.parseError("Expected a columnStatus") }
         
-        var properties: [String: JSONValue]?
-        
-        if
-            let propertiess = binds[EventTable.columnProperties] as? NSString,
-            let data = propertiess.data(using: 0)
-        {
-            let decoder = JSONDecoder()
-            do {
-                properties = try decoder.decode([String: JSONValue].self, from: data)
-            } catch {
-                print("Could not deserialise event properties: \(error)")
+        let parseClosure: ((String) -> [String: JSONValue]?) = { columnName in
+            var properties: [String: JSONValue]?
+            
+            if
+                let propertiess = binds[columnName] as? NSString,
+                let data = propertiess.data(using: 0)
+            {
+                let decoder = JSONDecoder()
+                do {
+                    properties = try decoder.decode([String: JSONValue].self, from: data)
+                } catch {
+                    print("Could not deserialise event \(columnName)': \(error)")
+                }
             }
+            return properties
         }
         
         self.init(name: name,
-                  properties: properties,
+                  properties: parseClosure(EventTable.columnProperties),
+                  context: parseClosure(EventTable.columnContext),
                   sequenceId: sequenceId.int64Value,
                   createdAt: Date(timeIntervalSince1970: createdAt.doubleValue),
                   updatedAt: Date(timeIntervalSince1970: updatedAt.doubleValue),

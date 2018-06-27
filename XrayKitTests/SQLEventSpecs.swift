@@ -31,6 +31,39 @@ class SQLEventSpecs: QuickSpec {
                     it("does not contain properties") {
                         expect(sut.binds[EventTable.columnProperties]).to(beNil())
                     }
+                    
+                    it("does not contain context") {
+                        expect(sut.binds[EventTable.columnContext]).to(beNil())
+                    }
+                }
+            }
+            
+            describe("when serialising nextRetryAt") {
+                var sut: Event!
+                context("without nextRetryAt") {
+                    
+                    beforeEach {
+                       sut = Event(name: "my_event")
+                    }
+                    
+                    describe("binds") {
+                        it("do not contain nextRetryAt") {
+                            expect(sut.binds[EventTable.columnNextTryAt]).to(beNil())
+                        }
+                    }
+                }
+                
+                context("without nextRetryAt") {
+                    beforeEach {
+                        sut = Event(name: "my_event")
+                        sut.nextRetryAt = Date()
+                    }
+                    
+                    describe("binds") {
+                        it("do not contain nextRetryAt") {
+                            expect(sut.binds[EventTable.columnNextTryAt] as? NSNumber).notTo(equal(0))
+                        }
+                    }
                 }
             }
 
@@ -39,11 +72,15 @@ class SQLEventSpecs: QuickSpec {
                     "myStringKey": JSONValue("myStringValue"),
                     "myNumberValue": JSONValue(10)
                 ]
-                var sut = Event(name: "my_event", properties: expectedProperties)
+                var sut = Event(name: "my_event", properties: expectedProperties, context: expectedProperties)
 
                 describe("binds") {
                     it("contains a properties") {
                         expect(sut.binds[EventTable.columnProperties]).notTo(beNil())
+                    }
+                    
+                    it("contains a context") {
+                        expect(sut.binds[EventTable.columnContext]).notTo(beNil())
                     }
                     
                     it("contains properties as String") {
