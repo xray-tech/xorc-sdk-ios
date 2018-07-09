@@ -40,6 +40,19 @@ class ViewController: UIViewController {
         
         Xray.events.log(event: event)
     }
+
+    func scheduleButtonAction(sender: Any) {
+        
+        //let trigger: DataPayload.Trigger.
+        let trigger = DataPayload.Trigger.date(Date())
+        
+        let data = "Hello".data(using: .utf8)!
+        
+        let payload = DataPayload(data: data, trigger: trigger)
+        
+        Xray.data.schedule(payload: payload)
+        
+    }
 }
 
 class MockTrasnmitter: EventTransmitter {

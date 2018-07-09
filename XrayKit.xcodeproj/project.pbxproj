@@ -31,12 +31,15 @@
 		8A57F44C20CE92E80047B021 /* Foundation+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */; };
 		8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */; };
 		8A57F45020CEB0670047B021 /* SQLDatabaseControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */; };
+		8A5B0E6320F38E6D005F123E /* DataPayload+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B0E6220F38E6D005F123E /* DataPayload+SQL.swift */; };
+		8A5B0E6620F39252005F123E /* SQLDataSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B0E6520F39252005F123E /* SQLDataSpecs.swift */; };
 		8A7C07E120D911240075DF97 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E020D911240075DF97 /* JSONValue.swift */; };
 		8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */; };
 		8AAE41CA20E0DF3D008338CF /* EventControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE41C920E0DF3D008338CF /* EventControllerSpecs.swift */; };
 		8AAE41CD20E0E4E1008338CF /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE41CC20E0E4E1008338CF /* Mocks.swift */; };
 		C4D8751227EA93A59B626723 /* SQLDatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */; };
 		C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */; };
+		C4D87B5C5C8FCC078CB8252C /* Triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87DDFB8DEC8EBDC16541E /* Triggers.swift */; };
 		C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +94,8 @@
 		8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+SQL.swift"; sourceTree = "<group>"; };
 		8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLEventSpecs.swift; sourceTree = "<group>"; };
 		8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLDatabaseControllerSpecs.swift; sourceTree = "<group>"; };
+		8A5B0E6220F38E6D005F123E /* DataPayload+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataPayload+SQL.swift"; sourceTree = "<group>"; };
+		8A5B0E6520F39252005F123E /* SQLDataSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLDataSpecs.swift; sourceTree = "<group>"; };
 		8A7C07E020D911240075DF97 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
 		8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValueSpecs.swift; sourceTree = "<group>"; };
 		8AAE41C920E0DF3D008338CF /* EventControllerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventControllerSpecs.swift; sourceTree = "<group>"; };
@@ -98,6 +103,7 @@
 		C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLDatabaseController.swift; sourceTree = "<group>"; };
 		C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+SQL.swift"; sourceTree = "<group>"; };
+		C4D87DDFB8DEC8EBDC16541E /* Triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triggers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,7 @@
 				8A2AFAAC20C936E6002A0B2B /* SQLConnectionSpecs.swift */,
 				8A57F44620CA89890047B021 /* SQLStringSpecs.swift */,
 				8A57F44D20CE93BA0047B021 /* SQLEventSpecs.swift */,
+				8A5B0E6520F39252005F123E /* SQLDataSpecs.swift */,
 				8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */,
 			);
 			name = Store;
@@ -201,6 +208,7 @@
 			children = (
 				8A47522B20C7EA0800DD81F3 /* DataPayload.swift */,
 				8A47522E20C7EA0800DD81F3 /* DataService.swift */,
+				C4D87DDFB8DEC8EBDC16541E /* Triggers.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -226,8 +234,7 @@
 		8A47523F20C7F64900DD81F3 /* SQL */ = {
 			isa = PBXGroup;
 			children = (
-				8A47524020C8034300DD81F3 /* SQLTables.swift */,
-				C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */,
+				8A5B0E6420F38FA4005F123E /* Tables */,
 				8A47524220C803B200DD81F3 /* SQLConnection.swift */,
 				C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */,
 				8A47524520C809C100DD81F3 /* SQLRequest.swift */,
@@ -235,6 +242,16 @@
 				8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */,
 			);
 			name = SQL;
+			sourceTree = "<group>";
+		};
+		8A5B0E6420F38FA4005F123E /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				8A47524020C8034300DD81F3 /* SQLTables.swift */,
+				C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */,
+				8A5B0E6220F38E6D005F123E /* DataPayload+SQL.swift */,
+			);
+			name = Tables;
 			sourceTree = "<group>";
 		};
 		8A7C07E220D913680075DF97 /* Other */ = {
@@ -422,6 +439,7 @@
 				8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */,
 				8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */,
 				8AAE41CD20E0E4E1008338CF /* Mocks.swift in Sources */,
+				8A5B0E6620F39252005F123E /* SQLDataSpecs.swift in Sources */,
 				8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */,
 				8A57F45020CEB0670047B021 /* SQLDatabaseControllerSpecs.swift in Sources */,
 			);
@@ -442,6 +460,7 @@
 				8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */,
 				8A47523220C7EA0800DD81F3 /* Xray.swift in Sources */,
 				8A47523620C7EA0800DD81F3 /* DataService.swift in Sources */,
+				8A5B0E6320F38E6D005F123E /* DataPayload+SQL.swift in Sources */,
 				8A47523520C7EA0800DD81F3 /* EventService.swift in Sources */,
 				8A47523820C7EA0800DD81F3 /* EventController.swift in Sources */,
 				8A47523320C7EA0800DD81F3 /* DataPayload.swift in Sources */,
@@ -449,6 +468,7 @@
 				8A7C07E120D911240075DF97 /* JSONValue.swift in Sources */,
 				C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */,
 				C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */,
+				C4D87B5C5C8FCC078CB8252C /* Triggers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

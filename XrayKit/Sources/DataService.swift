@@ -21,16 +21,16 @@ public class DataService: NSObject {
     
     /**
      Schedules the execution of the `DataPayload` with the given trigger and context. The `DataPayload` is persisted
-     untill the execution trigger occurs.
+     until the execution trigger occurs.
      
-     - parameter payload: The payload that you want to scheudule
+     - parameter payload: The payload that you want to schedule
      - parameter trigger: The trigger that will trigger the payload delivery
      - parameter context: Arbitrary context that will be delivered back when the payload is triggered
      
      - note: Test of a discussion
      - warning: Do not do this
     */
-    public func schedule(payload: DataPayload, trigger: Any, context: Any) {
+    public func schedule(payload: DataPayload) {
 
     }
 }
