@@ -103,11 +103,11 @@ extension SQLDatabaseController: EventStore {
     }
 
     func select(maxNextTryAt: Date, priority: Event.Priority?, batchMaxSize: Int?) -> [Event] {
-            let request = SQLRequest(selectFrom: EventTable.tableName,
+        let request = SQLRequest(selectFrom: EventTable.tableName,
                     whereSQL: Event.whereSendableSQL(maxNextTryAt: maxNextTryAt, priority: priority),
                     order: [(EventTable.columnId, SQLRequest.Order.asc)])
 
-            return select(request: request)
+        return select(request: request)
     }
     
     func update(event: Event) -> Event {
@@ -126,5 +126,10 @@ extension SQLDatabaseController: EventStore {
 extension SQLDatabaseController: DataStore {
     func insert(payload: DataPayload) -> DataPayload {
         return insert(entry: payload)
+    }
+    
+    func select(eventName: String) -> [DataPayload] {
+        let request = SQLRequest(selectFrom: DataTable.tableName, whereSQL: DataPayload.whereEventName(eventName: eventName))
+        return select(request: request)
     }
 }

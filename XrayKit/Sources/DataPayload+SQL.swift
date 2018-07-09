@@ -82,3 +82,62 @@ extension DataPayload: Insertable {
         return binds
     }
 }
+
+extension DataPayload: Deserializable {
+    
+    static func deserialize(_ element: [String: AnyObject]) throws -> DataPayload {
+        return try DataPayload(binds: element)
+        
+    }
+    
+    init(binds: [String: AnyObject]) throws {
+        let table = DataTable.self
+        guard let data = binds[table.columnData] as? NSData else { throw SQLConnection.SQLError.parseError("Expected data") }
+        
+        guard let entryId = binds[table.columnId] as? NSNumber else { throw SQLConnection.SQLError.parseError("Expected  \(table.columnId)") }
+        guard let createdAt = binds[table.columnCreatedAt] as? NSNumber else { throw SQLConnection.SQLError.parseError("Expected a \(table.columnCreatedAt)") }
+        guard let updatedAt = binds[table.columnUpdatedAt] as? NSNumber else { throw SQLConnection.SQLError.parseError("Expected a \(table.columnUpdatedAt)") }
+        
+        var trigg: DataPayload.Trigger?
+        
+        
+        // parse event based trigger
+        if
+            let eventName = binds[table.columnEventName] as? String,
+            let jsonFilters = binds[table.columnEventName] as? String
+        {
+            let eventTrigger = try EventTrigger(name: eventName, jsonFilters: jsonFilters)
+            trigg = .event(eventTrigger)
+        }
+        
+        // todo parse event date trigger
+        
+        
+        // we need at least one valid trigger
+        guard let trigger = trigg else {
+           throw SQLConnection.SQLError.parseError("No data persisted data trigger")
+        }
+
+
+        // todo other prope
+        self.init(data: data as Data,
+                  trigger: trigger,
+                  userInfo: nil,
+                  expiresAt: nil,
+                  entryId: entryId.int64Value,
+                  createdAt: Date(timeIntervalSince1970: createdAt.doubleValue),
+                  updatedAt: Date(timeIntervalSince1970: updatedAt.doubleValue))
+    }
+    
+    
+}
+
+extension DataPayload {
+    
+    // MARK: - SQL
+    
+    // Returns the WHERE SQL for events that can be sent
+    static func whereEventName(eventName: String) -> String {
+        return "(\(DataTable.columnEventName) = \(eventName)"
+    }
+}
