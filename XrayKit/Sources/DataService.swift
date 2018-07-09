@@ -39,6 +39,8 @@ public class DataService: NSObject {
             return
         }
         
+        controller.schedule(payload: payload)
+        
         
     }
     

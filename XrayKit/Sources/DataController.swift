@@ -14,6 +14,7 @@ class DataController {
     }
     
     func schedule(payload: DataPayload) {
+        print("Scheduling data to trigger at \(payload.trigger)")
         store.insert(payload: payload)
     }
 }

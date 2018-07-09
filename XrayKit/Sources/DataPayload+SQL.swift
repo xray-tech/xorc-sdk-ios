@@ -67,7 +67,8 @@ extension DataPayload: Insertable {
             binds[table.columnEventName] = eventTrigger.name as NSString
             
             if
-                let data = try? JSONSerialization.data(withJSONObject: eventTrigger.filters, options: []),
+                let filters = eventTrigger.filters,
+                let data = try? JSONSerialization.data(withJSONObject: filters, options: []),
                 let string = String(data: data, encoding: .utf8) {
                 binds[table.columnEventFilter] = string as NSString
             }

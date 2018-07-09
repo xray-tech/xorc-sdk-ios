@@ -41,10 +41,14 @@ class ViewController: UIViewController {
         Xray.events.log(event: event)
     }
 
-    func scheduleButtonAction(sender: Any) {
+    @IBAction func scheduleButtonAction(sender: Any) {
         
-        //let trigger: DataPayload.Trigger.
-        let trigger = DataPayload.Trigger.date(Date())
+        let filters = """
+                {"event.properties.item_name":{"eq":"iPhone"}}
+                """
+        
+        let eventTrigger = (try? EventTrigger(name: "my_event", jsonFilters: filters)) ?? EventTrigger(name: "my_event")
+        let trigger = DataPayload.Trigger.event(eventTrigger)
         
         let data = "Hello".data(using: .utf8)!
         

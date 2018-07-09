@@ -6,15 +6,29 @@
 import Foundation
 
 public struct EventTrigger {
-    let name: String
-    let filters: [String: Any]
-
+    public let name: String
+    public let filters: [String: Any]?
+    
+    public init(name: String, filters: [String: Any]? = nil) {
+        self.name = name
+        self.filters = filters
+    }
 }
 
 extension EventTrigger {
+    
+    public init(name: String, jsonFilters: String) throws {
+        guard let data = jsonFilters.data(using: .utf8) else {
+            throw ParsingError.invalidJSON("Expected a utf8 data")
+        }
+        try self.init(name: name, jsonFilters: data)
+    }
+    
     public init(name: String, jsonFilters: Data) throws {
         self.name = name
-        guard let filters = try JSONSerialization.jsonObject(with: jsonFilters, options: []) as? [String: AnyObject] else {
+
+        guard
+            let filters = try JSONSerialization.jsonObject(with: jsonFilters, options: []) as? [String: AnyObject] else {
             throw ParsingError.invalidJSON("Expected a JSON object")
         }
         // todo more validation
