@@ -22,7 +22,7 @@
 		8A47523620C7EA0800DD81F3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522E20C7EA0800DD81F3 /* DataService.swift */; };
 		8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */; };
 		8A47523820C7EA0800DD81F3 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47523020C7EA0800DD81F3 /* EventController.swift */; };
-		8A47523E20C7F5F400DD81F3 /* EventStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47523D20C7F5F400DD81F3 /* EventStore.swift */; };
+		8A47523E20C7F5F400DD81F3 /* Stores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47523D20C7F5F400DD81F3 /* Stores.swift */; };
 		8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524020C8034300DD81F3 /* SQLTables.swift */; };
 		8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524220C803B200DD81F3 /* SQLConnection.swift */; };
 		8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524520C809C100DD81F3 /* SQLRequest.swift */; };
@@ -33,6 +33,7 @@
 		8A57F45020CEB0670047B021 /* SQLDatabaseControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */; };
 		8A5B0E6320F38E6D005F123E /* DataPayload+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B0E6220F38E6D005F123E /* DataPayload+SQL.swift */; };
 		8A5B0E6620F39252005F123E /* SQLDataSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B0E6520F39252005F123E /* SQLDataSpecs.swift */; };
+		8A5B0E6820F3A62C005F123E /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5B0E6720F3A62C005F123E /* DataController.swift */; };
 		8A7C07E120D911240075DF97 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E020D911240075DF97 /* JSONValue.swift */; };
 		8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */; };
 		8AAE41CA20E0DF3D008338CF /* EventControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE41C920E0DF3D008338CF /* EventControllerSpecs.swift */; };
@@ -85,7 +86,7 @@
 		8A47522E20C7EA0800DD81F3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPTransmitter.swift; sourceTree = "<group>"; };
 		8A47523020C7EA0800DD81F3 /* EventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventController.swift; sourceTree = "<group>"; };
-		8A47523D20C7F5F400DD81F3 /* EventStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventStore.swift; sourceTree = "<group>"; };
+		8A47523D20C7F5F400DD81F3 /* Stores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stores.swift; sourceTree = "<group>"; };
 		8A47524020C8034300DD81F3 /* SQLTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLTables.swift; sourceTree = "<group>"; };
 		8A47524220C803B200DD81F3 /* SQLConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnection.swift; sourceTree = "<group>"; };
 		8A47524520C809C100DD81F3 /* SQLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLRequest.swift; sourceTree = "<group>"; };
@@ -96,6 +97,7 @@
 		8A57F44F20CEB0670047B021 /* SQLDatabaseControllerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLDatabaseControllerSpecs.swift; sourceTree = "<group>"; };
 		8A5B0E6220F38E6D005F123E /* DataPayload+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataPayload+SQL.swift"; sourceTree = "<group>"; };
 		8A5B0E6520F39252005F123E /* SQLDataSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLDataSpecs.swift; sourceTree = "<group>"; };
+		8A5B0E6720F3A62C005F123E /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		8A7C07E020D911240075DF97 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
 		8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValueSpecs.swift; sourceTree = "<group>"; };
 		8AAE41C920E0DF3D008338CF /* EventControllerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventControllerSpecs.swift; sourceTree = "<group>"; };
@@ -226,7 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				8A47523F20C7F64900DD81F3 /* SQL */,
-				8A47523D20C7F5F400DD81F3 /* EventStore.swift */,
+				8A47523D20C7F5F400DD81F3 /* Stores.swift */,
 			);
 			name = Store;
 			sourceTree = "<group>";
