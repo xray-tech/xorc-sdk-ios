@@ -15,29 +15,72 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        Xray.events.register(transmitter: LogTransmitter())
+        Xray.events.register(transmitter: MockTrasnmitter(behaviour: .retry(nextRetryAt: Date())))
         
         
+    }
+    
+    func hello() -> String {
+        return "Hello"
     }
     
     @IBAction func eventButtonAction(sender: Any) {
         
-        let event = Event(name: "my_event", properties: [
-            "foo": JSONValue("bar"),
-            "date": JSONValue(1.1)])
+        let properties: [String: JSONValue] = [
+            "foo": "bar",
+            "float": 1.1]
+        
+        let context: [String: JSONValue] = [
+            "session_id": "hello",
+            "retry": true,
+            "retryAt": JSONValue(Date().timeIntervalSince1970)
+        ]
+        
+        let event = Event(name: "my_event", properties: properties, context: context)
+        
         Xray.events.log(event: event)
     }
 }
 
-public class LogTransmitter: EventTransmitter {
+class MockTrasnmitter: EventTransmitter {
     
-    public init() {
-        
+    enum MockBehaviour {
+        case succeed
+        case retry(nextRetryAt: Date)
+        case fail
+        case none // dont call the completion at all
     }
     
-    public func transmit(events: [Event], completion: @escaping (EventResult) -> Void) {
-        for event in events {
-            print("Debug Transmitting event \(event)")
+    let behaviour: MockBehaviour
+    
+    init(behaviour: MockBehaviour = .none) {
+        self.behaviour = behaviour
+    }
+    
+    var events = [Event]()
+    
+    
+    func transmit(events: [Event], completion: @escaping ([EventResult]) -> Void) {
+        self.events += events
+        
+        var behaviour = self.behaviour
+        if let context = events.first?.context {
+            if
+                let fail = context["retry"]?.boolValue, fail == true,
+                let retryAt = context["retryAt"]?.doubleValue
+            {
+                behaviour = .retry(nextRetryAt: Date(timeIntervalSince1970: retryAt))
+            }
+        }
+        
+        switch behaviour {
+        case .succeed:
+            completion(events.map { .success(event: $0) })
+        case .retry(let nextRetryAt):
+            completion(events.map { .retry(event: $0, nextRetryAt: nextRetryAt) })
+        case .fail:
+            completion(events.map { .failure(event: $0) })
+        case .none: break
         }
     }
 }

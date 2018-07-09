@@ -60,3 +60,57 @@ public enum JSONValue: Codable {
         }
     }
 }
+
+extension JSONValue: ExpressibleByStringLiteral, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, ExpressibleByBooleanLiteral {
+    
+    public init(stringLiteral value: String) {
+        self = .string(value)
+    }
+    
+    public init(integerLiteral value: Int) {
+        self = .integer(value)
+    }
+    
+    public init(floatLiteral value: Double) {
+        self = .double(value)
+    }
+    
+    public init(booleanLiteral value: Bool) {
+        self = .bool(value)
+    }
+}
+
+extension JSONValue {
+   
+    /// Helper var to get the Bool value. Returns nil if this is not a Bool value
+    public var boolValue: Bool? {
+        if case let .bool(val) = self {
+            return val
+        }
+        return nil
+    }
+    
+    /// Helper var to get the String value returns nil otherwise
+    public var stringValue: String? {
+        if case let .string(val) = self {
+            return val
+        }
+        return nil
+    }
+    
+    /// Helper var to get the Double value returns nil otherwise
+    public var doubleValue: Double? {
+        if case let .double(val) = self {
+            return val
+        }
+        return nil
+    }
+    
+    /// Helper var to get the Integer value returns nil otherwise
+    public var integerValue: Int? {
+        if case let .integer(val) = self {
+            return val
+        }
+        return nil
+    }
+}
