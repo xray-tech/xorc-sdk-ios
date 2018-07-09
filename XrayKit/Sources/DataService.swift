@@ -19,6 +19,8 @@ public class DataService: NSObject {
     /// The optional delegate
     public weak var delegate: DataServiceDelegate?
     
+    private var controller: DataController?
+    
     /**
      Schedules the execution of the `DataPayload` with the given trigger and context. The `DataPayload` is persisted
      until the execution trigger occurs.
@@ -31,6 +33,19 @@ public class DataService: NSObject {
      - warning: Do not do this
     */
     public func schedule(payload: DataPayload) {
-
+        // high level verification before sending
+        guard  let controller = controller else {
+            print("\(#function) called before starting the SDK")
+            return
+        }
+        
+        
     }
+    
+    // MARK: - Protected
+    
+    func start(controller: DataController) {
+        self.controller = controller
+    }
+    
 }

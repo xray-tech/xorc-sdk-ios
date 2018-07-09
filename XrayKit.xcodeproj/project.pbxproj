@@ -210,6 +210,7 @@
 			children = (
 				8A47522B20C7EA0800DD81F3 /* DataPayload.swift */,
 				8A47522E20C7EA0800DD81F3 /* DataService.swift */,
+				8A5B0E6720F3A62C005F123E /* DataController.swift */,
 				C4D87DDFB8DEC8EBDC16541E /* Triggers.swift */,
 			);
 			name = Data;
@@ -457,7 +458,8 @@
 				8A47523420C7EA0800DD81F3 /* Event.swift in Sources */,
 				8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */,
 				8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */,
-				8A47523E20C7F5F400DD81F3 /* EventStore.swift in Sources */,
+				8A47523E20C7F5F400DD81F3 /* Stores.swift in Sources */,
+				8A5B0E6820F3A62C005F123E /* DataController.swift in Sources */,
 				8A57F44520CA89190047B021 /* String+SQL.swift in Sources */,
 				8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */,
 				8A47523220C7EA0800DD81F3 /* Xray.swift in Sources */,

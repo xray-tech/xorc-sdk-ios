@@ -122,3 +122,9 @@ extension SQLDatabaseController: EventStore {
         delete(entries: events)
     }
 }
+
+extension SQLDatabaseController: DataStore {
+    func insert(payload: DataPayload) -> DataPayload {
+        return insert(entry: payload)
+    }
+}

@@ -8,9 +8,12 @@ import Foundation
 @objc
 public class Xray: NSObject {
 
-    public static let data = DataService()
+    public static var data: DataService {
+        return instance.data
+    }
     
     private let events = EventService()
+    private let data = DataService()
     
     private static let instance = Xray()
     
@@ -21,16 +24,19 @@ public class Xray: NSObject {
     // MARK: - Private
 
     let eventController: EventController
+    let dataController: DataController
 
 
     override init() {
         let connection = SQLConnection(path: FileManager.databaseFilePath())
         let store = SQLDatabaseController(connection: connection, tables: [EventTable.self])
         self.eventController = EventController(eventStore: store)
+        self.dataController = DataController(store: store)
     }
     
     private func start(options: Any?) {
         events.start(controller: eventController)
+        data.start(controller: dataController)
     }
     
     // MARK: - Public
