@@ -109,12 +109,14 @@ extension DataPayload: Deserializable {
         
         
         // parse event based trigger
-        if
-            let eventName = binds[table.columnEventName] as? String,
-            let jsonFilters = binds[table.columnEventName] as? String
-        {
-            let eventTrigger = try EventTrigger(name: eventName, jsonFilters: jsonFilters)
-            trigg = .event(eventTrigger)
+        if let eventName = binds[table.columnEventName] as? String {
+            // event with filters
+            if let jsonFilters = binds[table.columnEventFilter] as? String {
+                trigg = .event(try EventTrigger(name: eventName, jsonFilters: jsonFilters))
+            } else {
+                // event without filters
+                trigg = .event(EventTrigger(name: eventName))
+            }
         }
         
         if let executeAt = binds[table.columnExecuteAt] as? NSNumber, executeAt.doubleValue > 0 {
@@ -142,7 +144,9 @@ extension DataPayload: Deserializable {
                   createdAt: Date(timeIntervalSince1970: createdAt.doubleValue),
                   updatedAt: Date(timeIntervalSince1970: updatedAt.doubleValue))
     }
-    
+}
+
+extension DataPayload: Deletable {
     
 }
 
@@ -152,6 +156,6 @@ extension DataPayload {
     
     // Returns the WHERE SQL for events that can be sent
     static func whereEventName(eventName: String) -> String {
-        return "(\(DataTable.columnEventName) = \(eventName)"
+        return "\(DataTable.columnEventName) = '\(eventName)'"
     }
 }
