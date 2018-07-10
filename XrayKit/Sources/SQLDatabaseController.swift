@@ -130,12 +130,17 @@ extension SQLDatabaseController: EventStore {
 }
 
 extension SQLDatabaseController: DataStore {
+    
     func insert(payload: DataPayload) -> DataPayload {
         return insert(entry: payload)
     }
     
-    func select(eventName: String) -> [DataPayload] {
+    func select(forTriggerEventName eventName: String) -> [DataPayload] {
         let request = SQLRequest(selectFrom: DataTable.tableName, whereSQL: DataPayload.whereEventName(eventName: eventName))
         return select(request: request)
+    }
+    
+    func delete(payloads: [DataPayload]) {
+        delete(entries: payloads)
     }
 }
