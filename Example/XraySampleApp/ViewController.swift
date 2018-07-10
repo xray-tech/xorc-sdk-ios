@@ -47,15 +47,15 @@ class ViewController: UIViewController {
                 {"event.properties.item_name":{"eq":"iPhone"}}
                 """
         
-        let eventTrigger = (try? EventTrigger(name: "my_event", jsonFilters: filters)) ?? EventTrigger(name: "my_event")
-        let trigger = DataPayload.Trigger.event(eventTrigger)
-        
-        let data = "Hello".data(using: .utf8)!
-        
-        let payload = DataPayload(data: data, trigger: trigger)
-        
-        Xray.data.schedule(payload: payload)
-        
+        // todo this optional API is not easy to use
+        if let eventTrigger = try? EventTrigger(name: "my_event", jsonFilters: filters) {
+            let trigger = DataPayload.Trigger.event(eventTrigger)
+            let data = "Hello".data(using: .utf8)!
+            
+            let payload = DataPayload(data: data, trigger: trigger)
+            
+            Xray.data.schedule(payload: payload)
+        }
     }
 }
 
