@@ -45,6 +45,9 @@ class EventController {
     public var transmitter: EventTransmitter?
 
     private var eventStore: EventStore
+    
+    /// Optional closure called every time an event is logged.
+    var onEvent: ((Event) -> Void)?
 
     init(eventStore: EventStore, transmitter: EventTransmitter? = nil) {
         self.eventStore = eventStore
@@ -55,6 +58,10 @@ class EventController {
     public func log(event: Event, flush: Bool = true) {
         var event = event
         print("Logging event \(event)")
+        
+        if let onEvent = onEvent {
+            onEvent(event)
+        }
         
         // run event through the rule engine
         

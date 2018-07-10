@@ -52,8 +52,11 @@ class SQLDatabaseController {
                 guard let resultSet = result.resultSet else { return }
                 
                 for resultSet in resultSet {
-                    if let entity = try? Entry.deserialize(resultSet) {
+                    do {
+                        let entity = try Entry.deserialize(resultSet)
                         entries.append(entity)
+                    } catch {
+                        print("Could not deserialize entity: \(error)")
                     }
                 }
             } catch {
@@ -86,6 +89,9 @@ class SQLDatabaseController {
     }
     
     func delete<Entry: Deletable>(entries: [Entry]) {
+        if entries.isEmpty {
+            return
+        }
         queue.sync {
             do {
                 try self.connection.execute(request: entries.deleteRequest())
@@ -103,11 +109,11 @@ extension SQLDatabaseController: EventStore {
     }
 
     func select(maxNextTryAt: Date, priority: Event.Priority?, batchMaxSize: Int?) -> [Event] {
-            let request = SQLRequest(selectFrom: EventTable.tableName,
+        let request = SQLRequest(selectFrom: EventTable.tableName,
                     whereSQL: Event.whereSendableSQL(maxNextTryAt: maxNextTryAt, priority: priority),
                     order: [(EventTable.columnId, SQLRequest.Order.asc)])
 
-            return select(request: request)
+        return select(request: request)
     }
     
     func update(event: Event) -> Event {
@@ -120,5 +126,21 @@ extension SQLDatabaseController: EventStore {
     
     func delete(events: [Event]) {
         delete(entries: events)
+    }
+}
+
+extension SQLDatabaseController: DataStore {
+    
+    func insert(payload: DataPayload) -> DataPayload {
+        return insert(entry: payload)
+    }
+    
+    func select(forTriggerEventName eventName: String) -> [DataPayload] {
+        let request = SQLRequest(selectFrom: DataTable.tableName, whereSQL: DataPayload.whereEventName(eventName: eventName))
+        return select(request: request)
+    }
+    
+    func delete(payloads: [DataPayload]) {
+        delete(entries: payloads)
     }
 }

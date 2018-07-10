@@ -40,6 +40,23 @@ class ViewController: UIViewController {
         
         Xray.events.log(event: event)
     }
+
+    @IBAction func scheduleButtonAction(sender: Any) {
+        
+        let filters = """
+                {"event.properties.item_name":{"eq":"iPhone"}}
+                """
+        
+        // todo this optional API is not easy to use
+        if let eventTrigger = try? EventTrigger(name: "my_event", jsonFilters: filters) {
+            let trigger = DataPayload.Trigger.event(eventTrigger)
+            let data = "Hello".data(using: .utf8)!
+            
+            let payload = DataPayload(data: data, trigger: trigger)
+            
+            Xray.data.schedule(payload: payload)
+        }
+    }
 }
 
 class MockTrasnmitter: EventTransmitter {

@@ -19,3 +19,13 @@ protocol EventStore {
     
     func delete(events: [Event])
 }
+
+protocol DataStore {
+    
+    @discardableResult
+    func insert(payload: DataPayload) -> DataPayload
+    
+    func select(forTriggerEventName eventName: String) -> [DataPayload]
+    
+    func delete(payloads: [DataPayload])
+}
