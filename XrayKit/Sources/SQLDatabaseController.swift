@@ -52,8 +52,11 @@ class SQLDatabaseController {
                 guard let resultSet = result.resultSet else { return }
                 
                 for resultSet in resultSet {
-                    if let entity = try? Entry.deserialize(resultSet) {
+                    do {
+                        let entity = try Entry.deserialize(resultSet)
                         entries.append(entity)
+                    } catch {
+                        print("Could not deserialize entity: \(error)")
                     }
                 }
             } catch {
