@@ -73,7 +73,6 @@ extension DataPayload: Insertable {
                 binds[table.columnEventFilter] = string as NSString
             }
         }
-        
 
         if entryId != 0 {
             binds[table.columnId] = entryId as NSNumber
@@ -92,11 +91,19 @@ extension DataPayload: Deserializable {
     
     init(binds: [String: AnyObject]) throws {
         let table = DataTable.self
-        guard let data = binds[table.columnData] as? NSData else { throw SQLConnection.SQLError.parseError("Expected data") }
+        guard let data = binds[table.columnData] as? NSData else {
+            throw SQLConnection.SQLError.parseError("Expected data")
+        }
         
-        guard let entryId = binds[table.columnId] as? NSNumber else { throw SQLConnection.SQLError.parseError("Expected  \(table.columnId)") }
-        guard let createdAt = binds[table.columnCreatedAt] as? NSNumber else { throw SQLConnection.SQLError.parseError("Expected a \(table.columnCreatedAt)") }
-        guard let updatedAt = binds[table.columnUpdatedAt] as? NSNumber else { throw SQLConnection.SQLError.parseError("Expected a \(table.columnUpdatedAt)") }
+        guard let entryId = binds[table.columnId] as? NSNumber else {
+            throw SQLConnection.SQLError.parseError("Expected \(table.columnId)")
+        }
+        guard let createdAt = binds[table.columnCreatedAt] as? NSNumber else {
+            throw SQLConnection.SQLError.parseError("Expected a \(table.columnCreatedAt)")
+        }
+        guard let updatedAt = binds[table.columnUpdatedAt] as? NSNumber else {
+            throw SQLConnection.SQLError.parseError("Expected a \(table.columnUpdatedAt)")
+        }
         
         var trigg: DataPayload.Trigger?
         
@@ -110,8 +117,14 @@ extension DataPayload: Deserializable {
             trigg = .event(eventTrigger)
         }
         
-        // todo parse event date trigger
+        if let executeAt = binds[table.columnExecuteAt] as? NSNumber, executeAt.doubleValue > 0 {
+            trigg = .date(Date(timeIntervalSince1970: executeAt.doubleValue))
+        }
         
+        var expieresAt: Date?
+        if let expiresAtTimeInterval = binds[table.columnExpiresAt] as? NSNumber {
+            expieresAt = Date(timeIntervalSince1970: expiresAtTimeInterval.doubleValue)
+        }
         
         // we need at least one valid trigger
         guard let trigger = trigg else {
@@ -120,10 +133,11 @@ extension DataPayload: Deserializable {
 
 
         // todo other prope
+        // todo expires at
         self.init(data: data as Data,
                   trigger: trigger,
                   userInfo: nil,
-                  expiresAt: nil,
+                  expiresAt: expieresAt,
                   entryId: entryId.int64Value,
                   createdAt: Date(timeIntervalSince1970: createdAt.doubleValue),
                   updatedAt: Date(timeIntervalSince1970: updatedAt.doubleValue))
