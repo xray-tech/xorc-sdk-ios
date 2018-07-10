@@ -89,6 +89,9 @@ class SQLDatabaseController {
     }
     
     func delete<Entry: Deletable>(entries: [Entry]) {
+        if entries.isEmpty {
+            return
+        }
         queue.sync {
             do {
                 try self.connection.execute(request: entries.deleteRequest())
