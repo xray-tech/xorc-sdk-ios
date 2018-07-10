@@ -9,8 +9,14 @@ class DataController {
     
     let store: DataStore
     
+    private let queue = DispatchQueue(label: "io.xorc.data")
+    
     init(store: DataStore) {
         self.store = store
+    }
+    
+    func start() {
+        purgeExpired()
     }
     
     func schedule(payload: DataPayload) {
@@ -28,5 +34,25 @@ class DataController {
         // todo on data queue async
         // todo find and filter DataPayloads  for that event name
         print("Checking data for event \(event.name)")
+        queue.async {
+            
+            let payloads = self.store.select(forTriggerEventName: event.name)
+            print("Found \(payloads.count) payloads for event '\(event.name)'")
+            
+            // todo use payload selector to filters matching payloads
+            // todo delete payloads to be discarded
+            // todo call delegates for discarded entries
+            // todo if the payload has a delay, change the trigger to executeAt and hand it over to a scheduler
+            // todo if no delay, pass it to a delegate
+            
+            self.store.delete(payloads: payloads)
+        }
+    }
+    
+    // MARK: - Private
+    
+    /// Finds and deletes all expired data payloads
+    private func purgeExpired() {
+        
     }
 }
