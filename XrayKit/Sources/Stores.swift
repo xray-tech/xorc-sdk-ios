@@ -25,5 +25,7 @@ protocol DataStore {
     @discardableResult
     func insert(payload: DataPayload) -> DataPayload
     
-    func select(eventName: String) -> [DataPayload]
+    func select(forTriggerEventName eventName: String) -> [DataPayload]
+    
+    func delete(payloads: [DataPayload])
 }
