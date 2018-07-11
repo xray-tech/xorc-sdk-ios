@@ -17,9 +17,9 @@ class ViewController: UIViewController {
         
         Xray.events.register(transmitter: MockTrasnmitter(behaviour: .retry(nextRetryAt: Date())))
         
-        Xray.data.queue = .main
         
         Xray.data.onTrigger = { payload in
+            
             if let myData = String(data: payload.data, encoding: .utf8) {
                 
                 let controller = UIAlertController(title: "Data received", message: myData, preferredStyle: .alert)
@@ -30,10 +30,6 @@ class ViewController: UIViewController {
                 self.present(controller, animated: true)
             }
         }
-    }
-    
-    func hello() -> String {
-        return "Hello"
     }
     
     @IBAction func eventButtonAction(sender: Any) {
