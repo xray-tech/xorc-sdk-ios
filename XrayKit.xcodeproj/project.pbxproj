@@ -26,6 +26,7 @@
 		8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524020C8034300DD81F3 /* SQLTables.swift */; };
 		8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524220C803B200DD81F3 /* SQLConnection.swift */; };
 		8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524520C809C100DD81F3 /* SQLRequest.swift */; };
+		8A50CC4B20F5E03C009C4AFB /* DataPayloadFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A50CC4A20F5E03C009C4AFB /* DataPayloadFilter.swift */; };
 		8A57F44520CA89190047B021 /* String+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44420CA89190047B021 /* String+SQL.swift */; };
 		8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44620CA89890047B021 /* SQLStringSpecs.swift */; };
 		8A57F44C20CE92E80047B021 /* Foundation+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */; };
@@ -90,6 +91,7 @@
 		8A47524020C8034300DD81F3 /* SQLTables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLTables.swift; sourceTree = "<group>"; };
 		8A47524220C803B200DD81F3 /* SQLConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnection.swift; sourceTree = "<group>"; };
 		8A47524520C809C100DD81F3 /* SQLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLRequest.swift; sourceTree = "<group>"; };
+		8A50CC4A20F5E03C009C4AFB /* DataPayloadFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPayloadFilter.swift; sourceTree = "<group>"; };
 		8A57F44420CA89190047B021 /* String+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+SQL.swift"; sourceTree = "<group>"; };
 		8A57F44620CA89890047B021 /* SQLStringSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLStringSpecs.swift; sourceTree = "<group>"; };
 		8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+SQL.swift"; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		8A47523A20C7F54F00DD81F3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				8A50CC4920F5E005009C4AFB /* Filters */,
 				8A47522B20C7EA0800DD81F3 /* DataPayload.swift */,
 				8A47522E20C7EA0800DD81F3 /* DataService.swift */,
 				8A5B0E6720F3A62C005F123E /* DataController.swift */,
@@ -245,6 +248,14 @@
 				8A57F44B20CE92E80047B021 /* Foundation+SQL.swift */,
 			);
 			name = SQL;
+			sourceTree = "<group>";
+		};
+		8A50CC4920F5E005009C4AFB /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				8A50CC4A20F5E03C009C4AFB /* DataPayloadFilter.swift */,
+			);
+			name = Filters;
 			sourceTree = "<group>";
 		};
 		8A5B0E6420F38FA4005F123E /* Tables */ = {
@@ -464,6 +475,7 @@
 				8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */,
 				8A47523220C7EA0800DD81F3 /* Xray.swift in Sources */,
 				8A47523620C7EA0800DD81F3 /* DataService.swift in Sources */,
+				8A50CC4B20F5E03C009C4AFB /* DataPayloadFilter.swift in Sources */,
 				8A5B0E6320F38E6D005F123E /* DataPayload+SQL.swift in Sources */,
 				8A47523520C7EA0800DD81F3 /* EventService.swift in Sources */,
 				8A47523820C7EA0800DD81F3 /* EventController.swift in Sources */,
