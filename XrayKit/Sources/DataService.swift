@@ -5,19 +5,16 @@
 
 import Foundation
 
-public protocol DataServiceDelegate: AnyObject {
-
-    func dataService(_ service: DataService, didTriggerData: Data)
-
-}
-
 /**
  The `DataService` is the main entry for handing over the `DataPayload` to the Xray SDK.
  */
 public class DataService: NSObject {
-
-    /// The optional delegate
-    public weak var delegate: DataServiceDelegate?
+    
+    /// A block to execute when a schduled DataPayload is triggered.
+    public var onTrigger: ((DataPayload) -> Void)?
+    
+    /// An optional queue on which the onTrigger will be called. Default is `.main`
+    public var queue: OperationQueue = .main
     
     private var controller: DataController?
     
@@ -48,6 +45,10 @@ public class DataService: NSObject {
     
     func start(controller: DataController) {
         self.controller = controller
+        controller.onTrigger = { payload in
+            self.queue.addOperation {
+                self.onTrigger?(payload)
+            }
+        }
     }
-    
 }

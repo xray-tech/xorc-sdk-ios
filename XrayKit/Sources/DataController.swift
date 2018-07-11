@@ -11,6 +11,8 @@ class DataController {
     
     private let queue = DispatchQueue(label: "io.xorc.data")
     
+    public var onTrigger: ((DataPayload) -> Void)?
+    
     init(store: DataStore) {
         self.store = store
     }
@@ -44,6 +46,9 @@ class DataController {
             // todo call delegates for discarded entries
             // todo if the payload has a delay, change the trigger to executeAt and hand it over to a scheduler
             // todo if no delay, pass it to a delegate
+            
+            // todo if tiggered
+            payloads.forEach { self.onTrigger?($0) }
             
             self.store.delete(payloads: payloads)
         }

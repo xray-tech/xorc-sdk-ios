@@ -18,10 +18,18 @@ class ViewController: UIViewController {
         Xray.events.register(transmitter: MockTrasnmitter(behaviour: .retry(nextRetryAt: Date())))
         
         
-    }
-    
-    func hello() -> String {
-        return "Hello"
+        Xray.data.onTrigger = { payload in
+            
+            if let myData = String(data: payload.data, encoding: .utf8) {
+                
+                let controller = UIAlertController(title: "Data received", message: myData, preferredStyle: .alert)
+                controller.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
+                    self.dismiss(animated: true)
+                })
+                
+                self.present(controller, animated: true)
+            }
+        }
     }
     
     @IBAction func eventButtonAction(sender: Any) {
