@@ -452,6 +452,51 @@ class NSPredicateSpecs: QuickSpec {
                     }
                 }
             }
+            
+            // MARK: - Native <
+            
+            describe("given < operator") {
+                
+                beforeEach {
+                    xoperator = "<"
+                }
+                context("and a number argument") {
+                    
+                    beforeEach {
+                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
+                    }
+                    
+                    context("and a greater number value") {
+                        beforeEach {
+                            predicateProxy = PredicateProxy(event: Event(name: "my_event", properties: ["count": 11]))
+                        }
+                        
+                        it("evaluates to false") {
+                            expect(predicate.evaluate(with: predicateProxy)).to(beFalse())
+                        }
+                    }
+                    
+                    context("and a lower number value") {
+                        beforeEach {
+                            predicateProxy = PredicateProxy(event: Event(name: "my_event", properties: ["count": 9]))
+                        }
+                        
+                        it("evaluates to true") {
+                            expect(predicate.evaluate(with: predicateProxy)).to(beTrue())
+                        }
+                    }
+                    
+                    context("and a equal number value") {
+                        beforeEach {
+                            predicateProxy = PredicateProxy(event: Event(name: "my_event", properties: ["count": 10]))
+                        }
+                        
+                        it("evaluates to false") {
+                            expect(predicate.evaluate(with: predicateProxy)).to(beFalse())
+                        }
+                    }
+                }
+            }
         }
     }
 }
