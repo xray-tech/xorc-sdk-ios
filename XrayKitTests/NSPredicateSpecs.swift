@@ -22,7 +22,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a string argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: "iPho")
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: "iPho")
                     }
 
                     context("and a value that contains") {
@@ -55,7 +55,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a string argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: "iPho")
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: "iPho")
                     }
 
                     context("and a value that contains") {
@@ -88,7 +88,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a string argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: "iPho")
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: "iPho")
                     }
 
                     context("and a value that contains") {
@@ -123,7 +123,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a string array argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: ["iPhone"])
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: ["iPhone"])
                     }
 
                     context("and a value that is contained") {
@@ -156,7 +156,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a string array argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: ["iPhone"])
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: ["iPhone"])
                     }
 
                     context("and a value that is contained") {
@@ -191,7 +191,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a string argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: "10")
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: "10")
                     }
 
                     context("and a string that equals") {
@@ -228,7 +228,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a bool argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: true)
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.item_name", xoperator: xoperator, arguments: true)
                     }
 
                     context("and a bool that equals") {
@@ -283,7 +283,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a number argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
                     }
 
                     context("and a greater number value") {
@@ -328,7 +328,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a number argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
                     }
 
                     context("and a greater number value") {
@@ -373,7 +373,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a number argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
                     }
 
                     context("and a greater number value") {
@@ -418,7 +418,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a number argument") {
 
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
                     }
 
                     context("and a greater number value") {
@@ -463,7 +463,7 @@ class NSPredicateSpecs: QuickSpec {
                 context("and a number argument") {
                     
                     beforeEach {
-                        predicate = NSPredicate.predicateWithValueKeyPath(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
+                        predicate = NSPredicate.makePredicate(valueKeyPath: "event.properties.count", xoperator: xoperator, arguments: 10)
                     }
                     
                     context("and a greater number value") {
