@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A20E1D920F62F240027F0D6 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20E1D820F62F240027F0D6 /* Predicates.swift */; };
 		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
 		8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A2AFAB920C93E28002A0B2B /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; };
@@ -39,6 +40,8 @@
 		8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7C07E320D9137F0075DF97 /* JSONValueSpecs.swift */; };
 		8AAE41CA20E0DF3D008338CF /* EventControllerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE41C920E0DF3D008338CF /* EventControllerSpecs.swift */; };
 		8AAE41CD20E0E4E1008338CF /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE41CC20E0E4E1008338CF /* Mocks.swift */; };
+		8AFE178420FC7E3100DDCEAE /* NSPredicateSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D877CF5B86FE59F2CB73AD /* NSPredicateSpecs.swift */; };
+		C4D87403699B04B6BAE2B5BA /* PredicateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D874CC176EE6AF15B79F52 /* PredicateProxy.swift */; };
 		C4D8751227EA93A59B626723 /* SQLDatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */; };
 		C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */; };
 		C4D87B5C5C8FCC078CB8252C /* Triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87DDFB8DEC8EBDC16541E /* Triggers.swift */; };
@@ -70,6 +73,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8A20E1D820F62F240027F0D6 /* Predicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2AFAA220C92F1E002A0B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A2AFAAC20C936E6002A0B2B /* SQLConnectionSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLConnectionSpecs.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 		8AAE41C920E0DF3D008338CF /* EventControllerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventControllerSpecs.swift; sourceTree = "<group>"; };
 		8AAE41CC20E0E4E1008338CF /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLDatabaseController.swift; sourceTree = "<group>"; };
+		C4D874CC176EE6AF15B79F52 /* PredicateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredicateProxy.swift; sourceTree = "<group>"; };
+		C4D877CF5B86FE59F2CB73AD /* NSPredicateSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPredicateSpecs.swift; sourceTree = "<group>"; };
 		C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+SQL.swift"; sourceTree = "<group>"; };
 		C4D87DDFB8DEC8EBDC16541E /* Triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triggers.swift; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 				8A2AFAAE20C93707002A0B2B /* Frameworks */,
 				8A2AFAAB20C936CD002A0B2B /* Store */,
 				8A2AFAA220C92F1E002A0B2B /* Info.plist */,
+				C4D87A88C8CD13B38CBC3EF8 /* Data */,
 			);
 			path = XrayKitTests;
 			sourceTree = "<group>";
@@ -254,6 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				8A50CC4A20F5E03C009C4AFB /* DataPayloadFilter.swift */,
+				8A20E1D820F62F240027F0D6 /* Predicates.swift */,
+				C4D874CC176EE6AF15B79F52 /* PredicateProxy.swift */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -309,6 +318,22 @@
 				8AAE41CC20E0E4E1008338CF /* Mocks.swift */,
 			);
 			name = Mocks;
+			sourceTree = "<group>";
+		};
+		C4D87A88C8CD13B38CBC3EF8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C4D87AABB4772FD977C466D1 /* Filters */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		C4D87AABB4772FD977C466D1 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				C4D877CF5B86FE59F2CB73AD /* NSPredicateSpecs.swift */,
+			);
+			name = Filters;
 			sourceTree = "<group>";
 		};
 		C4D87E71D2CD65EDF3970A6E /* Extensions */ = {
@@ -449,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */,
+				8AFE178420FC7E3100DDCEAE /* NSPredicateSpecs.swift in Sources */,
 				8AAE41CA20E0DF3D008338CF /* EventControllerSpecs.swift in Sources */,
 				8A57F44720CA89890047B021 /* SQLStringSpecs.swift in Sources */,
 				8A57F44E20CE93BA0047B021 /* SQLEventSpecs.swift in Sources */,
@@ -468,6 +494,7 @@
 				8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */,
 				8A47523420C7EA0800DD81F3 /* Event.swift in Sources */,
 				8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */,
+				8A20E1D920F62F240027F0D6 /* Predicates.swift in Sources */,
 				8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */,
 				8A47523E20C7F5F400DD81F3 /* Stores.swift in Sources */,
 				8A5B0E6820F3A62C005F123E /* DataController.swift in Sources */,
@@ -485,6 +512,7 @@
 				C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */,
 				C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */,
 				C4D87B5C5C8FCC078CB8252C /* Triggers.swift in Sources */,
+				C4D87403699B04B6BAE2B5BA /* PredicateProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

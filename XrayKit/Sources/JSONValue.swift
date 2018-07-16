@@ -89,6 +89,19 @@ extension JSONValue {
         }
         return nil
     }
+
+    var anyValue: Any {
+        switch self {
+        case .string(let val):
+            return val
+        case .integer(let val):
+            return val
+        case .double(let val):
+            return val
+        case .bool(let val):
+            return val
+        }
+    }
     
     /// Helper var to get the String value returns nil otherwise
     public var stringValue: String? {
