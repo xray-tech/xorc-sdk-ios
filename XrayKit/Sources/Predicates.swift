@@ -8,6 +8,7 @@ import Foundation
 enum PredicateError: Error {
     case operandNotFound(String)
     case invalidFilter(String)
+    case invalidLogicalType(String)
 }
 
 extension NSPredicate {
@@ -25,7 +26,7 @@ extension NSPredicate {
     static func makePredicate(filters: [String: Any]) throws  -> NSPredicate {
         let predicates = try makePredicates(filters: filters)
         if predicates.count > 1 {
-
+            // todo + tests
         }
         guard let predicate = predicates.first else {
             // throw
@@ -72,6 +73,20 @@ extension NSPredicate {
                 predicates.append(predicate)
                 return
             }
+
+            // logical operator AND or OR must have an array as unique child
+            // {"AND":[{"event.properties.item_name":{"eq":"iPhone"}},{"event.properties.item_description":{"eq":"Apple"}}]}
+            guard let childArguments = filters[xoperator] as? [Any] else {
+                throw PredicateError.invalidFilter("Operator \(xoperator) must have an array as child")
+            }
+
+            let logicalType = try xoperator.logicalType()
+
+            // recursively cumulate the child predicates and combine them either with AND or OR
+            var children = [NSPredicate]()
+            try cumulate(predicates: &children, filters: childArguments)
+            let combinedLogicalPredicate = NSCompoundPredicate(type: logicalType, subpredicates: children)
+            predicates.append(combinedLogicalPredicate)
         }
     }
 
@@ -141,15 +156,26 @@ extension NSPredicate {
 
 private extension String {
 
-    /// returns true when the string is a keypath such as  "event.properties.item_name"
+    /// returns true when the string is a key path such as  "event.properties.item_name"
     func isSimpleOperator() -> Bool {
-        return !isANDOperator()
+        return !isANDOperator() && !isOROperator()
     }
+
     func isANDOperator() -> Bool {
         return self.uppercased() == "AND"
     }
 
     func isOROperator() -> Bool {
         return self.uppercased() == "OR"
+    }
+
+    func logicalType() throws -> NSCompoundPredicate.LogicalType {
+        if isANDOperator() {
+            return .and
+        }
+        if isOROperator() {
+            return .or
+        }
+        throw  PredicateError.invalidLogicalType("The logical type must be either AND or OR")
     }
 }
