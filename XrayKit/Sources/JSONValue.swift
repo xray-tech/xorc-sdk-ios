@@ -127,3 +127,26 @@ extension JSONValue {
         return nil
     }
 }
+
+extension Dictionary where Key == String, Value == Any {
+
+    func jsonValues() -> [String: JSONValue] {
+        var jsonValues = [String: JSONValue]()
+        
+        for (key, value) in self {
+            switch value {
+            case let value as Int:
+                jsonValues[key] = JSONValue.init(value)
+            case let value as String:
+                jsonValues[key] = JSONValue.init(value)
+            case let value as Double:
+                jsonValues[key] = JSONValue.init(value)
+            case let value as Bool:
+                jsonValues[key] = JSONValue.init(value)
+            default:
+                continue
+            }
+        }
+        return jsonValues
+    }
+}
