@@ -1,0 +1,36 @@
+{
+  "matches": true,
+  "event": {
+    "properties": {
+      "item_name": "TV",
+      "item_description": "A TV to watch the movies",
+      "item_sale": true,
+      "item_price": 999.99
+    }
+  },
+  "filters": {
+    "AND": [
+      {
+        "event.properties.item_name": {
+          "in": [
+            "TV",
+            "Radio"
+          ]
+        }
+      },
+      {
+        "event.properties.item_description": {
+          "not_in": [
+            "soap",
+            "operas"
+          ]
+        }
+      },
+      {
+        "event.properties.item_price": {
+          "lt": 1000
+        }
+      }
+    ]
+  }
+}

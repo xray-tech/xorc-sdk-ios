@@ -47,10 +47,14 @@
 		C4D8742280589DD2FFC7D575 /* FileHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87A9C3E1B0E11EC2B2B66 /* FileHelpers.swift */; };
 		C4D87444CDF14429F1AB9B7B /* event-filter-flat-or.json in Resources */ = {isa = PBXBuildFile; fileRef = C4D8767644A6DA429B942B1C /* event-filter-flat-or.json */; };
 		C4D8751227EA93A59B626723 /* SQLDatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */; };
+		C4D875DFD3C49E562D63F1A4 /* full-test-filter-1.json in Resources */ = {isa = PBXBuildFile; fileRef = C4D8738AE4DC1BF7FBDA8DD6 /* full-test-filter-1.json */; };
 		C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */; };
 		C4D877B4E902AE8CD5AED287 /* event-filter-flat-and.json in Resources */ = {isa = PBXBuildFile; fileRef = C4D87DAD72A5C15A2DEEE293 /* event-filter-flat-and.json */; };
 		C4D87B5C5C8FCC078CB8252C /* Triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D87DDFB8DEC8EBDC16541E /* Triggers.swift */; };
+		C4D87BA5BFE25AB99DB698EA /* full-test-filter-3.json in Resources */ = {isa = PBXBuildFile; fileRef = C4D87FDAB5D448B88FE1B40E /* full-test-filter-3.json */; };
+		C4D87DEC3F452E966059E6E4 /* NSPredicateFullSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D874CFAAB748F7F7A2E09B /* NSPredicateFullSpecs.swift */; };
 		C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */; };
+		C4D87E85FA1305B559234850 /* full-test-filter-2.json in Resources */ = {isa = PBXBuildFile; fileRef = C4D8788CD3D4F452FC294A23 /* full-test-filter-2.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,15 +119,19 @@
 		8AAE41CC20E0E4E1008338CF /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		C4D87042327DBA24BF57A684 /* SQLDatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLDatabaseController.swift; sourceTree = "<group>"; };
 		C4D870DA609893729D20F8B5 /* NSPredicateRecursionSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPredicateRecursionSpecs.swift; sourceTree = "<group>"; };
+		C4D8738AE4DC1BF7FBDA8DD6 /* full-test-filter-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "full-test-filter-1.json"; sourceTree = "<group>"; };
 		C4D874CC176EE6AF15B79F52 /* PredicateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredicateProxy.swift; sourceTree = "<group>"; };
+		C4D874CFAAB748F7F7A2E09B /* NSPredicateFullSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPredicateFullSpecs.swift; sourceTree = "<group>"; };
 		C4D8767644A6DA429B942B1C /* event-filter-flat-or.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "event-filter-flat-or.json"; sourceTree = "<group>"; };
 		C4D877CF5B86FE59F2CB73AD /* NSPredicateSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSPredicateSpecs.swift; sourceTree = "<group>"; };
+		C4D8788CD3D4F452FC294A23 /* full-test-filter-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "full-test-filter-2.json"; sourceTree = "<group>"; };
 		C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		C4D8791EFE6A5DD69F657C9C /* event-filter-simple.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "event-filter-simple.json"; sourceTree = "<group>"; };
 		C4D87A9C3E1B0E11EC2B2B66 /* FileHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelpers.swift; sourceTree = "<group>"; };
 		C4D87D34BAB29EE42C0F1BC2 /* Event+SQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Event+SQL.swift"; sourceTree = "<group>"; };
 		C4D87DAD72A5C15A2DEEE293 /* event-filter-flat-and.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "event-filter-flat-and.json"; sourceTree = "<group>"; };
 		C4D87DDFB8DEC8EBDC16541E /* Triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Triggers.swift; sourceTree = "<group>"; };
+		C4D87FDAB5D448B88FE1B40E /* full-test-filter-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "full-test-filter-3.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,6 +345,9 @@
 				C4D8791EFE6A5DD69F657C9C /* event-filter-simple.json */,
 				C4D87DAD72A5C15A2DEEE293 /* event-filter-flat-and.json */,
 				C4D8767644A6DA429B942B1C /* event-filter-flat-or.json */,
+				C4D8738AE4DC1BF7FBDA8DD6 /* full-test-filter-1.json */,
+				C4D8788CD3D4F452FC294A23 /* full-test-filter-2.json */,
+				C4D87FDAB5D448B88FE1B40E /* full-test-filter-3.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -363,6 +374,7 @@
 				C4D877CF5B86FE59F2CB73AD /* NSPredicateSpecs.swift */,
 				C4D87104FD20C6B03E98ADD4 /* Resources */,
 				C4D870DA609893729D20F8B5 /* NSPredicateRecursionSpecs.swift */,
+				C4D874CFAAB748F7F7A2E09B /* NSPredicateFullSpecs.swift */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -473,6 +485,9 @@
 				8A62041120FCBAA400623440 /* event-filter-simple.json in Resources */,
 				C4D877B4E902AE8CD5AED287 /* event-filter-flat-and.json in Resources */,
 				C4D87444CDF14429F1AB9B7B /* event-filter-flat-or.json in Resources */,
+				C4D875DFD3C49E562D63F1A4 /* full-test-filter-1.json in Resources */,
+				C4D87E85FA1305B559234850 /* full-test-filter-2.json in Resources */,
+				C4D87BA5BFE25AB99DB698EA /* full-test-filter-3.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +533,7 @@
 				8A57F45020CEB0670047B021 /* SQLDatabaseControllerSpecs.swift in Sources */,
 				C4D870ACF7E4441812B43FB6 /* NSPredicateRecursionSpecs.swift in Sources */,
 				C4D8742280589DD2FFC7D575 /* FileHelpers.swift in Sources */,
+				C4D87DEC3F452E966059E6E4 /* NSPredicateFullSpecs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
