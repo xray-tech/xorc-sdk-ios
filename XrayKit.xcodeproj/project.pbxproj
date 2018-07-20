@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19A1738D2828647E1736A743 /* EventPropertyFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A177284E12E2E7FDB365E0 /* EventPropertyFilter.swift */; };
 		8A20E1D920F62F240027F0D6 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20E1D820F62F240027F0D6 /* Predicates.swift */; };
 		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
 		8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -82,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		19A177284E12E2E7FDB365E0 /* EventPropertyFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPropertyFilter.swift; sourceTree = "<group>"; };
 		8A20E1D820F62F240027F0D6 /* Predicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2AFAA220C92F1E002A0B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				8A50CC4A20F5E03C009C4AFB /* DataPayloadFilter.swift */,
 				8A20E1D820F62F240027F0D6 /* Predicates.swift */,
 				C4D874CC176EE6AF15B79F52 /* PredicateProxy.swift */,
+				19A177284E12E2E7FDB365E0 /* EventPropertyFilter.swift */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -371,8 +374,8 @@
 		C4D87AABB4772FD977C466D1 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
-				C4D877CF5B86FE59F2CB73AD /* NSPredicateSpecs.swift */,
 				C4D87104FD20C6B03E98ADD4 /* Resources */,
+				C4D877CF5B86FE59F2CB73AD /* NSPredicateSpecs.swift */,
 				C4D870DA609893729D20F8B5 /* NSPredicateRecursionSpecs.swift */,
 				C4D874CFAAB748F7F7A2E09B /* NSPredicateFullSpecs.swift */,
 			);
@@ -513,7 +516,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\necho \"swiftlint\"\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -565,6 +568,7 @@
 				C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */,
 				C4D87B5C5C8FCC078CB8252C /* Triggers.swift in Sources */,
 				C4D87403699B04B6BAE2B5BA /* PredicateProxy.swift in Sources */,
+				19A1738D2828647E1736A743 /* EventPropertyFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

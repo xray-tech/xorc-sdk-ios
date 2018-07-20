@@ -13,14 +13,14 @@ import Foundation
 protocol DataPayloadFilter {
   
     /**
-     Applies the filter to a list of `DataPayload` for an occured event.
+     Applies the filter to a list of `DataPayload` for an occurred event.
      
      - parameter payloads: The list of payloads that already match the event name
-     - parameter event: The event that was used to querry by name all the payloads
+     - parameter event: The event that was used to query by name all the payloads
      
      - warning: It is assumed that all payloads do have an `EventTrigger` with the only name matching the passed event.
      */
-    func apply(to payloads: [DataPayload], withEvent event: Event) -> FilterResult
+    static func filter(payloads: [DataPayload], withEvent event: Event) -> FilterResult
 }
 
 
