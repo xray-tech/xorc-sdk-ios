@@ -76,8 +76,9 @@ extension NSPredicate {
 
             // logical operator AND or OR must have an array as unique child
             // {"AND":[{"event.properties.item_name":{"eq":"iPhone"}},{"event.properties.item_description":{"eq":"Apple"}}]}
-            guard let childArguments = filters[xoperator] as? [Any] else {
-                throw PredicateError.invalidFilter("Operator \(xoperator) must have an array as child")
+            guard let childArguments = filters[xoperator] as? [Any], childArguments.count >= 2 else {
+                // todo test
+                throw PredicateError.invalidFilter("Operator \(xoperator) must have an array with at least 2 items as child")
             }
 
             let logicalType = try xoperator.logicalType()
@@ -102,7 +103,12 @@ extension NSPredicate {
 
         // the first dictionary entry is the key path of our value. e.g "event.properties.item_description"
         guard let valueKeyPath = simpleFilter.keys.first, simpleFilter.count == 1 else {
-            throw PredicateError.invalidFilter("Expected 1 key/value got \(simpleFilter.count): \(simpleFilter)")
+            var filter = simpleFilter.description
+            
+            if let data = try? JSONSerialization.data(withJSONObject: simpleFilter, options: JSONSerialization.WritingOptions.prettyPrinted) {
+                filter = String(data: data, encoding: .utf8)!
+            }
+            throw PredicateError.invalidFilter("Expected 1 key/value got \(simpleFilter.count): \(filter)")
         }
         // get the content of the simple filter: { "eq": "Apple" }
         guard let filterContent = simpleFilter[valueKeyPath] as? [String: Any] else {
