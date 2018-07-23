@@ -36,36 +36,26 @@ class ViewController: UIViewController {
     
     @IBAction func eventButtonAction(sender: Any) {
         
-        let properties: [String: JSONValue] = [
-            "foo": "bar",
-            "float": 1.1]
-        
         let context: [String: JSONValue] = [
             "session_id": "hello",
             "retry": true,
             "retryAt": JSONValue(Date().timeIntervalSince1970)
         ]
         
-        let event = Event(name: "my_event", properties: properties, context: context)
-        
+        // Send the event
+        let event = Event(name: "purchase", properties: ["item_name": "iPhone"], context: context)
         Xray.events.log(event: event)
     }
-
+    
     @IBAction func scheduleButtonAction(sender: Any) {
         
-        let filters = """
-                {"event.properties.item_name":{"eq":"iPhone"}}
-                """
         
-        // todo this optional API is not easy to use
-        if let eventTrigger = try? EventTrigger(name: "my_event", jsonFilters: filters) {
-            let trigger = DataPayload.Trigger.event(eventTrigger)
-            let data = "Hello".data(using: .utf8)!
-            
-            let payload = DataPayload(data: data, trigger: trigger)
-            
-            Xray.data.schedule(payload: payload)
-        }
+        // Create an event trigger with event properties
+        let eventTrigger = EventTrigger(name: "purchase", filters: [ "event.properties.item_name": ["in": ["iPhone", "iPad"]] ])
+        
+        // Schedule the trigger until the event occurs
+        Xray.data.schedule(payload: DataPayload(data: "Hello".data(using: .utf8)!, trigger: .event(eventTrigger)))
+        
     }
 }
 
