@@ -7,7 +7,7 @@ class NSPredicateFullSpecs: QuickSpec {
 
     override func spec() {
 
-        fdescribe("NSPredicateFullSpecs") {
+        describe("NSPredicateFullSpecs") {
             var predicate: NSPredicate!
             var predicateProxy: PredicateProxy!
             var expectedMatch: Bool!
@@ -21,7 +21,12 @@ class NSPredicateFullSpecs: QuickSpec {
 
                         expectedMatch = testDefinitionJson["matches"] as? Bool
                         let filters = testDefinitionJson["filters"] as! [String: Any]
-                        predicate = try? NSPredicate.makePredicate(filters: filters)
+                        do {
+                            predicate = try NSPredicate.makePredicate(filters: filters)
+                        } catch {
+                            fail("failed creating a test predicate: \(error)")
+                        }
+                        
                         let properties = (testDefinitionJson as NSDictionary).value(forKeyPath: "event.properties") as! [String: Any]
 
                         predicateProxy = PredicateProxy(event: Event(name: "my_event", properties: properties.jsonValues()))
