@@ -35,7 +35,7 @@ extension NSPredicate {
         return predicate
     }
 
-    private static func makePredicates(filters: [String: Any]) throws  -> [NSPredicate]  {
+    private static func makePredicates(filters: [String: Any]) throws  -> [NSPredicate] {
         var predicates = [NSPredicate]()
         try cumulate(predicates: &predicates, filters: filters)
         return predicates
@@ -149,9 +149,6 @@ extension NSPredicate {
         }
         return predicate
     }
-
-
-
 }
 
 private extension String {

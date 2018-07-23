@@ -58,7 +58,7 @@ class DataController {
             // - did match (todo if there is a reenter flag, keep them)
             var payloadsToDelete = mismatched
                 .filter({ $0.handle == .delete })
-                .map() { $0.payload }
+                .map { $0.payload }
             
             payloadsToDelete.append(contentsOf: matched)
             // delete payloads that were triggered

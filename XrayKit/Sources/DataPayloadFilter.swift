@@ -52,7 +52,7 @@ struct EventPropertyFilter: DataPayloadFilter {
         
         
         for payload in payloads {
-            switch (payload.trigger) {
+            switch payload.trigger {
             case .event(let eventTrigger):
                 // safety check for event name even though we expect all data payload to already have the correct event *name*
                 if event.name != eventTrigger.name {
@@ -83,12 +83,9 @@ struct EventPropertyFilter: DataPayloadFilter {
                     print("Could not create a predicate from event trigger. Discarding payload", error)
                     mismatched.append(Mismatch(payload: payload, handle: .delete))
                 }
-                
-                break
-            case .date(_):
+            case .date:
                 // not a event base trigger, keep it as it is
                 mismatched.append(Mismatch(payload: payload, handle: .keep))
-                break
             }
         }
         
