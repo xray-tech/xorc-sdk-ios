@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19A1738D2828647E1736A743 /* EventPropertyFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A177284E12E2E7FDB365E0 /* EventPropertyFilter.swift */; };
+		3D226B0D21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D226B0C21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift */; };
 		8A20E1D920F62F240027F0D6 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20E1D820F62F240027F0D6 /* Predicates.swift */; };
 		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
 		8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -84,6 +85,7 @@
 
 /* Begin PBXFileReference section */
 		19A177284E12E2E7FDB365E0 /* EventPropertyFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPropertyFilter.swift; sourceTree = "<group>"; };
+		3D226B0C21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPropertyFilterSpecs.swift; sourceTree = "<group>"; };
 		8A20E1D820F62F240027F0D6 /* Predicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2AFAA220C92F1E002A0B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				C4D877CF5B86FE59F2CB73AD /* NSPredicateSpecs.swift */,
 				C4D870DA609893729D20F8B5 /* NSPredicateRecursionSpecs.swift */,
 				C4D874CFAAB748F7F7A2E09B /* NSPredicateFullSpecs.swift */,
+				3D226B0C21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D226B0D21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift in Sources */,
 				8A7C07E420D9137F0075DF97 /* JSONValueSpecs.swift in Sources */,
 				8AFE178420FC7E3100DDCEAE /* NSPredicateSpecs.swift in Sources */,
 				8AAE41CA20E0DF3D008338CF /* EventControllerSpecs.swift in Sources */,

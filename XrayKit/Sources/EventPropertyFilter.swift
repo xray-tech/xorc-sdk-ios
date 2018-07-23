@@ -52,8 +52,6 @@ struct EventPropertyFilter: DataPayloadFilter {
                 break
             }
         }
-        // safety
-
 
         return FilterResult(matched: matched, mismatched: mismatched)
     }
