@@ -12,7 +12,6 @@ class EventPropertyFilterSpecs: QuickSpec {
     override func spec() {
         describe("EventPropertyFilter") {
             let sut = EventPropertyFilter.self
-            
             var result: FilterResult!
             
             context("given one payload with a different event name") {
@@ -62,7 +61,7 @@ class EventPropertyFilterSpecs: QuickSpec {
                     beforeEach {
                         result = sut.filter(payloads: [payload], withEvent: event)
                     }
-
+                    
                     it("has one matched result") {
                         expect(result.matched.count).to(equal(1))
                     }
@@ -126,6 +125,51 @@ class EventPropertyFilterSpecs: QuickSpec {
                     it("has no matched result") {
                         expect(result.matched.count).to(equal(0))
                     }
+                }
+            }
+        }
+    }
+}
+
+class ExpiredDataPayloadFilterSpecs: QuickSpec {
+    override func spec() {
+        
+        describe("EventPropertyFilter") {
+            let sut = ExpiredDataPayloadFilter.self
+            var result: FilterResult!
+            
+            context("given an expired payload") {
+                
+                beforeEach {
+                    let payload = DataPayload(data: Data(), trigger: .date(Date()), userInfo: nil, expiresAt: Date.distantPast, entryId: 1, createdAt: Date(), updatedAt: Date())
+                    result = sut.filter(payloads: [payload], withEvent: Event(name: "my_event"))
+                }
+                
+             
+                it("has one mismatched result with a delete handle") {
+                    expect(result.mismatched.count).to(equal(1))
+                    expect(result.mismatched.first!.handle).to(equal(.delete))
+                }
+                
+                it("has no matched result") {
+                    expect(result.matched.count).to(equal(0))
+                }
+            }
+            
+            context("given a non expired payload") {
+                
+                beforeEach {
+                    let payload = DataPayload(data: Data(), trigger: .date(Date()), userInfo: nil, expiresAt: Date.distantFuture, entryId: 1, createdAt: Date(), updatedAt: Date())
+                    result = sut.filter(payloads: [payload], withEvent: Event(name: "my_event"))
+                }
+                
+                
+                it("has no mismatched results") {
+                    expect(result.mismatched.count).to(equal(0))
+                }
+                
+                it("has one matched result") {
+                    expect(result.matched.count).to(equal(1))
                 }
             }
         }

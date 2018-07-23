@@ -97,10 +97,20 @@ struct EventPropertyFilter: DataPayloadFilter {
 }
 
 struct ExpiredDataPayloadFilter: DataPayloadFilter {
-    
+
     static func filter(payloads: [DataPayload], withEvent event: Event) -> FilterResult {
+        
+        var mismatched  = [Mismatch]()
+        var matched = [DataPayload]()
+        
+        let now = Date()
         for payload in payloads {
-            payload.expiresAt
+            if let expiredAt = payload.expiresAt, expiredAt < now {
+                mismatched.append(Mismatch(payload: payload, handle: .delete))
+            } else {
+                matched.append(payload)
+            }
         }
+        return FilterResult(matched: matched, mismatched: mismatched)
     }
 }
