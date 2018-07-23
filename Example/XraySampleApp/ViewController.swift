@@ -18,7 +18,9 @@ class ViewController: UIViewController {
         Xray.events.register(transmitter: MockTrasnmitter(behaviour: .retry(nextRetryAt: Date())))
         
         
-        Xray.data.onTrigger = { payload in
+        Xray.data.onTrigger = { payloads in
+            
+            guard let payload = payloads.first else { return }
             
             if let myData = String(data: payload.data, encoding: .utf8) {
                 
