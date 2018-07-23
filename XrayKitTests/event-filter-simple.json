@@ -1,0 +1,8 @@
+{
+  "event": "d360_app_shop_add_cart",
+  "filters": {
+    "event.properties.item_name": {
+      "eq": "iPhone"
+    }
+  }
+}

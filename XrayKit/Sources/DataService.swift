@@ -11,7 +11,7 @@ import Foundation
 public class DataService: NSObject {
     
     /// A block to execute when a schduled DataPayload is triggered.
-    public var onTrigger: ((DataPayload) -> Void)?
+    public var onTrigger: (([DataPayload]) -> Void)?
     
     /// An optional queue on which the onTrigger will be called. Default is `.main`
     public var queue: OperationQueue = .main

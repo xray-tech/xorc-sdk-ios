@@ -89,6 +89,19 @@ extension JSONValue {
         }
         return nil
     }
+
+    var anyValue: Any {
+        switch self {
+        case .string(let val):
+            return val
+        case .integer(let val):
+            return val
+        case .double(let val):
+            return val
+        case .bool(let val):
+            return val
+        }
+    }
     
     /// Helper var to get the String value returns nil otherwise
     public var stringValue: String? {
@@ -112,5 +125,28 @@ extension JSONValue {
             return val
         }
         return nil
+    }
+}
+
+extension Dictionary where Key == String, Value == Any {
+
+    func jsonValues() -> [String: JSONValue] {
+        var jsonValues = [String: JSONValue]()
+        
+        for (key, value) in self {
+            switch value {
+            case let value as Int:
+                jsonValues[key] = JSONValue.init(value)
+            case let value as String:
+                jsonValues[key] = JSONValue.init(value)
+            case let value as Double:
+                jsonValues[key] = JSONValue.init(value)
+            case let value as Bool:
+                jsonValues[key] = JSONValue.init(value)
+            default:
+                continue
+            }
+        }
+        return jsonValues
     }
 }
