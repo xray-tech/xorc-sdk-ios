@@ -5,6 +5,7 @@
 
 import Foundation
 
+// todo doc
 public struct EventTrigger {
     public let name: String
     public let filters: [String: Any]?

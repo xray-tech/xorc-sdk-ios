@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19A1738D2828647E1736A743 /* EventPropertyFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A177284E12E2E7FDB365E0 /* EventPropertyFilter.swift */; };
 		3D226B0D21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D226B0C21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift */; };
 		8A20E1D920F62F240027F0D6 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20E1D820F62F240027F0D6 /* Predicates.swift */; };
 		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
@@ -84,7 +83,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		19A177284E12E2E7FDB365E0 /* EventPropertyFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPropertyFilter.swift; sourceTree = "<group>"; };
 		3D226B0C21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPropertyFilterSpecs.swift; sourceTree = "<group>"; };
 		8A20E1D820F62F240027F0D6 /* Predicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,7 +284,6 @@
 				8A50CC4A20F5E03C009C4AFB /* DataPayloadFilter.swift */,
 				8A20E1D820F62F240027F0D6 /* Predicates.swift */,
 				C4D874CC176EE6AF15B79F52 /* PredicateProxy.swift */,
-				19A177284E12E2E7FDB365E0 /* EventPropertyFilter.swift */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -572,7 +569,6 @@
 				C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */,
 				C4D87B5C5C8FCC078CB8252C /* Triggers.swift in Sources */,
 				C4D87403699B04B6BAE2B5BA /* PredicateProxy.swift in Sources */,
-				19A1738D2828647E1736A743 /* EventPropertyFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
