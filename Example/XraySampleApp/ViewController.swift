@@ -10,12 +10,23 @@ import UIKit
 import XrayKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet var textView: UITextView!
+    @IBOutlet var eventNameTextField: UITextField!
+    @IBOutlet var keyTextField: UITextField!
+    @IBOutlet var valueTextField: UITextField!
+
+    var eventProperties = [String: JSONValue]() {
+        didSet {
+            textView.text = try? eventProperties.toJson()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        Xray.events.register(transmitter: MockTrasnmitter(behaviour: .retry(nextRetryAt: Date())))
+        Xray.events.register(transmitter: MockTransmitter(behaviour: .succeed))
         
         
         Xray.data.onTrigger = { payloads in
@@ -34,7 +45,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func eventButtonAction(sender: Any) {
+    @IBAction func eventButtonAction2(sender: Any) {
         
         let context: [String: JSONValue] = [
             "session_id": "hello",
@@ -47,8 +58,41 @@ class ViewController: UIViewController {
         Xray.events.log(event: event)
     }
     
-    @IBAction func scheduleButtonAction(sender: Any) {
+    @IBAction
+    func eventButtonAction(sender: Any) {
+        guard let eventName = eventNameTextField.text else {
+            present(title: "Invalid event name", message: "Must not be empty")
+            return
+        }
         
+        do {
+            let properties = textView.text.isEmpty ? nil : try textView.text.jsonValues()
+            Xray.events.log(event: Event(name: eventName, properties: properties))
+        } catch {
+            present(title: "Could not parse event properties", message: error.localizedDescription)
+        }
+        textView.resignFirstResponder()
+    }
+
+    @IBAction func addButtonAction(_ sender: Any) {
+
+        guard let key = keyTextField.text, key.count > 0 else {
+            present(title: "Invalid key", message: "The key must be non empty")
+            return
+        }
+
+        guard let valueString = valueTextField.text else {
+            // remove the value
+            eventProperties.removeValue(forKey: key)
+            return
+        }
+        eventProperties[key] = JSONValue(parseString: valueString)
+
+        keyTextField.resignFirstResponder()
+        valueTextField.resignFirstResponder()
+    }
+    
+    @IBAction func scheduleButtonAction(sender: Any) {
         
         // Create an event trigger with event properties
         let eventTrigger = EventTrigger(name: "purchase", filters: [ "event.properties.item_name": ["in": ["iPhone", "iPad"]] ])
@@ -59,7 +103,19 @@ class ViewController: UIViewController {
     }
 }
 
-class MockTrasnmitter: EventTransmitter {
+extension String {
+
+    func jsonValues() throws -> [String: JSONValue]  {
+
+        guard let data = self.data(using: .utf8) else {
+            // no date
+            throw NSError(domain: "testapp", code: 0, userInfo: [ NSLocalizedDescriptionKey: "No data"])
+        }
+        return try JSONDecoder().decode([String: JSONValue].self, from: data)
+    }
+}
+
+class MockTransmitter: EventTransmitter {
     
     enum MockBehaviour {
         case succeed
