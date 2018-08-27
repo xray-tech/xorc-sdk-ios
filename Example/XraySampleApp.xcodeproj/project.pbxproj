@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19A17CACCABB9FBAB883B544 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A17EEA4A19A0034123E1C5 /* UIViewControllerExtensions.swift */; };
 		8AAA450920BEE0030055D7B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA450820BEE0030055D7B9 /* AppDelegate.swift */; };
 		8AAA450B20BEE0030055D7B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA450A20BEE0030055D7B9 /* ViewController.swift */; };
 		8AAA450E20BEE0030055D7B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAA450C20BEE0030055D7B9 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19A17EEA4A19A0034123E1C5 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		8AAA450520BEE0030055D7B9 /* XraySampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XraySampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAA450820BEE0030055D7B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AAA450A20BEE0030055D7B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19A1741AEE74EE737F83364B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				19A17EEA4A19A0034123E1C5 /* UIViewControllerExtensions.swift */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		8AAA44FC20BEE0030055D7B9 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +74,7 @@
 				8AAA450F20BEE0040055D7B9 /* Assets.xcassets */,
 				8AAA451120BEE0040055D7B9 /* LaunchScreen.storyboard */,
 				8AAA451420BEE0040055D7B9 /* Info.plist */,
+				19A1741AEE74EE737F83364B /* Categories */,
 			);
 			path = XraySampleApp;
 			sourceTree = "<group>";
@@ -149,6 +160,7 @@
 			files = (
 				8AAA450B20BEE0030055D7B9 /* ViewController.swift in Sources */,
 				8AAA450920BEE0030055D7B9 /* AppDelegate.swift in Sources */,
+				19A17CACCABB9FBAB883B544 /* UIViewControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
