@@ -81,6 +81,25 @@ extension JSONValue: ExpressibleByStringLiteral, ExpressibleByIntegerLiteral, Ex
 }
 
 extension JSONValue {
+
+    /**
+        Convenience initializer to parse a `String` into a `Bool, `Int`, `Double` before falling back to a `String`
+        - `false` or `true` are parsed in to a Bool
+        - Integer numbers into a `Int` e.g. `"1"`
+        - Decimal numbers into a `Double` e.g. `"1.0"`, `"1.1"`, ...
+    */
+    public init(parseString stringValue: String) {
+        
+        if let value = Bool(stringValue) {
+            self.init(value)
+        } else if let value =  Int(stringValue)  {
+            self.init(value)
+        } else if let value = Double(stringValue){
+            self.init(value)
+        } else {
+            self.init(stringValue)
+        }
+    }
    
     /// Helper var to get the Bool value. Returns nil if this is not a Bool value
     public var boolValue: Bool? {
@@ -128,8 +147,35 @@ extension JSONValue {
     }
 }
 
+public extension Dictionary where Key == String, Value == JSONValue {
+
+    /**
+     Helper method to encode into a JSON string
+     - parameter prettyPrint: Produce human-readable JSON with indented output. Default is `true`
+     
+     - throws: When the type cannot be decoded or when the data cannot be encoded in utf8.
+    */
+    func toJson(prettyPrint: Bool = true) throws -> String  {
+        let encoder = JSONEncoder()
+        if(prettyPrint) {
+            encoder.outputFormatting = [.prettyPrinted]
+        }
+
+        let data = try encoder.encode(self.self)
+        guard let string = String(bytes: data, encoding: .utf8) else {
+            throw ParsingError.invalidJSON("Could not decode json bytes")
+        }
+        return string
+    }
+}
 extension Dictionary where Key == String, Value == Any {
 
+    /**
+     Helper method to convert a Dictionary with Any values into a `JSONValue`.
+     
+     - Warning: Any values that are not `Int`, `Bool`, `Double` or `String` will be silently removed
+     
+    */
     func jsonValues() -> [String: JSONValue] {
         var jsonValues = [String: JSONValue]()
         
