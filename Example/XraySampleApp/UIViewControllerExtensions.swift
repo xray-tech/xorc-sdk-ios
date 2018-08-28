@@ -5,7 +5,7 @@
 
 import UIKit
 
-typealias Action = (() -> ())
+typealias Action = (() -> Void)
 
 extension UIViewController {
 
@@ -25,7 +25,7 @@ extension UIViewController {
         }
     }
 
-    func askYesNo(title: String, question: String, yesAction: @escaping (() -> ()), noAction: (() -> ())?) {
+    func askYesNo(title: String, question: String, yesAction: @escaping (() -> Void), noAction: (() -> Void)?) {
         let controller = UIAlertController(title: title, message: question, preferredStyle: .alert)
 
         controller.addAction(UIAlertAction(title: "Ok", style: .default) { action in
@@ -38,4 +38,3 @@ extension UIViewController {
         self.present(controller, animated: true)
     }
 }
-

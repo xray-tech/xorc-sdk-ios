@@ -59,9 +59,6 @@ platform :ios do
         xcversion(version: "~> #{xc_version}")
 
         # ENV["XCENV_VERSION"] = xc_version
-        sh "which xcodebuild"
-        sh "xcenv version"
-        sh "xcodebuild -version"
         xcclean(scheme: @sdk_scheme, workspace: @sdk_workspace)
         # we don't care about signing here, we just want to know if all compiles
         xcodebuild(scheme: @sdk_scheme, workspace: @sdk_workspace, build_settings: { "CODE_SIGNING_REQUIRED" => "NO", "CODE_SIGN_IDENTITY" => "" })

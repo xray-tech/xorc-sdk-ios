@@ -76,7 +76,7 @@ class ViewController: UIViewController {
 
     @IBAction func addButtonAction(_ sender: Any) {
 
-        guard let key = keyTextField.text, key.count > 0 else {
+        guard let key = keyTextField.text, key.isEmpty else {
             present(title: "Invalid key", message: "The key must be non empty")
             return
         }
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
 
 extension String {
 
-    func jsonValues() throws -> [String: JSONValue]  {
+    func jsonValues() throws -> [String: JSONValue] {
 
         guard let data = self.data(using: .utf8) else {
             // no date

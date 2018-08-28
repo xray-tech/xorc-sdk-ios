@@ -92,9 +92,9 @@ extension JSONValue {
         
         if let value = Bool(stringValue) {
             self.init(value)
-        } else if let value =  Int(stringValue)  {
+        } else if let value = Int(stringValue) {
             self.init(value)
-        } else if let value = Double(stringValue){
+        } else if let value = Double(stringValue) {
             self.init(value)
         } else {
             self.init(stringValue)
@@ -155,9 +155,9 @@ public extension Dictionary where Key == String, Value == JSONValue {
      
      - throws: When the type cannot be decoded or when the data cannot be encoded in utf8.
     */
-    func toJson(prettyPrint: Bool = true) throws -> String  {
+    func toJson(prettyPrint: Bool = true) throws -> String {
         let encoder = JSONEncoder()
-        if(prettyPrint) {
+        if prettyPrint {
             encoder.outputFormatting = [.prettyPrinted]
         }
 
