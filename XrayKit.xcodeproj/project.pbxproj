@@ -423,9 +423,9 @@
 			productReference = 8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8A47521E20C7E9B700DD81F3 /* XrayKit-iOS */ = {
+		8A47521E20C7E9B700DD81F3 /* XrayKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8A47522420C7E9B700DD81F3 /* Build configuration list for PBXNativeTarget "XrayKit-iOS" */;
+			buildConfigurationList = 8A47522420C7E9B700DD81F3 /* Build configuration list for PBXNativeTarget "XrayKit" */;
 			buildPhases = (
 				8A47521A20C7E9B700DD81F3 /* Sources */,
 				8A47521B20C7E9B700DD81F3 /* Frameworks */,
@@ -437,7 +437,7 @@
 			);
 			dependencies = (
 			);
-			name = "XrayKit-iOS";
+			name = XrayKit;
 			productName = XrayKit;
 			productReference = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */;
 			productType = "com.apple.product-type.framework";
@@ -474,7 +474,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8A47521E20C7E9B700DD81F3 /* XrayKit-iOS */,
+				8A47521E20C7E9B700DD81F3 /* XrayKit */,
 				8A2AFA9D20C92F1E002A0B2B /* XrayKitTests */,
 			);
 		};
@@ -577,7 +577,7 @@
 /* Begin PBXTargetDependency section */
 		8A2AFAA520C92F1E002A0B2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8A47521E20C7E9B700DD81F3 /* XrayKit-iOS */;
+			target = 8A47521E20C7E9B700DD81F3 /* XrayKit */;
 			targetProxy = 8A2AFAA420C92F1E002A0B2B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -827,7 +827,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8A47522420C7E9B700DD81F3 /* Build configuration list for PBXNativeTarget "XrayKit-iOS" */ = {
+		8A47522420C7E9B700DD81F3 /* Build configuration list for PBXNativeTarget "XrayKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8A47522520C7E9B700DD81F3 /* Debug */,
