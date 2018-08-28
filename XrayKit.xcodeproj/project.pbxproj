@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D142BD921357F490026C248 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D142BD821357F490026C248 /* StringExtensions.swift */; };
+		3D142BDC213584880026C248 /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D142BDB213584880026C248 /* Signer.swift */; };
+		3D142BDF213585AF0026C248 /* HMACSignerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D142BDE213585AF0026C248 /* HMACSignerSpecs.swift */; };
 		3D226B0D21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D226B0C21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift */; };
 		8A20E1D920F62F240027F0D6 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20E1D820F62F240027F0D6 /* Predicates.swift */; };
 		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
@@ -83,6 +86,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3D142BD821357F490026C248 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		3D142BDB213584880026C248 /* Signer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signer.swift; sourceTree = "<group>"; };
+		3D142BDE213585AF0026C248 /* HMACSignerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACSignerSpecs.swift; sourceTree = "<group>"; };
 		3D226B0C21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPropertyFilterSpecs.swift; sourceTree = "<group>"; };
 		8A20E1D820F62F240027F0D6 /* Predicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,9 +163,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D142BDA213584700026C248 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				3D142BDB213584880026C248 /* Signer.swift */,
+			);
+			name = Crypto;
+			sourceTree = "<group>";
+		};
+		3D142BDD213585250026C248 /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				3D142BDE213585AF0026C248 /* HMACSignerSpecs.swift */,
+			);
+			name = Crypto;
+			sourceTree = "<group>";
+		};
 		8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				3D142BDD213585250026C248 /* Crypto */,
 				8AAE41CB20E0E4AE008338CF /* Mocks */,
 				8AAE41C820E0DF20008338CF /* Events */,
 				8A7C07E220D913680075DF97 /* Other */,
@@ -218,6 +241,7 @@
 				8A47523B20C7F56300DD81F3 /* Transmitters */,
 				8A47523A20C7F54F00DD81F3 /* Data */,
 				8A47523920C7F53900DD81F3 /* Events */,
+				3D142BDA213584700026C248 /* Crypto */,
 				8A47522A20C7EA0800DD81F3 /* Xray.swift */,
 				C4D87E71D2CD65EDF3970A6E /* Extensions */,
 			);
@@ -386,6 +410,7 @@
 			isa = PBXGroup;
 			children = (
 				C4D878E11049EA01726EFA9B /* FileManagerExtensions.swift */,
+				3D142BD821357F490026C248 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -537,6 +562,7 @@
 				8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */,
 				8A57F45020CEB0670047B021 /* SQLDatabaseControllerSpecs.swift in Sources */,
 				C4D870ACF7E4441812B43FB6 /* NSPredicateRecursionSpecs.swift in Sources */,
+				3D142BDF213585AF0026C248 /* HMACSignerSpecs.swift in Sources */,
 				C4D8742280589DD2FFC7D575 /* FileHelpers.swift in Sources */,
 				C4D87DEC3F452E966059E6E4 /* NSPredicateFullSpecs.swift in Sources */,
 			);
@@ -547,6 +573,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */,
+				3D142BDC213584880026C248 /* Signer.swift in Sources */,
 				8A57F44C20CE92E80047B021 /* Foundation+SQL.swift in Sources */,
 				8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */,
 				8A47523420C7EA0800DD81F3 /* Event.swift in Sources */,
@@ -568,6 +595,7 @@
 				8A7C07E120D911240075DF97 /* JSONValue.swift in Sources */,
 				C4D876EEE32E6EA7F12C68AF /* Event+SQL.swift in Sources */,
 				C4D87DFFE208B8627F1E8A8F /* FileManagerExtensions.swift in Sources */,
+				3D142BD921357F490026C248 /* StringExtensions.swift in Sources */,
 				C4D87B5C5C8FCC078CB8252C /* Triggers.swift in Sources */,
 				C4D87403699B04B6BAE2B5BA /* PredicateProxy.swift in Sources */,
 			);
