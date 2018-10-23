@@ -36,6 +36,21 @@ public extension XrayService {
     func start() { }
     func dispose() { }
 }
+
+/**
+ Represents in which state the event transmitter currently is to tell the XrayKit if events can be transmitted or not.
+ */
+public enum EventTransmitterState {
+    /// The transmitter is not yet ready. Any emitted events will be queued
+    case connecting
+    
+    /// Events from the XrayKit will be handed over to the transmitter who is ready to transmit them
+    case ready
+    
+    /// The transmitter is not able to transmit anymore and all events from the XrayKit will be discarded.
+    /// This can be used in scenarios when the server decides the not accept events from a given device
+    case disposed
+}
 /**
  The `EventTransmitter` defines an interface for transmitting events. The implementations responsible for serializing the `Event`s and
  transmitting them via their own protocol.
@@ -44,8 +59,8 @@ public protocol EventTransmitter: XrayService {
     
     /**
      State representing if the emitter is ready to emmit. When not ready, the events will be queued
-    */
-    var isReady: Bool { get }
+     */
+    var state: EventTransmitterState { get }
     
     /// Implementations must call this closure as soon as they are ready to transmit
     //var onReady: () -> Void { get set }
@@ -54,12 +69,12 @@ public protocol EventTransmitter: XrayService {
      - parameter events: The `Event`s to be transmitted.
      - parameter completion: The `EventResult` completion closure telling the SDK whether the events were transmitted correctly or not.
      - warning: Do not call this method. It is meant to be called by the SDK at the right time.
-    */
+     */
     func transmit(events: [Event], completion: @escaping ([EventResult]) -> Void)
 }
 
 public extension EventTransmitter {
-    var isReady: Bool { return true } 
+    var state: EventTransmitterState { return .ready }
 }
 
 class EventController {
@@ -70,12 +85,12 @@ class EventController {
     }
     
     public var transmitter: EventTransmitter?
-
+    
     private var eventStore: EventStore
     
     /// Optional closure called every time an event is logged.
     var onEvent: ((Event) -> Void)?
-
+    
     init(eventStore: EventStore, transmitter: EventTransmitter? = nil) {
         self.eventStore = eventStore
         self.transmitter = transmitter
@@ -95,9 +110,9 @@ class EventController {
         if event.scope == .local {
             return
         }
-
+        
         event = eventStore.insert(event: event)
-
+        
         if flush {
             self.flush()
         }
@@ -107,31 +122,37 @@ class EventController {
     public func flush() {
         guard let transmitter = transmitter else {
             // nothing else to do. We do not transmit at all
+            // todo: we should probably discard all existing events to avoid piling up?
             return
         }
-        if !transmitter.isReady {
-            print("Skipping transmitting. Emmiter is not ready")
-            return
-        }
-        let events = prepareSendableEvents()
         
-        transmitter.transmit(events: events) { results in
+        switch transmitter.state {
+        case .connecting:
+            print("Skipping transmitting: emmiter is not ready")
+            return
+        case .disposed:
+            break
+        case .ready:
+            let events = prepareSendableEvents()
             
-            for result in results {
-                switch result {
-                case .success(let event):
-                    self.eventStore.delete(event: event)
-                case .retry(let event, let nextRetryAt):
-                    event.nextRetryAt = nextRetryAt
-                    event.status = .retry
-                    self.eventStore.update(event: event)
-                case .failure(let event):
-                    self.eventStore.delete(event: event)
+            transmitter.transmit(events: events) { results in
+                
+                for result in results {
+                    switch result {
+                    case .success(let event):
+                        self.eventStore.delete(event: event)
+                    case .retry(let event, let nextRetryAt):
+                        event.nextRetryAt = nextRetryAt
+                        event.status = .retry
+                        self.eventStore.update(event: event)
+                    case .failure(let event):
+                        self.eventStore.delete(event: event)
+                    }
                 }
             }
         }
     }
-
+    
     /// Selects the sendable events and updates their status to `sending` in the store
     private func prepareSendableEvents() -> [Event] {
         let events = eventStore.select(maxNextTryAt: Date(), priority: nil, batchMaxSize: nil)

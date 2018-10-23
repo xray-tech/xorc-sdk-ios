@@ -20,11 +20,8 @@ extension XrayRegistration {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             do {
-                guard let registration = try decoder.decode([XrayRegistration].self, from: data).first else {
-                    return Response.error(XrayError.parsing("Expected one registration response"))
-                }
-                
-                return Response.success(registration)
+                let registrationResponse = try decoder.decode(XrayRegistrationResponse.self, from: data)
+                return Response.success(registrationResponse.registrationData)
             } catch {
                 return Response.error(XrayError.parsing(error.localizedDescription))
             }

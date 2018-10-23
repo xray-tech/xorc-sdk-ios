@@ -25,8 +25,11 @@ public class XrayCrm {
 
 extension XrayCrm: EventTransmitter {
     
-    public var isReady: Bool {
-        return requestBuilder.registration != nil
+    public var state: EventTransmitterState {
+        if requestBuilder.registration != nil {
+            return .ready
+        }
+        return .connecting
     }
     public func transmit(events: [Event], completion: @escaping ([EventResult]) -> Void) {
         httpTransmitter.transmit(events: events, completion: completion)
