@@ -8,9 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		3D142BD921357F490026C248 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D142BD821357F490026C248 /* StringExtensions.swift */; };
-		3D142BDC213584880026C248 /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D142BDB213584880026C248 /* Signer.swift */; };
 		3D142BDF213585AF0026C248 /* HMACSignerSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D142BDE213585AF0026C248 /* HMACSignerSpecs.swift */; };
 		3D226B0D21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D226B0C21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift */; };
+		3D59F5E32179DDAF006648CD /* XrayHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D59F5DA2179DDAF006648CD /* XrayHTTP.framework */; };
+		3D59F5E82179DDAF006648CD /* XrayHTTPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D59F5E72179DDAF006648CD /* XrayHTTPTests.swift */; };
+		3D59F5EA2179DDAF006648CD /* XrayHTTP.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D59F5DC2179DDAF006648CD /* XrayHTTP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D59F5F52179DE2B006648CD /* XrayHTTPBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522920C7EA0800DD81F3 /* XrayHTTPBuilder.swift */; };
+		3D59F5F62179DE2E006648CD /* HTTPTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */; };
+		3D59F5F72179DE42006648CD /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
+		3D59F5F92179DE92006648CD /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D142BDB213584880026C248 /* Signer.swift */; };
+		3D91F055217E251F0089F968 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F054217E251F0089F968 /* HTTPClient.swift */; };
+		3D91F059217E2EA60089F968 /* XrayModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F058217E2EA60089F968 /* XrayModels.swift */; };
+		3D91F280217F129E0089F968 /* XrayCrm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F27F217F129E0089F968 /* XrayCrm.swift */; };
+		3D91F282217F12BD0089F968 /* XrayRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F281217F12BD0089F968 /* XrayRegistrationController.swift */; };
+		3D91F286217F18090089F968 /* XrayClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F285217F18090089F968 /* XrayClient.swift */; };
+		3D91F289217F1C1E0089F968 /* XrayCrmOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F288217F1C1E0089F968 /* XrayCrmOptions.swift */; };
+		3D91F290217F467C0089F968 /* XrayResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F28F217F467C0089F968 /* XrayResources.swift */; };
 		8A20E1D920F62F240027F0D6 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20E1D820F62F240027F0D6 /* Predicates.swift */; };
 		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
 		8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -19,13 +32,11 @@
 		8A2AFABC20C93E34002A0B2B /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAB120C9371C002A0B2B /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A2AFABF20C93E55002A0B2B /* SQLConnectionSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2AFAAC20C936E6002A0B2B /* SQLConnectionSpecs.swift */; };
 		8A47522320C7E9B700DD81F3 /* XrayKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A47522120C7E9B700DD81F3 /* XrayKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522920C7EA0800DD81F3 /* XrayHTTPBuilder.swift */; };
 		8A47523220C7EA0800DD81F3 /* Xray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522A20C7EA0800DD81F3 /* Xray.swift */; };
 		8A47523320C7EA0800DD81F3 /* DataPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522B20C7EA0800DD81F3 /* DataPayload.swift */; };
 		8A47523420C7EA0800DD81F3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522C20C7EA0800DD81F3 /* Event.swift */; };
 		8A47523520C7EA0800DD81F3 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522D20C7EA0800DD81F3 /* EventService.swift */; };
 		8A47523620C7EA0800DD81F3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522E20C7EA0800DD81F3 /* DataService.swift */; };
-		8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */; };
 		8A47523820C7EA0800DD81F3 /* EventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47523020C7EA0800DD81F3 /* EventController.swift */; };
 		8A47523E20C7F5F400DD81F3 /* Stores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47523D20C7F5F400DD81F3 /* Stores.swift */; };
 		8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A47524020C8034300DD81F3 /* SQLTables.swift */; };
@@ -62,6 +73,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3D59F5E42179DDAF006648CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AAA449920BE8E850055D7B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D59F5D92179DDAF006648CD;
+			remoteInfo = XrayHTTP;
+		};
 		8A2AFAA420C92F1E002A0B2B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8AAA449920BE8E850055D7B9 /* Project object */;
@@ -90,6 +108,19 @@
 		3D142BDB213584880026C248 /* Signer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Signer.swift; sourceTree = "<group>"; };
 		3D142BDE213585AF0026C248 /* HMACSignerSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMACSignerSpecs.swift; sourceTree = "<group>"; };
 		3D226B0C21020B8D00EF3F98 /* EventPropertyFilterSpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPropertyFilterSpecs.swift; sourceTree = "<group>"; };
+		3D59F5DA2179DDAF006648CD /* XrayHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XrayHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D59F5DC2179DDAF006648CD /* XrayHTTP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XrayHTTP.h; sourceTree = "<group>"; };
+		3D59F5DD2179DDAF006648CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D59F5E22179DDAF006648CD /* XrayHTTPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayHTTPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D59F5E72179DDAF006648CD /* XrayHTTPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayHTTPTests.swift; sourceTree = "<group>"; };
+		3D59F5E92179DDAF006648CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D91F054217E251F0089F968 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		3D91F058217E2EA60089F968 /* XrayModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayModels.swift; sourceTree = "<group>"; };
+		3D91F27F217F129E0089F968 /* XrayCrm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayCrm.swift; sourceTree = "<group>"; };
+		3D91F281217F12BD0089F968 /* XrayRegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayRegistrationController.swift; sourceTree = "<group>"; };
+		3D91F285217F18090089F968 /* XrayClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayClient.swift; sourceTree = "<group>"; };
+		3D91F288217F1C1E0089F968 /* XrayCrmOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayCrmOptions.swift; sourceTree = "<group>"; };
+		3D91F28F217F467C0089F968 /* XrayResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayResources.swift; sourceTree = "<group>"; };
 		8A20E1D820F62F240027F0D6 /* Predicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2AFAA220C92F1E002A0B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,6 +174,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3D59F5D72179DDAF006648CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D59F5F72179DE42006648CD /* XrayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D59F5DF2179DDAF006648CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D59F5E32179DDAF006648CD /* XrayHTTP.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A2AFA9B20C92F1E002A0B2B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,7 +213,6 @@
 		3D142BDA213584700026C248 /* Crypto */ = {
 			isa = PBXGroup;
 			children = (
-				3D142BDB213584880026C248 /* Signer.swift */,
 			);
 			name = Crypto;
 			sourceTree = "<group>";
@@ -177,6 +223,98 @@
 				3D142BDE213585AF0026C248 /* HMACSignerSpecs.swift */,
 			);
 			name = Crypto;
+			sourceTree = "<group>";
+		};
+		3D59F5DB2179DDAF006648CD /* XrayHTTP */ = {
+			isa = PBXGroup;
+			children = (
+				3D59F5F32179DDD9006648CD /* Sources */,
+				3D59F5DC2179DDAF006648CD /* XrayHTTP.h */,
+				3D59F5DD2179DDAF006648CD /* Info.plist */,
+			);
+			path = XrayHTTP;
+			sourceTree = "<group>";
+		};
+		3D59F5E62179DDAF006648CD /* XrayHTTPTests */ = {
+			isa = PBXGroup;
+			children = (
+				3D91F28D217F46380089F968 /* Xray */,
+				3D59F5E72179DDAF006648CD /* XrayHTTPTests.swift */,
+				3D59F5E92179DDAF006648CD /* Info.plist */,
+			);
+			path = XrayHTTPTests;
+			sourceTree = "<group>";
+		};
+		3D59F5F32179DDD9006648CD /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				3D59F5F82179DE82006648CD /* Crypto */,
+				3D59F5F42179DDE3006648CD /* Transmitters */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		3D59F5F42179DDE3006648CD /* Transmitters */ = {
+			isa = PBXGroup;
+			children = (
+				3D91F056217E2D2F0089F968 /* Xray */,
+				8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */,
+				3D91F054217E251F0089F968 /* HTTPClient.swift */,
+			);
+			name = Transmitters;
+			sourceTree = "<group>";
+		};
+		3D59F5F82179DE82006648CD /* Crypto */ = {
+			isa = PBXGroup;
+			children = (
+				3D142BDB213584880026C248 /* Signer.swift */,
+			);
+			name = Crypto;
+			sourceTree = "<group>";
+		};
+		3D91F056217E2D2F0089F968 /* Xray */ = {
+			isa = PBXGroup;
+			children = (
+				3D91F287217F1C020089F968 /* Options */,
+				3D91F284217F17F20089F968 /* Network */,
+				3D91F283217F13B90089F968 /* Store */,
+				3D91F27F217F129E0089F968 /* XrayCrm.swift */,
+				3D91F281217F12BD0089F968 /* XrayRegistrationController.swift */,
+			);
+			name = Xray;
+			sourceTree = "<group>";
+		};
+		3D91F283217F13B90089F968 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Store;
+			sourceTree = "<group>";
+		};
+		3D91F284217F17F20089F968 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8A47522920C7EA0800DD81F3 /* XrayHTTPBuilder.swift */,
+				3D91F058217E2EA60089F968 /* XrayModels.swift */,
+				3D91F28F217F467C0089F968 /* XrayResources.swift */,
+				3D91F285217F18090089F968 /* XrayClient.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		3D91F287217F1C020089F968 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				3D91F288217F1C1E0089F968 /* XrayCrmOptions.swift */,
+			);
+			name = Options;
+			sourceTree = "<group>";
+		};
+		3D91F28D217F46380089F968 /* Xray */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Xray;
 			sourceTree = "<group>";
 		};
 		8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */ = {
@@ -274,8 +412,6 @@
 		8A47523B20C7F56300DD81F3 /* Transmitters */ = {
 			isa = PBXGroup;
 			children = (
-				8A47522920C7EA0800DD81F3 /* XrayHTTPBuilder.swift */,
-				8A47522F20C7EA0800DD81F3 /* HTTPTransmitter.swift */,
 			);
 			name = Transmitters;
 			sourceTree = "<group>";
@@ -335,6 +471,8 @@
 			children = (
 				8A47522020C7E9B700DD81F3 /* XrayKit */,
 				8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */,
+				3D59F5DB2179DDAF006648CD /* XrayHTTP */,
+				3D59F5E62179DDAF006648CD /* XrayHTTPTests */,
 				8AAA44A320BE8E850055D7B9 /* Products */,
 				8A2AFAB220C93728002A0B2B /* Frameworks */,
 			);
@@ -345,6 +483,8 @@
 			children = (
 				8A47521F20C7E9B700DD81F3 /* XrayKit.framework */,
 				8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */,
+				3D59F5DA2179DDAF006648CD /* XrayHTTP.framework */,
+				3D59F5E22179DDAF006648CD /* XrayHTTPTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -418,6 +558,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		3D59F5D52179DDAF006648CD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D59F5EA2179DDAF006648CD /* XrayHTTP.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A47521C20C7E9B700DD81F3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -429,6 +577,42 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		3D59F5D92179DDAF006648CD /* XrayHTTP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D59F5EF2179DDAF006648CD /* Build configuration list for PBXNativeTarget "XrayHTTP" */;
+			buildPhases = (
+				3D59F5D52179DDAF006648CD /* Headers */,
+				3D59F5D62179DDAF006648CD /* Sources */,
+				3D59F5D72179DDAF006648CD /* Frameworks */,
+				3D59F5D82179DDAF006648CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XrayHTTP;
+			productName = XrayHTTP;
+			productReference = 3D59F5DA2179DDAF006648CD /* XrayHTTP.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3D59F5E12179DDAF006648CD /* XrayHTTPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D59F5F02179DDAF006648CD /* Build configuration list for PBXNativeTarget "XrayHTTPTests" */;
+			buildPhases = (
+				3D59F5DE2179DDAF006648CD /* Sources */,
+				3D59F5DF2179DDAF006648CD /* Frameworks */,
+				3D59F5E02179DDAF006648CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3D59F5E52179DDAF006648CD /* PBXTargetDependency */,
+			);
+			name = XrayHTTPTests;
+			productName = XrayHTTPTests;
+			productReference = 3D59F5E22179DDAF006648CD /* XrayHTTPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8A2AFA9D20C92F1E002A0B2B /* XrayKitTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A2AFAA620C92F1E002A0B2B /* Build configuration list for PBXNativeTarget "XrayKitTests" */;
@@ -473,10 +657,16 @@
 		8AAA449920BE8E850055D7B9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = 360dialog;
 				TargetAttributes = {
+					3D59F5D92179DDAF006648CD = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					3D59F5E12179DDAF006648CD = {
+						CreatedOnToolsVersion = 10.0;
+					};
 					8A2AFA9D20C92F1E002A0B2B = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1000;
@@ -502,11 +692,27 @@
 			targets = (
 				8A47521E20C7E9B700DD81F3 /* XrayKit */,
 				8A2AFA9D20C92F1E002A0B2B /* XrayKitTests */,
+				3D59F5D92179DDAF006648CD /* XrayHTTP */,
+				3D59F5E12179DDAF006648CD /* XrayHTTPTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3D59F5D82179DDAF006648CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D59F5E02179DDAF006648CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A2AFA9C20C92F1E002A0B2B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,6 +753,31 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3D59F5D62179DDAF006648CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D59F5F92179DE92006648CD /* Signer.swift in Sources */,
+				3D91F290217F467C0089F968 /* XrayResources.swift in Sources */,
+				3D59F5F52179DE2B006648CD /* XrayHTTPBuilder.swift in Sources */,
+				3D91F055217E251F0089F968 /* HTTPClient.swift in Sources */,
+				3D59F5F62179DE2E006648CD /* HTTPTransmitter.swift in Sources */,
+				3D91F282217F12BD0089F968 /* XrayRegistrationController.swift in Sources */,
+				3D91F289217F1C1E0089F968 /* XrayCrmOptions.swift in Sources */,
+				3D91F059217E2EA60089F968 /* XrayModels.swift in Sources */,
+				3D91F286217F18090089F968 /* XrayClient.swift in Sources */,
+				3D91F280217F129E0089F968 /* XrayCrm.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D59F5DE2179DDAF006648CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D59F5E82179DDAF006648CD /* XrayHTTPTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A2AFA9A20C92F1E002A0B2B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -573,17 +804,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A47524620C809C100DD81F3 /* SQLRequest.swift in Sources */,
-				3D142BDC213584880026C248 /* Signer.swift in Sources */,
 				8A57F44C20CE92E80047B021 /* Foundation+SQL.swift in Sources */,
 				8A47524120C8034300DD81F3 /* SQLTables.swift in Sources */,
 				8A47523420C7EA0800DD81F3 /* Event.swift in Sources */,
-				8A47523720C7EA0800DD81F3 /* HTTPTransmitter.swift in Sources */,
 				8A20E1D920F62F240027F0D6 /* Predicates.swift in Sources */,
 				8A47524320C803B200DD81F3 /* SQLConnection.swift in Sources */,
 				8A47523E20C7F5F400DD81F3 /* Stores.swift in Sources */,
 				8A5B0E6820F3A62C005F123E /* DataController.swift in Sources */,
 				8A57F44520CA89190047B021 /* String+SQL.swift in Sources */,
-				8A47523120C7EA0800DD81F3 /* XrayHTTPBuilder.swift in Sources */,
 				8A47523220C7EA0800DD81F3 /* Xray.swift in Sources */,
 				8A47523620C7EA0800DD81F3 /* DataService.swift in Sources */,
 				8A50CC4B20F5E03C009C4AFB /* DataPayloadFilter.swift in Sources */,
@@ -604,6 +832,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3D59F5E52179DDAF006648CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D59F5D92179DDAF006648CD /* XrayHTTP */;
+			targetProxy = 3D59F5E42179DDAF006648CD /* PBXContainerItemProxy */;
+		};
 		8A2AFAA520C92F1E002A0B2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8A47521E20C7E9B700DD81F3 /* XrayKit */;
@@ -612,6 +845,104 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		3D59F5EB2179DDAF006648CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = G9MA9G2SST;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = XrayHTTP/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.xorc.XrayHTTP;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D59F5EC2179DDAF006648CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = G9MA9G2SST;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = XrayHTTP/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.xorc.XrayHTTP;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3D59F5ED2179DDAF006648CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G9MA9G2SST;
+				INFOPLIST_FILE = XrayHTTPTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.xorc.XrayHTTPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3D59F5EE2179DDAF006648CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G9MA9G2SST;
+				INFOPLIST_FILE = XrayHTTPTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.xorc.XrayHTTPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		8A2AFAA720C92F1E002A0B2B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -847,6 +1178,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3D59F5EF2179DDAF006648CD /* Build configuration list for PBXNativeTarget "XrayHTTP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D59F5EB2179DDAF006648CD /* Debug */,
+				3D59F5EC2179DDAF006648CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D59F5F02179DDAF006648CD /* Build configuration list for PBXNativeTarget "XrayHTTPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D59F5ED2179DDAF006648CD /* Debug */,
+				3D59F5EE2179DDAF006648CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8A2AFAA620C92F1E002A0B2B /* Build configuration list for PBXNativeTarget "XrayKitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

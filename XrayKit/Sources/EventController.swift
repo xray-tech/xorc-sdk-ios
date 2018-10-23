@@ -21,11 +21,34 @@ public enum EventResult {
 }
 
 /**
+ Potocol defining any service used by the xray kit
+ */
+public protocol XrayService {
+    
+    /// Called by the xray kit when it starts
+    func start()
+    
+    /// Called by the xray kit when it disposes. Implementations should free any resources
+    func dispose()
+}
+
+public extension XrayService {
+    func start() { }
+    func dispose() { }
+}
+/**
  The `EventTransmitter` defines an interface for transmitting events. The implementations responsible for serializing the `Event`s and
  transmitting them via their own protocol.
  */
-public protocol EventTransmitter {
+public protocol EventTransmitter: XrayService {
     
+    /**
+     State representing if the emitter is ready to emmit. When not ready, the events will be queued
+    */
+    var isReady: Bool { get }
+    
+    /// Implementations must call this closure as soon as they are ready to transmit
+    //var onReady: () -> Void { get set }
     /**
      This method is called internally by the Xray SDK when the event is ready to be transmitted.
      - parameter events: The `Event`s to be transmitted.
@@ -33,6 +56,10 @@ public protocol EventTransmitter {
      - warning: Do not call this method. It is meant to be called by the SDK at the right time.
     */
     func transmit(events: [Event], completion: @escaping ([EventResult]) -> Void)
+}
+
+public extension EventTransmitter {
+    var isReady: Bool { return true } 
 }
 
 class EventController {
@@ -80,6 +107,10 @@ class EventController {
     public func flush() {
         guard let transmitter = transmitter else {
             // nothing else to do. We do not transmit at all
+            return
+        }
+        if !transmitter.isReady {
+            print("Skipping transmitting. Emmiter is not ready")
             return
         }
         let events = prepareSendableEvents()

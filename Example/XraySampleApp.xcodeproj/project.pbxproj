@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19A17CACCABB9FBAB883B544 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A17EEA4A19A0034123E1C5 /* UIViewControllerExtensions.swift */; };
+		3D91F28B217F2C300089F968 /* XrayHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D91F28A217F2C300089F968 /* XrayHTTP.framework */; };
 		8AAA450920BEE0030055D7B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA450820BEE0030055D7B9 /* AppDelegate.swift */; };
 		8AAA450B20BEE0030055D7B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA450A20BEE0030055D7B9 /* ViewController.swift */; };
 		8AAA450E20BEE0030055D7B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAA450C20BEE0030055D7B9 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		19A17EEA4A19A0034123E1C5 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		3D91F28A217F2C300089F968 /* XrayHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XrayHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAA450520BEE0030055D7B9 /* XraySampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XraySampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAA450820BEE0030055D7B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AAA450A20BEE0030055D7B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D91F28B217F2C300089F968 /* XrayHTTP.framework in Frameworks */,
 				8AAA451C20BEE0290055D7B9 /* XrayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +85,7 @@
 		8AAA451A20BEE0290055D7B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D91F28A217F2C300089F968 /* XrayHTTP.framework */,
 				8AAA451B20BEE0290055D7B9 /* XrayKit.framework */,
 			);
 			name = Frameworks;
@@ -307,6 +311,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9TDNRBR9AF;
 				INFOPLIST_FILE = XraySampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -325,6 +330,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9TDNRBR9AF;
 				INFOPLIST_FILE = XraySampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

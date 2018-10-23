@@ -53,6 +53,7 @@ public class EventService: NSObject {
 
     func start(controller: EventController) {
         self.controller = controller
+        transmitter?.start()
     }
 
 }

@@ -26,9 +26,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        Xray.events.register(transmitter: MockTransmitter(behaviour: .succeed))
-        
-        
         Xray.data.onTrigger = { payloads in
             
             guard let payload = payloads.first else { return }
@@ -46,7 +43,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func eventButtonAction2(sender: Any) {
-        
+
         let context: [String: JSONValue] = [
             "session_id": "hello",
             "retry": true,
@@ -60,6 +57,8 @@ class ViewController: UIViewController {
     
     @IBAction
     func eventButtonAction(sender: Any) {
+
+        
         guard let eventName = eventNameTextField.text else {
             present(title: "Invalid event name", message: "Must not be empty")
             return

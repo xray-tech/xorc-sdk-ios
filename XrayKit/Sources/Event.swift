@@ -90,3 +90,25 @@ public final class Event: NSObject {
     }
 
 }
+
+// todo: this format is xray http specific
+extension Event: Encodable {
+    
+    enum CodingKeys: String, CodingKey {
+        case sequenceId = "id"
+        case name
+        case properties
+        case createdAt = "timestamp"
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode("\(sequenceId)", forKey: .sequenceId)
+        try container.encode(name, forKey: .name)
+        try container.encode(properties, forKey: .properties)
+        
+        let timestamp = "\(Int(createdAt.timeIntervalSince1970))"
+        try container.encode(timestamp, forKey: .createdAt)
+    }
+}

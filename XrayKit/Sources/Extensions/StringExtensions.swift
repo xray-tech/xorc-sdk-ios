@@ -5,7 +5,7 @@
 
 import Foundation
 
-extension String {
+public extension String {
     
     func dataFromHexString() -> Data {
         var hex = self
