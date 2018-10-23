@@ -21,10 +21,7 @@ public protocol HTTPRequestBuilder {
     func build(events: [Event]) throws -> URLRequest
 }
 
-public class HTTPTransmitter: EventTransmitter {
-    
-    public var onStateChange: (EventTransmitterState) -> Void = { state in }
-    
+public class HTTPTransmitter {
     
     // todo: in the same way we inject a builder, we could inject the event Resource
     let builder: HTTPRequestBuilder

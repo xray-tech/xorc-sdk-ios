@@ -37,6 +37,7 @@ public class EventService: NSObject {
     
     public func register(transmitter: EventTransmitter) {
         self.controller.transmitter = transmitter
+        self.controller.transmitter?.delegate = self
         
     }
     
@@ -44,5 +45,17 @@ public class EventService: NSObject {
     
     func start() {
         controller.transmitter?.start()
+    }
+}
+
+extension EventService: EventTransmitterDelegate {
+    
+    public func eventTransmitter(_ transmitter: EventTransmitter, didChangeState state: EventTransmitterState) {
+        // todo: ensure correct queue
+        if state == .ready {
+            eventQueue.async {
+                self.controller.flush()
+            }
+        }
     }
 }

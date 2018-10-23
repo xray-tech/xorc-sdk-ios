@@ -123,7 +123,7 @@ class MockTransmitter: EventTransmitter {
         case none // dont call the completion at all
     }
     
-    var onStateChange: OnEventTransmitterStateChange = { state in  }
+    public weak var delegate: EventTransmitterDelegate?
     
     let behaviour: MockBehaviour
     

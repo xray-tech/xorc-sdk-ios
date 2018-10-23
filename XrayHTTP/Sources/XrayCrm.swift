@@ -14,7 +14,7 @@ public class XrayCrm {
     let httpTransmitter: HTTPTransmitter
     let requestBuilder: XrayHTTPBuilder
     
-    public var onStateChange: (EventTransmitterState) -> Void = { state in }
+    public weak var delegate: EventTransmitterDelegate?
     
     public init(options: XrayCrmOptions) {
         self.options = options
@@ -44,7 +44,7 @@ extension XrayCrm: XrayService {
         registrationController.register { [weak self] registration in
             guard let sself = self else { return }
             sself.requestBuilder.registration = registration
-            sself.onStateChange(sself.state)
+            sself.delegate?.eventTransmitter(sself, didChangeState: .ready)
         }
     }
     

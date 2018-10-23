@@ -51,6 +51,11 @@ public enum EventTransmitterState {
     /// This can be used in scenarios when the server decides the not accept events from a given device
     case disposed
 }
+
+public protocol EventTransmitterDelegate: class {
+
+    func eventTransmitter(_ transmitter: EventTransmitter, didChangeState state: EventTransmitterState)
+}
 /**
  The `EventTransmitter` defines an interface for transmitting events. The implementations responsible for serializing the `Event`s and
  transmitting them via their own protocol.
@@ -62,9 +67,7 @@ public protocol EventTransmitter: XrayService {
      */
     var state: EventTransmitterState { get }
     
-    typealias OnEventTransmitterStateChange = (EventTransmitterState) -> Void
-    
-    var onStateChange: OnEventTransmitterStateChange { get set }
+    var delegate: EventTransmitterDelegate? { get set }
     
     /// Implementations must call this closure as soon as they are ready to transmit
     //var onReady: () -> Void { get set }
@@ -79,8 +82,6 @@ public protocol EventTransmitter: XrayService {
 
 public extension EventTransmitter {
     var state: EventTransmitterState { return .ready }
-    
-    var onStateChange: OnEventTransmitterStateChange { return { state in } }
 }
 
 class EventController {
@@ -90,15 +91,7 @@ class EventController {
         case paused
     }
     
-    public var transmitter: EventTransmitter? {
-        didSet {
-            transmitter?.onStateChange = { [weak self] state in
-                if state == EventTransmitterState.ready {
-                    self?.flush()
-                }
-            }
-        }
-    }
+    var transmitter: EventTransmitter?
     
     private var eventStore: EventStore
     
