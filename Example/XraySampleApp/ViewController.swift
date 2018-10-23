@@ -123,6 +123,8 @@ class MockTransmitter: EventTransmitter {
         case none // dont call the completion at all
     }
     
+    var onStateChange: OnEventTransmitterStateChange = { state in  }
+    
     let behaviour: MockBehaviour
     
     init(behaviour: MockBehaviour = .none) {

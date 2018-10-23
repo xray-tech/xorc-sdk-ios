@@ -12,34 +12,30 @@ public class Xray: NSObject {
         return instance.data
     }
     
-    private let events = EventService()
-    private let data = DataService()
-    
-    private static let instance = Xray()
-    
     public static var events: EventService {
         return instance.events
     }
 
     // MARK: - Private
 
-    let eventController: EventController
-    let dataController: DataController
+    private static let instance = Xray()
+    
+    private lazy var events = EventService(controller: eventController)
+    private lazy var data = DataService(controller: dataController)
 
+    private lazy var connection = SQLConnection(path: FileManager.databaseFilePath())
+    private lazy var store = SQLDatabaseController(connection: connection, tables: [EventTable.self, DataTable.self])
+    
+    private lazy var eventController = EventController(eventStore: store)
+    private lazy var dataController = DataController(store: store)
 
-    override init() {
-        let connection = SQLConnection(path: FileManager.databaseFilePath())
-        let store = SQLDatabaseController(connection: connection, tables: [EventTable.self, DataTable.self])
+    override private init() {
         
-        eventController = EventController(eventStore: store)
-        dataController = DataController(store: store)
-        
-        eventController.onEvent = dataController.trackEvent
     }
     
     private func start(options: Any?) {
-        events.start(controller: eventController)
-        data.start(controller: dataController)
+        events.start()
+        data.start()
     }
     
     // MARK: - Public

@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Xray.events.register(transmitter: crm)
         
+        Xray.events.log(event: Event(name: "before_start"))
+        
         Xray.start()
         
         return true

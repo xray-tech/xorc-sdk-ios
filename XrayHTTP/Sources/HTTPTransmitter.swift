@@ -23,6 +23,9 @@ public protocol HTTPRequestBuilder {
 
 public class HTTPTransmitter: EventTransmitter {
     
+    public var onStateChange: (EventTransmitterState) -> Void = { state in }
+    
+    
     // todo: in the same way we inject a builder, we could inject the event Resource
     let builder: HTTPRequestBuilder
     

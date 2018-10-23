@@ -20,22 +20,23 @@ class XrayRegistrationController {
       self.options = options
     }
     
-    func register(completion: (XrayRegistration) -> Void) {
+    func register(completion: @escaping (XrayRegistration) -> Void) {
         // get from store or fetch new
         if let registration = registration {
             completion(registration)
             return
         }
         
-        sendRegister {
-            //completion(
+        sendRegister { [weak self] registration in
+            print("######## New Registration result: \(registration.deviceId)")
+            self?.registration = registration
+            completion(registration)
         }
-        
     }
     
     /// Sends the registration
     
-    private func sendRegister(completion: () -> Void) {
+    private func sendRegister(completion: @escaping (XrayRegistration) -> Void) {
         let builder = XrayHTTPBuilder(options: options)
         
         let registerEvent = Event(name: "d360_register")
@@ -45,11 +46,7 @@ class XrayRegistrationController {
         client.load(resource: resource) { (response) in
             switch response {
             case .success(let registration):
-                print("Registration result: \(registration)")
-                // store the registration
-                self.registration = registration
-                // call delegates to propagate registration until the event emitter
-
+                completion(registration)
             case .error(let error):
                 print("Registration error: \(error)")
             }

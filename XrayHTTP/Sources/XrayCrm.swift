@@ -14,6 +14,8 @@ public class XrayCrm {
     let httpTransmitter: HTTPTransmitter
     let requestBuilder: XrayHTTPBuilder
     
+    public var onStateChange: (EventTransmitterState) -> Void = { state in }
+    
     public init(options: XrayCrmOptions) {
         self.options = options
         self.registrationController = XrayRegistrationController(options: options)
@@ -39,8 +41,10 @@ extension XrayCrm: EventTransmitter {
 extension XrayCrm: XrayService {
     
     public func start() {
-        registrationController.register { registration in
-            self.requestBuilder.registration = registration
+        registrationController.register { [weak self] registration in
+            guard let sself = self else { return }
+            sself.requestBuilder.registration = registration
+            sself.onStateChange(sself.state)
         }
     }
     

@@ -16,7 +16,11 @@ public class DataService: NSObject {
     /// An optional queue on which the onTrigger will be called. Default is `.main`
     public var queue: OperationQueue = .main
     
-    private var controller: DataController?
+    private var controller: DataController
+    
+    init(controller: DataController) {
+        self.controller = controller
+    }
     
     /**
      Schedules the execution of the `DataPayload` with the given trigger and context. The `DataPayload` is persisted
@@ -31,20 +35,12 @@ public class DataService: NSObject {
     */
     public func schedule(payload: DataPayload) {
         // high level verification before sending
-        guard  let controller = controller else {
-            print("\(#function) called before starting the SDK")
-            return
-        }
-        
         controller.schedule(payload: payload)
-        
-        
     }
     
     // MARK: - Protected
     
-    func start(controller: DataController) {
-        self.controller = controller
+    func start() {
         controller.onTrigger = { payload in
             self.queue.addOperation {
                 self.onTrigger?(payload)
