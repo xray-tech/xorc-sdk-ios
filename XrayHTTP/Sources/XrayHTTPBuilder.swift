@@ -33,9 +33,12 @@ public class XrayHTTPBuilder: HTTPRequestBuilder {
 
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        // todo: we can keep a reference and or parametrise it with options
+        let networkModel = NetworkModel(events: events)
 
         //
-        let httpBody = try coder.encode(events)
+        let httpBody = try coder.encode(networkModel)
         
         request.httpBody = httpBody
 

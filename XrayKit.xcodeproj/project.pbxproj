@@ -21,9 +21,9 @@
 		3D91F059217E2EA60089F968 /* XrayModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F058217E2EA60089F968 /* XrayModels.swift */; };
 		3D91F280217F129E0089F968 /* XrayCrm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F27F217F129E0089F968 /* XrayCrm.swift */; };
 		3D91F282217F12BD0089F968 /* XrayRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F281217F12BD0089F968 /* XrayRegistrationController.swift */; };
-		3D91F286217F18090089F968 /* XrayClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F285217F18090089F968 /* XrayClient.swift */; };
 		3D91F289217F1C1E0089F968 /* XrayCrmOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F288217F1C1E0089F968 /* XrayCrmOptions.swift */; };
 		3D91F290217F467C0089F968 /* XrayResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F28F217F467C0089F968 /* XrayResources.swift */; };
+		3DD5BAA8217FB0FC007710D1 /* RequestsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5BAA7217FB0FC007710D1 /* RequestsModels.swift */; };
 		8A20E1D920F62F240027F0D6 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20E1D820F62F240027F0D6 /* Predicates.swift */; };
 		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
 		8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -118,9 +118,9 @@
 		3D91F058217E2EA60089F968 /* XrayModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayModels.swift; sourceTree = "<group>"; };
 		3D91F27F217F129E0089F968 /* XrayCrm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayCrm.swift; sourceTree = "<group>"; };
 		3D91F281217F12BD0089F968 /* XrayRegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayRegistrationController.swift; sourceTree = "<group>"; };
-		3D91F285217F18090089F968 /* XrayClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayClient.swift; sourceTree = "<group>"; };
 		3D91F288217F1C1E0089F968 /* XrayCrmOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayCrmOptions.swift; sourceTree = "<group>"; };
 		3D91F28F217F467C0089F968 /* XrayResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayResources.swift; sourceTree = "<group>"; };
+		3DD5BAA7217FB0FC007710D1 /* RequestsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsModels.swift; sourceTree = "<group>"; };
 		8A20E1D820F62F240027F0D6 /* Predicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2AFAA220C92F1E002A0B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -294,10 +294,10 @@
 		3D91F284217F17F20089F968 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				3DD5BAA6217FAF18007710D1 /* Requsts Models */,
 				8A47522920C7EA0800DD81F3 /* XrayHTTPBuilder.swift */,
 				3D91F058217E2EA60089F968 /* XrayModels.swift */,
 				3D91F28F217F467C0089F968 /* XrayResources.swift */,
-				3D91F285217F18090089F968 /* XrayClient.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -315,6 +315,14 @@
 			children = (
 			);
 			path = Xray;
+			sourceTree = "<group>";
+		};
+		3DD5BAA6217FAF18007710D1 /* Requsts Models */ = {
+			isa = PBXGroup;
+			children = (
+				3DD5BAA7217FB0FC007710D1 /* RequestsModels.swift */,
+			);
+			name = "Requsts Models";
 			sourceTree = "<group>";
 		};
 		8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */ = {
@@ -765,8 +773,8 @@
 				3D91F282217F12BD0089F968 /* XrayRegistrationController.swift in Sources */,
 				3D91F289217F1C1E0089F968 /* XrayCrmOptions.swift in Sources */,
 				3D91F059217E2EA60089F968 /* XrayModels.swift in Sources */,
-				3D91F286217F18090089F968 /* XrayClient.swift in Sources */,
 				3D91F280217F129E0089F968 /* XrayCrm.swift in Sources */,
+				3DD5BAA8217FB0FC007710D1 /* RequestsModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
