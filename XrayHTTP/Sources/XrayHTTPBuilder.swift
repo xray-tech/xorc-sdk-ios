@@ -35,7 +35,11 @@ public class XrayHTTPBuilder: HTTPRequestBuilder {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         // todo: we can keep a reference and or parametrise it with options
-        let networkModel = NetworkModel(events: events)
+        //KeyValuesProvider.
+        // todo
+        #warning("todo")
+        let environment = KeyValuesProvider.environment(appId: options.appId, appInstanceId: "todo")
+        let networkModel = NetworkModel(events: events, environment: environment)
 
         //
         let httpBody = try coder.encode(networkModel)

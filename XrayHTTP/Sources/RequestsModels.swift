@@ -12,6 +12,7 @@ struct KeyValuesProvider: Encodable {
     func encode(to encoder: Encoder) throws {
         var encoder = encoder.singleValueContainer()
         var device =  [String: JSONValue]()
+        
         providers.forEach { provider in
             device.merge(provider.json) { (current, _) in current }
         }
@@ -24,20 +25,27 @@ struct KeyValuesProvider: Encodable {
             SystemInfoProvider()
             ])
     }
+    
+    static func environment(appId: String, appInstanceId: String) -> KeyValuesProvider {
+        return KeyValuesProvider(providers: [
+            XrayKitProvider(appId: appId, appInstanceId: appInstanceId),
+            AppInfoProvider()
+            ])
+    }
 }
 
+/**
+ The encodable request body of each request
+ */
 class NetworkModel: Encodable {
     let events: [Event]
     let device: KeyValuesProvider
+    let environment: KeyValuesProvider
     
-    init(events: [Event]) {
+    init(events: [Event], environment: KeyValuesProvider) {
         self.events = events
+        self.environment = environment
         self.device = KeyValuesProvider.device()
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case events
-        case device
     }
 }
 
@@ -45,6 +53,14 @@ class NetworkModel: Encodable {
 
 protocol KeyValueProvider {
     var json: [String: JSONValue] { get }
+}
+
+struct SingleKeyValueProvider: KeyValueProvider {
+    let json: [String: JSONValue]
+    
+    init(key: String, value: JSONValue) {
+        json = [key: value]
+    }
 }
 
 struct TimeZoneProvider: KeyValueProvider {
@@ -65,9 +81,34 @@ struct SystemInfoProvider: KeyValueProvider {
         if let idfv = device.identifierForVendor {
             result["idfv"] = JSONValue(idfv.uuidString)
         }
-        
-        
         return result
+    }
+}
+
+struct AppInfoProvider: KeyValueProvider {
+    var json: [String: JSONValue] {
+        let bundle = Bundle.main
+        var result = [String: JSONValue]()
+        
+        result["app_version"] = JSONValue(bundle.version)
+        result["app_build"] = JSONValue(bundle.build)
+        result["app_store_id"] = JSONValue(bundle.bundleIdentifier ?? "")
+
+        return result
+    }
+}
+
+struct XrayKitProvider: KeyValueProvider {
+    var json: [String: JSONValue]
+    
+    init(appId: String, appInstanceId: String) {
+        
+        let bundle = Bundle(for: Xray.self)
+        json = [
+            "app_id": JSONValue(appId),
+            "app_instance_id": JSONValue(appInstanceId),
+            "sdk_version": JSONValue(bundle.version)
+        ]
     }
 }
 
@@ -81,5 +122,17 @@ extension UIDevice {
         }
         return modelCode ?? "unknown"
     }
+}
+
+// todo: move extensions
+extension Bundle {
+    var version: String {
+        guard let infos = infoDictionary else { return "" }
+        return (infos["CFBundleShortVersionString"] as? String ?? "")
+    }
     
+    var build: String {
+        guard let infos = infoDictionary else { return "" }
+        return (infos["CFBundleVersion"] as? String ?? "")
+    }
 }
