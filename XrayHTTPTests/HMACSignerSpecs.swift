@@ -8,7 +8,8 @@
 
 import Quick
 import Nimble
-@testable import XrayKit
+@testable import XrayHTTP
+// todo move this to HTTP tests
 
 class HMACSignerSpecs: QuickSpec {
     
