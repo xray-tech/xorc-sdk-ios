@@ -38,8 +38,13 @@ public class XrayHTTPBuilder: HTTPRequestBuilder {
         //KeyValuesProvider.
         // todo
         #warning("todo")
+        let session = Session(sessionId: UUID())
+        
+    
+        let eventModels = events.map { EventNetworkModel(session: session, event: $0) }
+        
         let environment = KeyValuesProvider.environment(appId: options.appId, appInstanceId: "todo")
-        let networkModel = NetworkModel(events: events, environment: environment)
+        let networkModel = NetworkModel(events: eventModels, environment: environment)
 
         //
         let httpBody = try coder.encode(networkModel)

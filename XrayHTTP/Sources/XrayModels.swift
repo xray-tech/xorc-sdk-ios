@@ -8,8 +8,9 @@ import XrayKit
 
 // MARK: - Event Requests
 
-struct EventRequest: Encodable {
-    let events: [Event]
+// todo we don't need this anymore
+struct EventRequest {
+    
 }
 
 // MARK: - Event Responses

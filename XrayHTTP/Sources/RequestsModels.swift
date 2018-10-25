@@ -38,14 +38,48 @@ struct KeyValuesProvider: Encodable {
  The encodable request body of each request
  */
 class NetworkModel: Encodable {
-    let events: [Event]
+    let events: [EventNetworkModel]
     let device: KeyValuesProvider
     let environment: KeyValuesProvider
     
-    init(events: [Event], environment: KeyValuesProvider) {
+    init(events: [EventNetworkModel], environment: KeyValuesProvider) {
         self.events = events
         self.environment = environment
         self.device = KeyValuesProvider.device()
+    }
+}
+
+/**
+ Converts the event and session into the JSON Api format where the session and event keys need to be at the same level
+ ```
+ {
+    "session_id" : "123",
+    "name" : "app_open",
+    "properties" : {
+        "new" : "true"
+    }
+ }
+ ```
+ */
+struct EventNetworkModel: Encodable {
+    let session: Session
+    let event: Event
+
+    enum CodingKeys: String, CodingKey {
+        case sessionId
+        case id
+        case name
+        case properties
+        case timestamp
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(session.sessionId.uuidString, forKey: .sessionId)
+        try container.encode(String(event.sequenceId), forKey: .id)
+        try container.encode(event.name, forKey: .name)
+        try container.encode(String(Int(event.createdAt.timeIntervalSince1970)), forKey: .timestamp)
+        try container.encode(event.properties, forKey: .properties)
     }
 }
 
