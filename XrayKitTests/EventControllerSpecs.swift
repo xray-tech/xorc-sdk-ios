@@ -21,7 +21,8 @@ class EventControllerSpecs: QuickSpec {
                 transmitter = MockTrasnmitter()
                 store = MemoryEventStore()
                 
-                sut = EventController(eventStore: store, transmitter: transmitter)
+                sut = EventController(eventStore: store)
+                sut.transmitter = transmitter
             }
             
             describe("when using a different event scope") {
@@ -84,7 +85,8 @@ class EventControllerSpecs: QuickSpec {
                     beforeEach {
                         transmitter = MockTrasnmitter(behaviour: .succeed)
                         
-                        sut = EventController(eventStore: store, transmitter: transmitter)
+                        sut = EventController(eventStore: store)
+                        sut.transmitter = transmitter
                         
                         sut.log(event: event)
                     }
@@ -99,7 +101,8 @@ class EventControllerSpecs: QuickSpec {
                     beforeEach {
                         transmitter = MockTrasnmitter(behaviour: .fail)
 
-                        sut = EventController(eventStore: store, transmitter: transmitter)
+                        sut = EventController(eventStore: store)
+                        sut.transmitter = transmitter
                         
                         sut.log(event: event)
                     }
@@ -115,7 +118,8 @@ class EventControllerSpecs: QuickSpec {
                     beforeEach {
                         transmitter = MockTrasnmitter(behaviour: .retry(nextRetryAt: expectedNextRetryAt))
                         
-                        sut = EventController(eventStore: store, transmitter: transmitter)
+                        sut = EventController(eventStore: store)
+                        sut.transmitter = transmitter
                         
                         sut.log(event: event)
                     }

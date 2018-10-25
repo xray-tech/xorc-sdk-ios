@@ -14,22 +14,22 @@ class XrayRegistrationController {
     
     private let options: XrayCrmOptions
     private let client = HTTPClient()
-    private var registration: XrayRegistration?
     
     init(options: XrayCrmOptions) {
-      self.options = options
+        self.options = options
     }
     
     func register(completion: @escaping (XrayRegistration) -> Void) {
         // get from store or fetch new
-        if let registration = registration {
+        
+        if let registration = KeyValueStore.shared().registration {
             completion(registration)
             return
         }
         
-        sendRegister { [weak self] registration in
+        sendRegister { registration in
             print("######## New Registration result: \(registration.deviceId)")
-            self?.registration = registration
+            KeyValueStore.shared().registration = registration
             completion(registration)
         }
     }
