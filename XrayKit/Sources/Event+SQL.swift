@@ -143,7 +143,7 @@ extension Event {
 
     // Returns the WHERE SQL for events that can be sent
     static func whereSendableSQL(maxNextTryAt: Date, priority: Event.Priority? = nil) -> String {
-        var sql =  "(\(EventTable.columnStatus) = \(Event.Status.queued.rawValue) OR \(EventTable.columnStatus) = \(Event.Status.queued.rawValue)) AND \(EventTable.columnNextTryAt) <= \(maxNextTryAt.timeIntervalSince1970)"
+        var sql =  "(\(EventTable.columnStatus) = \(Event.Status.queued.rawValue) OR \(EventTable.columnStatus) = \(Event.Status.retry.rawValue)) AND \(EventTable.columnNextTryAt) <= \(maxNextTryAt.timeIntervalSince1970)"
 
         if let priority = priority {
             sql += " AND \(EventTable.columnPriority) = \(priority.rawValue)"
