@@ -174,7 +174,6 @@ class EventController {
     
     /// Selects the sendable events and updates their status to `sending` in the store
     private func prepareSendableEvents() -> [Event] {
-        #warning("make sure that we select the correct events status")
         let events = eventStore.select(maxNextTryAt: Date(), priority: nil, batchMaxSize: nil)
         for event in events {
             event.status = .sending

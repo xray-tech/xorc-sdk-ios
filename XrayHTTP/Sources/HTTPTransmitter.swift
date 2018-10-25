@@ -51,15 +51,9 @@ public class HTTPTransmitter {
                 
                 
             }
-//            URLSession.shared.dataTask(with: request) { (data, response, error) in
-//                // todo response handling should probably be done somehwere else and defined as a protocol to allow flexibility
-//                // todo parse response
-//                // todo error, retry all
-//                // todo check http error codes
-//                // todo check status for each event
-//            }
         } catch {
-            // failed to build the request: delete events
+            print("Failed to build request: ", error)
+            completion(events.map { EventResult.failure(event: $0) })
         }
 
     }
