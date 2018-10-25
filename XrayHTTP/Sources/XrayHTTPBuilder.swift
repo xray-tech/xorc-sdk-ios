@@ -22,6 +22,9 @@ public class XrayHTTPBuilder: HTTPRequestBuilder {
     let options: XrayCrmOptions
     var registration: XrayRegistration?
     
+    // todo
+    let session = Session(sessionId: UUID())
+    
     init(options: XrayCrmOptions) {
         self.options = options
         self.signer = HMACSigner(apiKey: options.apiKey.dataFromHexString())
@@ -37,13 +40,11 @@ public class XrayHTTPBuilder: HTTPRequestBuilder {
         // todo: we can keep a reference and or parametrise it with options
         //KeyValuesProvider.
         // todo
-        #warning("todo")
-        let session = Session(sessionId: UUID())
         
     
         let eventModels = events.map { EventNetworkModel(session: session, event: $0) }
         
-        let environment = KeyValuesProvider.environment(appId: options.appId, appInstanceId: "todo")
+        let environment = KeyValuesProvider.environment(appId: options.appId, appInstanceId: KeyValueStore.shared().appInstanceId ?? "")
         let networkModel = NetworkModel(events: eventModels, environment: environment)
 
         //
