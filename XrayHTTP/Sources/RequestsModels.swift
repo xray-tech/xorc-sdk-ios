@@ -24,7 +24,8 @@ struct KeyValuesProvider: Encodable {
         return KeyValuesProvider(providers: [
             TimeZoneProvider(),
             SystemInfoProvider(),
-            NotificationStatusProvider()
+            NotificationStatusProvider(),
+            ScreenProvider()
             ])
     }
     
@@ -81,7 +82,9 @@ struct EventNetworkModel: Encodable {
         try container.encode(String(event.sequenceId), forKey: .id)
         try container.encode(event.name, forKey: .name)
         try container.encode(String(Int(event.createdAt.timeIntervalSince1970)), forKey: .timestamp)
-        try container.encode(event.properties, forKey: .properties)
+        if let properties = event.properties {
+            try container.encode(properties, forKey: .properties)
+        }
     }
 }
 
@@ -138,6 +141,50 @@ struct SystemInfoProvider: KeyValueProvider {
         result["ifa_tracking_enabled"] = false
         return result
     }
+}
+
+
+extension UIInterfaceOrientation {
+    var toString: String {
+        switch self {
+        case .portrait: return "portrait"
+        case .portraitUpsideDown:return "portrait_upside_down"
+        case .landscapeLeft: return "landscape_left"
+        case .landscapeRight: return "landscape_left"
+        case .unknown: return "unknown"
+        }
+    }
+}
+struct ScreenProvider: KeyValueProvider {
+    
+    var json: [String: JSONValue] {
+        var result = [String: JSONValue]()
+        var statusBarOrientation = UIInterfaceOrientation.portrait
+        Thread.onMain {
+            statusBarOrientation = UIApplication.shared.statusBarOrientation
+        }
+        let screen = UIScreen.main
+        
+        let width = Int(roundf(Float(screen.bounds.size.width * screen.scale)))
+        let height = Int(roundf(Float(screen.bounds.size.height * screen.scale)))
+        
+        result["orientation"] = JSONValue(statusBarOrientation.toString)
+        result["w"] = JSONValue(width)
+        result["h"] = JSONValue(height)
+        
+        
+        return result
+    }
+}
+
+struct ConnectionProvider: KeyValueProvider {
+    var json: [String: JSONValue] {
+        var result = [String: JSONValue]()
+        //todo
+        result["network_connection_type"] = "wifi"
+        return result
+    }
+    
 }
 
 struct AppInfoProvider: KeyValueProvider {
