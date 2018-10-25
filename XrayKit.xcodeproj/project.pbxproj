@@ -34,6 +34,9 @@
 		3DD5BABE2181FD37007710D1 /* ParameterProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5BABD2181FD37007710D1 /* ParameterProviders.swift */; };
 		3DD5BAC02181FE5F007710D1 /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5BABF2181FE5F007710D1 /* BundleExtensions.swift */; };
 		3DD5BAC22181FE7A007710D1 /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5BAC12181FE7A007710D1 /* UIDeviceExtensions.swift */; };
+		3DD5BAC521820150007710D1 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5BAC421820150007710D1 /* NotificationsController.swift */; };
+		3DD5BAC721820427007710D1 /* DataExensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5BAC621820427007710D1 /* DataExensions.swift */; };
+		3DD5BAC92182049A007710D1 /* EventExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD5BAC82182049A007710D1 /* EventExtensions.swift */; };
 		8A20E1D920F62F240027F0D6 /* Predicates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A20E1D820F62F240027F0D6 /* Predicates.swift */; };
 		8A2AFAA320C92F1E002A0B2B /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
 		8A2AFAB820C93E1F002A0B2B /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8A2AFAAF20C9371C002A0B2B /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -148,6 +151,9 @@
 		3DD5BABD2181FD37007710D1 /* ParameterProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterProviders.swift; sourceTree = "<group>"; };
 		3DD5BABF2181FE5F007710D1 /* BundleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtensions.swift; sourceTree = "<group>"; };
 		3DD5BAC12181FE7A007710D1 /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
+		3DD5BAC421820150007710D1 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
+		3DD5BAC621820427007710D1 /* DataExensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExensions.swift; sourceTree = "<group>"; };
+		3DD5BAC82182049A007710D1 /* EventExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventExtensions.swift; sourceTree = "<group>"; };
 		8A20E1D820F62F240027F0D6 /* Predicates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicates.swift; sourceTree = "<group>"; };
 		8A2AFA9E20C92F1E002A0B2B /* XrayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A2AFAA220C92F1E002A0B2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -303,6 +309,7 @@
 		3D91F056217E2D2F0089F968 /* Xray */ = {
 			isa = PBXGroup;
 			children = (
+				3DD5BAC321820136007710D1 /* Notifications */,
 				3DD5BAB72181E708007710D1 /* Extensions */,
 				3DD5BAB42181B0DE007710D1 /* Session */,
 				3D91F287217F1C020089F968 /* Options */,
@@ -372,8 +379,18 @@
 				3DD5BABB2181E7B6007710D1 /* UNUserNotificationCenterExtensions.swift */,
 				3DD5BABF2181FE5F007710D1 /* BundleExtensions.swift */,
 				3DD5BAC12181FE7A007710D1 /* UIDeviceExtensions.swift */,
+				3DD5BAC621820427007710D1 /* DataExensions.swift */,
+				3DD5BAC82182049A007710D1 /* EventExtensions.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		3DD5BAC321820136007710D1 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				3DD5BAC421820150007710D1 /* NotificationsController.swift */,
+			);
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 		8A2AFA9F20C92F1E002A0B2B /* XrayKitTests */ = {
@@ -819,8 +836,10 @@
 			files = (
 				3D59F5F92179DE92006648CD /* Signer.swift in Sources */,
 				3DD5BAB92181E719007710D1 /* NSThreadExtensions.swift in Sources */,
+				3DD5BAC92182049A007710D1 /* EventExtensions.swift in Sources */,
 				3D91F290217F467C0089F968 /* XrayResources.swift in Sources */,
 				3D59F5F52179DE2B006648CD /* XrayHTTPBuilder.swift in Sources */,
+				3DD5BAC721820427007710D1 /* DataExensions.swift in Sources */,
 				3DD5BABE2181FD37007710D1 /* ParameterProviders.swift in Sources */,
 				3D91F055217E251F0089F968 /* HTTPClient.swift in Sources */,
 				3D59F5F62179DE2E006648CD /* HTTPTransmitter.swift in Sources */,
@@ -829,6 +848,7 @@
 				3D91F289217F1C1E0089F968 /* XrayCrmOptions.swift in Sources */,
 				3D91F059217E2EA60089F968 /* XrayModels.swift in Sources */,
 				3DD5BAC02181FE5F007710D1 /* BundleExtensions.swift in Sources */,
+				3DD5BAC521820150007710D1 /* NotificationsController.swift in Sources */,
 				3D91F280217F129E0089F968 /* XrayCrm.swift in Sources */,
 				3DD5BAC22181FE7A007710D1 /* UIDeviceExtensions.swift in Sources */,
 				3DD5BABC2181E7B6007710D1 /* UNUserNotificationCenterExtensions.swift in Sources */,

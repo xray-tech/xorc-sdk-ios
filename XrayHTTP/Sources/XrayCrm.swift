@@ -9,6 +9,8 @@ import XrayKit
 
 public class XrayCrm {
     
+    public let push = NotificationService()
+    
     let options: XrayCrmOptions
     let registrationController: XrayRegistrationController
     let httpTransmitter: HTTPTransmitter
@@ -46,6 +48,8 @@ extension XrayCrm: XrayService {
             sself.requestBuilder.registration = registration
             sself.delegate?.eventTransmitter(sself, didChangeState: .ready)
         }
+        
+        push.start()
     }
     
     public func dispose() {
