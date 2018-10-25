@@ -45,6 +45,10 @@ public class HTTPTransmitter {
             // Implementations can use their format as long as they return the [EventResult]
             client.load(resource: EventRequest.post(request: request)) { (response) in
                 
+                #warning("call the actual event completion with correct results")
+                
+                completion(events.map { EventResult.success(event: $0) })
+                
                 
             }
 //            URLSession.shared.dataTask(with: request) { (data, response, error) in
