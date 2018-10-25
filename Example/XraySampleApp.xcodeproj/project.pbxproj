@@ -9,13 +9,29 @@
 /* Begin PBXBuildFile section */
 		19A17CACCABB9FBAB883B544 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A17EEA4A19A0034123E1C5 /* UIViewControllerExtensions.swift */; };
 		3D91F28B217F2C300089F968 /* XrayHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D91F28A217F2C300089F968 /* XrayHTTP.framework */; };
+		3DD5BACB21820699007710D1 /* XrayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAA451B20BEE0290055D7B9 /* XrayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3DD5BACD21820699007710D1 /* XrayHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3D91F28A217F2C300089F968 /* XrayHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AAA450920BEE0030055D7B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA450820BEE0030055D7B9 /* AppDelegate.swift */; };
 		8AAA450B20BEE0030055D7B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAA450A20BEE0030055D7B9 /* ViewController.swift */; };
 		8AAA450E20BEE0030055D7B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAA450C20BEE0030055D7B9 /* Main.storyboard */; };
 		8AAA451020BEE0040055D7B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AAA450F20BEE0040055D7B9 /* Assets.xcassets */; };
 		8AAA451320BEE0040055D7B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AAA451120BEE0040055D7B9 /* LaunchScreen.storyboard */; };
-		8AAA451C20BEE0290055D7B9 /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AAA451B20BEE0290055D7B9 /* XrayKit.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3DD5BACE21820699007710D1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3DD5BACD21820699007710D1 /* XrayHTTP.framework in Embed Frameworks */,
+				3DD5BACB21820699007710D1 /* XrayKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		19A17EEA4A19A0034123E1C5 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -36,7 +52,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D91F28B217F2C300089F968 /* XrayHTTP.framework in Frameworks */,
-				8AAA451C20BEE0290055D7B9 /* XrayKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +116,7 @@
 				8AAA450120BEE0030055D7B9 /* Sources */,
 				8AAA450220BEE0030055D7B9 /* Frameworks */,
 				8AAA450320BEE0030055D7B9 /* Resources */,
+				3DD5BACE21820699007710D1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

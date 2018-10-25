@@ -9,28 +9,38 @@
 import UIKit
 import XrayKit
 import XrayHTTP
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    var crm: XrayCrm!
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let url = URL(string: "http://localhost:8080/events/")!
+        
+        let urlString = "https://staging-rt.360dialog.io/xray/events/360dialog/sdk/v1"
+//        let urlString = "http://localhost:8080/events/"
+        
+        let url = URL(string: urlString)!
         let options = XrayCrmOptions(appId: "36", apiKey: "1aa867899db75d0967c6c77aaf5bf3d962d97fd1ffd3ee4aaae41d29dc0cee3f", url: url)
-        let crm = XrayCrm(options: options)
+        
+        crm = XrayCrm(options: options)
         
         Xray.events.register(transmitter: crm)
         
         Xray.events.log(event: Event(name: "before_start"))
         
+    
         Xray.start()
         
         return true
-        
-        
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        crm.push.registerDeviceToken(deviceToken: deviceToken)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
