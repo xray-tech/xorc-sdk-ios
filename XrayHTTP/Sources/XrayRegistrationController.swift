@@ -22,7 +22,7 @@ class XrayRegistrationController {
     func register(completion: @escaping (XrayRegistration) -> Void) {
         // get from store or fetch new
         
-        if(KeyValueStore.shared().appInstanceId == nil) {
+        if KeyValueStore.shared().appInstanceId == nil {
             KeyValueStore.shared().appInstanceId = UUID().uuidString
         }
         if let registration = KeyValueStore.shared().registration {

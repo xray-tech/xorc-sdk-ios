@@ -150,6 +150,10 @@ class EventController {
         case .ready:
             let events = prepareSendableEvents()
             
+            if events.isEmpty {
+                return
+            }
+            
             transmitter.transmit(events: events) { results in
                 
                 for result in results {
