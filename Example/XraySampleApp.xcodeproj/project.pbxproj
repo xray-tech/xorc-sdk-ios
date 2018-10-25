@@ -36,6 +36,7 @@
 /* Begin PBXFileReference section */
 		19A17EEA4A19A0034123E1C5 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		3D91F28A217F2C300089F968 /* XrayHTTP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XrayHTTP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DD5BACF21820796007710D1 /* XraySampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XraySampleApp.entitlements; sourceTree = "<group>"; };
 		8AAA450520BEE0030055D7B9 /* XraySampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XraySampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AAA450820BEE0030055D7B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AAA450A20BEE0030055D7B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +87,7 @@
 		8AAA450720BEE0030055D7B9 /* XraySampleApp */ = {
 			isa = PBXGroup;
 			children = (
+				3DD5BACF21820796007710D1 /* XraySampleApp.entitlements */,
 				8AAA450820BEE0030055D7B9 /* AppDelegate.swift */,
 				8AAA450A20BEE0030055D7B9 /* ViewController.swift */,
 				8AAA450C20BEE0030055D7B9 /* Main.storyboard */,
@@ -140,6 +142,11 @@
 					8AAA450420BEE0030055D7B9 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -325,15 +332,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = XraySampleApp/XraySampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9TDNRBR9AF;
+				DEVELOPMENT_TEAM = G9MA9G2SST;
 				INFOPLIST_FILE = XraySampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.360dialog.XraySampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.xorc.SampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -344,15 +352,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = XraySampleApp/XraySampleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9TDNRBR9AF;
+				DEVELOPMENT_TEAM = G9MA9G2SST;
 				INFOPLIST_FILE = XraySampleApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.360dialog.XraySampleApp;
+				PRODUCT_BUNDLE_IDENTIFIER = io.xorc.SampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

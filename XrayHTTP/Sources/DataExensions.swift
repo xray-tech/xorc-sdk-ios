@@ -16,4 +16,3 @@ extension Data {
         return map { String(format: format, $0) }.joined()
     }
 }
-

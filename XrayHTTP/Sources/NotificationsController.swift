@@ -13,7 +13,7 @@ public class NotificationService {
         let deviceTokenString = deviceToken.hexEncodedString()
         print("""
             ##################################### SDK push token #################################################
-            \(deviceTokenString))
+                                \(deviceTokenString)
             ######################################################################################################
         """)
         
