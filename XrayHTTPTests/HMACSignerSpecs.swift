@@ -13,8 +13,6 @@ import Nimble
 
 class HMACSignerSpecs: QuickSpec {
     
-    
-    
     override func spec() {
         
         fdescribe("HMACSigner") {

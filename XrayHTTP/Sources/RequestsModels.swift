@@ -5,6 +5,7 @@
 
 import Foundation
 import XrayKit
+import UserNotifications
 
 struct KeyValuesProvider: Encodable {
     let providers: [KeyValueProvider]
@@ -22,7 +23,8 @@ struct KeyValuesProvider: Encodable {
     static func device() -> KeyValuesProvider {
         return KeyValuesProvider(providers: [
             TimeZoneProvider(),
-            SystemInfoProvider()
+            SystemInfoProvider(),
+            NotificationStatusProvider()
             ])
     }
     
@@ -99,7 +101,23 @@ struct SingleKeyValueProvider: KeyValueProvider {
 
 struct TimeZoneProvider: KeyValueProvider {
     var json: [String: JSONValue] {
-        return ["time_zone": JSONValue(NSTimeZone.system.identifier)]
+        var result = [String: JSONValue]()
+        result["time_zone"] = JSONValue(NSTimeZone.system.identifier)
+        
+        // The [current localeIdentifier] might include some other properties such as
+        // 'ar_SA@calendar=gregorian' so we use here explicitly only the language and country code to make the parsing
+        // on the backend easier
+        let locale = Locale.current as NSLocale
+        if
+            let country = locale.object(forKey: .countryCode) as? String,
+            let language = locale.object(forKey: .languageCode) as? String {
+            result["locale"] = JSONValue("\(language)_\(country)")
+        }
+        if let language = Locale.preferredLanguages.first {
+            result["language"] = JSONValue(language)
+        }
+        
+        return result
     }
 }
 
@@ -115,6 +133,9 @@ struct SystemInfoProvider: KeyValueProvider {
         if let idfv = device.identifierForVendor {
             result["idfv"] = JSONValue(idfv.uuidString)
         }
+        
+        // todo
+        result["ifa_tracking_enabled"] = false
         return result
     }
 }
@@ -143,6 +164,21 @@ struct XrayKitProvider: KeyValueProvider {
             "app_instance_id": JSONValue(appInstanceId),
             "sdk_version": JSONValue(bundle.version)
         ]
+    }
+}
+
+struct NotificationStatusProvider: KeyValueProvider {
+    var json: [String: JSONValue] {
+        var result = [String: JSONValue]()
+        
+        Thread.onMain {
+            let settings = UNUserNotificationCenter.current().currentNotificationSettings()
+            result["notification_registered"] = JSONValue(UIApplication.shared.isRegisteredForRemoteNotifications)
+            result["notification_types"] = JSONValue(settings.types.rawValue)
+            result["notification_auth_status"] = JSONValue(settings.authorisationStatus.rawValue)
+        }
+        
+        return result
     }
 }
 
