@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3D59F5E12179DDAF006648CD"
+               BuildableName = "XrayHTTPTests.xctest"
+               BlueprintName = "XrayHTTPTests"
+               ReferencedContainer = "container:XrayKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "3D59F5D92179DDAF006648CD"
+            BuildableName = "XrayHTTP.framework"
+            BlueprintName = "XrayHTTP"
+            ReferencedContainer = "container:XrayKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
