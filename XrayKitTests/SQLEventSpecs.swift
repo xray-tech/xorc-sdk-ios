@@ -132,7 +132,7 @@ class SQLEventSpecs: QuickSpec {
                             sql = Event.whereSendableSQL(maxNextTryAt: date)
                         }
                         it("generates the correct SQL") {
-                            expect(sql).to(equal("(\(EventTable.columnStatus) = \(Event.Status.queued.rawValue) OR \(EventTable.columnStatus) = \(Event.Status.queued.rawValue)) AND \(EventTable.columnNextTryAt) <= \(date.timeIntervalSince1970)"))
+                            expect(sql).to(equal("(\(EventTable.columnStatus) = \(Event.Status.queued.rawValue) OR \(EventTable.columnStatus) = \(Event.Status.retry.rawValue)) AND \(EventTable.columnNextTryAt) <= \(date.timeIntervalSince1970)"))
                         }
                     }
 
@@ -141,7 +141,7 @@ class SQLEventSpecs: QuickSpec {
                             sql = Event.whereSendableSQL(maxNextTryAt: date, priority: .important)
                         }
                         it("generates the correct SQL") {
-                            expect(sql).to(equal("(\(EventTable.columnStatus) = \(Event.Status.queued.rawValue) OR \(EventTable.columnStatus) = \(Event.Status.queued.rawValue)) AND \(EventTable.columnNextTryAt) <= \(date.timeIntervalSince1970) AND \(EventTable.columnPriority) = \(Event.Priority.important.rawValue)"))
+                            expect(sql).to(equal("(\(EventTable.columnStatus) = \(Event.Status.queued.rawValue) OR \(EventTable.columnStatus) = \(Event.Status.retry.rawValue)) AND \(EventTable.columnNextTryAt) <= \(date.timeIntervalSince1970) AND \(EventTable.columnPriority) = \(Event.Priority.important.rawValue)"))
                         }
                     }
                 }
