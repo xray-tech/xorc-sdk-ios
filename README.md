@@ -6,7 +6,7 @@
 
 ![badge-languages] ![badge-pms]
 
-[![Build Status](https://www.bitrise.io/app/01757d15657494e3/status.svg?token=kMutwLCTgEtonbVO7_zfPA)](https://www.bitrise.io/app/01757d15657494e3) 
+
 
 
 ### CocoaPods
