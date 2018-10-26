@@ -10,6 +10,7 @@ disabled_rules: # rule identifiers to exclude from running
   
   # disabled until https://github.com/realm/SwiftLint/issues/2231
   - identifier_name
+  - nesting
   # - force_try
 opt_in_rules: # some rules are only opt-in
   - empty_count
@@ -20,6 +21,7 @@ opt_in_rules: # some rules are only opt-in
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - XrayKitTests
+  - Example
 
 vertical_whitespace:
   max_empty_lines: 2

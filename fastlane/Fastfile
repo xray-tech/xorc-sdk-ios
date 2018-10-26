@@ -20,8 +20,6 @@ default_platform :ios
 @sdk_scheme = 'XrayKit'
 @sdk_project_dir = 'XrayKit'
 @sdk_project_name = 'XrayKit.xcodeproj'
-@sdk_xcode_version = '10.0'
-
 
 platform :ios do
 
@@ -29,11 +27,6 @@ platform :ios do
     desc 'You can optionnaly specify the xcode version'
     desc "e.g 'fastlane kit_carthage_build xc_version:9.3'"
     lane :kit_carthage_build do |options|
-        xc_version = options[:xc_version]
-        if xc_version
-            UI.message "Setting xcode version to #{xc_version}"
-            xcversion(version: "~> #{xc_version}")
-        end
         carthage(platform: "iOS", verbose: false, use_binaries: false)
     end
 
@@ -41,10 +34,7 @@ platform :ios do
     desc 'You can optionnaly specify the xcode version'
     desc "e.g 'fastlane test xc_version:8.2'"
     lane :kit_test do |options|
-        xc_version = options[:xc_version] ? options[:xc_version] : @sdk_xcode_version
-        xcversion(version: "~> #{xc_version}")
-
-        UI.message "Running tests with xcversion #{xc_version}"
+        UI.message "Running tests"
         scan(scheme: @sdk_scheme, workspace: "#{@sdk_workspace}", output_directory: @test_reports_dir, device: "iPhone 5s")
     end
 
@@ -55,9 +45,6 @@ platform :ios do
     desc "e.g: fastlane sdk_compile xc_version:7.3.1"
     desc "To list all versions: xcenv versions"
     lane :kit_compile do |options|
-        xc_version = options[:xc_version] ? options[:xc_version] : @sdk_xcode_version
-        xcversion(version: "~> #{xc_version}")
-
         # ENV["XCENV_VERSION"] = xc_version
         xcclean(scheme: @sdk_scheme, workspace: @sdk_workspace)
         # we don't care about signing here, we just want to know if all compiles
@@ -66,6 +53,6 @@ platform :ios do
 
     desc "Runs SwiftLint"
     lane :kit_swift_lint do |options|
-        swiftlint
+        swiftlint(strict: true)
     end
 end
