@@ -19,7 +19,7 @@ class XrayRegistrationController {
         self.options = options
     }
     
-    func register(completion: @escaping (XrayRegistration) -> Void) {
+    func register(completion: @escaping (Registration) -> Void) {
         // get from store or fetch new
         
         if KeyValueStore.shared().appInstanceId == nil {
@@ -39,13 +39,13 @@ class XrayRegistrationController {
     
     /// Sends the registration
     
-    private func sendRegister(completion: @escaping (XrayRegistration) -> Void) {
+    private func sendRegister(completion: @escaping (Registration) -> Void) {
         let builder = XrayHTTPBuilder(options: options)
         
         let registerEvent = Event(name: "d360_register")
         guard let request = try? builder.build(events: [registerEvent]) else { fatalError("registration event should cound not be built") }
         
-        let resource = XrayRegistration.post(request: request)
+        let resource = Registration.post(request: request)
         client.load(resource: resource) { (response) in
             switch response {
             case .success(let registration):

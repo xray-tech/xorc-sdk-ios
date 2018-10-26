@@ -7,11 +7,11 @@ import Foundation
 
 
 /// Extension for handling registration response
-extension XrayRegistration {
+extension Registration {
     
-    static func post(request: URLRequest) -> Resource<XrayRegistration> {
+    static func post(request: URLRequest) -> Resource<Registration> {
         
-        let resource = Resource<XrayRegistration>(request: request) { data in
+        let resource = Resource<Registration>(request: request) { data in
             // parse the data into a XrayRegistration
             guard let data = data else { return Response.error(XrayError.network("No data from registration response"))}
             
@@ -20,7 +20,7 @@ extension XrayRegistration {
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             do {
-                let registrationResponse = try decoder.decode(XrayRegistrationResponse.self, from: data)
+                let registrationResponse = try decoder.decode(RegistrationResponseModel.self, from: data)
                 return Response.success(registrationResponse.registrationData)
             } catch {
                 return Response.error(XrayError.parsing(error.localizedDescription))
@@ -34,10 +34,10 @@ extension XrayRegistration {
 
 extension EventRequest {
     
-    static func post(request: URLRequest) ->  Resource<[EventStatus]> {
-        let resource = Resource<[EventStatus]>(request: request) { data in
+    static func post(request: URLRequest) ->  Resource<[EventStatusResponseModel]> {
+        let resource = Resource<[EventStatusResponseModel]>(request: request) { data in
             // todo parse the xray response
-            let status = EventStatus(uid: 1, status: .success)
+            let status = EventStatusResponseModel(uid: 1, status: .success)
             return Response.success([status])
         }
         return resource

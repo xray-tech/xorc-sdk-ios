@@ -15,7 +15,7 @@ struct EventRequest {
 
 // MARK: - Event Responses
 
-struct EventStatus {
+struct EventStatusResponseModel {
     enum Status: String {
         case success
         case failed
@@ -31,7 +31,7 @@ struct EventStatus {
  Registration data send back from the backend in response to a "register" event.
  The registration data are sent back as headers in all subsequent event requests
  */
-struct XrayRegistration {
+struct Registration {
     
     /**
      Represents the id assigned to a device. If possible, this device id should be persisted in a non-volatile storage
@@ -64,8 +64,8 @@ struct XrayRegistration {
  }
  ```
  */
-struct XrayRegistrationResponse: Decodable {
-    let registrationData: XrayRegistration
+struct RegistrationResponseModel: Decodable {
+    let registrationData: Registration
     
     enum CodingKeys: String, CodingKey {
         case eventsStatus
@@ -74,11 +74,11 @@ struct XrayRegistrationResponse: Decodable {
     init(from decoder: Decoder) throws {
         let arrayContainer = try decoder.container(keyedBy: CodingKeys.self)
         
-        let dataArray = try arrayContainer.decode([XrayRegistration].self, forKey: .eventsStatus)
+        let dataArray = try arrayContainer.decode([Registration].self, forKey: .eventsStatus)
         
         guard let registrationData = dataArray.first else {
             let context = DecodingError.Context(codingPath: [CodingKeys.eventsStatus], debugDescription: "Expected one registration result")
-            throw DecodingError.valueNotFound(XrayRegistration.self, context)
+            throw DecodingError.valueNotFound(Registration.self, context)
         }
         self.registrationData = registrationData
     }
@@ -98,7 +98,7 @@ struct XrayRegistrationResponse: Decodable {
 }
 ```
  */
-extension XrayRegistration: Decodable {
+extension Registration: Decodable {
     
     enum EventStatusKey: String, CodingKey {
         case eventsStatus

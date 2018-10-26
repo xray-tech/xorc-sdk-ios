@@ -73,13 +73,13 @@ class KeyValueStore: XrayStore {
 }
 
 extension KeyValueStore {
-    var registration: XrayRegistration? {
+    var registration: Registration? {
         get {
             guard
                 let deviceId = deviceId,
                 let apiToken = apiToken else { return nil }
             
-            return XrayRegistration(deviceId: deviceId, apiToken: apiToken)
+            return Registration(deviceId: deviceId, apiToken: apiToken)
         }
         set {
             if let value = newValue {

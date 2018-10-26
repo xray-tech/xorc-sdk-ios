@@ -11,7 +11,7 @@ import UserNotifications
 /**
  The encodable request top most body of an events request
  */
-class NetworkModel: Encodable {
+class EventsRequestModel: Encodable {
     let events: [EventNetworkModel]
     let device: ParametersProvider
     let environment: ParametersProvider

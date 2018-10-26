@@ -16,7 +16,7 @@
 		3D59F5F72179DE42006648CD /* XrayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A47521F20C7E9B700DD81F3 /* XrayKit.framework */; };
 		3D59F5F92179DE92006648CD /* Signer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D142BDB213584880026C248 /* Signer.swift */; };
 		3D91F055217E251F0089F968 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F054217E251F0089F968 /* HTTPClient.swift */; };
-		3D91F059217E2EA60089F968 /* XrayModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F058217E2EA60089F968 /* XrayModels.swift */; };
+		3D91F059217E2EA60089F968 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F058217E2EA60089F968 /* ResponseModels.swift */; };
 		3D91F280217F129E0089F968 /* XrayCrm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F27F217F129E0089F968 /* XrayCrm.swift */; };
 		3D91F282217F12BD0089F968 /* XrayRegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F281217F12BD0089F968 /* XrayRegistrationController.swift */; };
 		3D91F289217F1C1E0089F968 /* XrayCrmOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D91F288217F1C1E0089F968 /* XrayCrmOptions.swift */; };
@@ -138,7 +138,7 @@
 		3D59F5E22179DDAF006648CD /* XrayHTTPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XrayHTTPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D59F5E92179DDAF006648CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D91F054217E251F0089F968 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		3D91F058217E2EA60089F968 /* XrayModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayModels.swift; sourceTree = "<group>"; };
+		3D91F058217E2EA60089F968 /* ResponseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModels.swift; sourceTree = "<group>"; };
 		3D91F27F217F129E0089F968 /* XrayCrm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayCrm.swift; sourceTree = "<group>"; };
 		3D91F281217F12BD0089F968 /* XrayRegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayRegistrationController.swift; sourceTree = "<group>"; };
 		3D91F288217F1C1E0089F968 /* XrayCrmOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XrayCrmOptions.swift; sourceTree = "<group>"; };
@@ -259,6 +259,14 @@
 			name = Crypto;
 			sourceTree = "<group>";
 		};
+		3D31BE7A218330DB0004FE56 /* Response Models */ = {
+			isa = PBXGroup;
+			children = (
+				3D91F058217E2EA60089F968 /* ResponseModels.swift */,
+			);
+			name = "Response Models";
+			sourceTree = "<group>";
+		};
 		3D59F5DB2179DDAF006648CD /* XrayHTTP */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,9 +340,9 @@
 		3D91F284217F17F20089F968 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				3DD5BAA6217FAF18007710D1 /* Requsts Models */,
+				3D31BE7A218330DB0004FE56 /* Response Models */,
+				3DD5BAA6217FAF18007710D1 /* Requests Models */,
 				8A47522920C7EA0800DD81F3 /* XrayHTTPBuilder.swift */,
-				3D91F058217E2EA60089F968 /* XrayModels.swift */,
 				3D91F28F217F467C0089F968 /* XrayResources.swift */,
 			);
 			name = Network;
@@ -355,13 +363,13 @@
 			path = Xray;
 			sourceTree = "<group>";
 		};
-		3DD5BAA6217FAF18007710D1 /* Requsts Models */ = {
+		3DD5BAA6217FAF18007710D1 /* Requests Models */ = {
 			isa = PBXGroup;
 			children = (
 				3DD5BAA7217FB0FC007710D1 /* RequestsModels.swift */,
 				3DD5BABD2181FD37007710D1 /* ParameterProviders.swift */,
 			);
-			name = "Requsts Models";
+			name = "Requests Models";
 			sourceTree = "<group>";
 		};
 		3DD5BAB42181B0DE007710D1 /* Session */ = {
@@ -846,7 +854,7 @@
 				3D91F282217F12BD0089F968 /* XrayRegistrationController.swift in Sources */,
 				3DD5BAB62181B0EB007710D1 /* Session.swift in Sources */,
 				3D91F289217F1C1E0089F968 /* XrayCrmOptions.swift in Sources */,
-				3D91F059217E2EA60089F968 /* XrayModels.swift in Sources */,
+				3D91F059217E2EA60089F968 /* ResponseModels.swift in Sources */,
 				3DD5BAC02181FE5F007710D1 /* BundleExtensions.swift in Sources */,
 				3DD5BAC521820150007710D1 /* NotificationsController.swift in Sources */,
 				3D91F280217F129E0089F968 /* XrayCrm.swift in Sources */,
