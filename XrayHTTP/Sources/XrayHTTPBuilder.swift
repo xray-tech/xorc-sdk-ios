@@ -44,7 +44,7 @@ public class XrayHTTPBuilder: HTTPRequestBuilder {
     
         let eventModels = events.map { EventNetworkModel(session: session, event: $0) }
         
-        let environment = KeyValuesProvider.environment(appId: options.appId, appInstanceId: KeyValueStore.shared().appInstanceId ?? "")
+        let environment = ParametersProvider.environment(appId: options.appId, appInstanceId: KeyValueStore.shared().appInstanceId ?? "")
         let networkModel = NetworkModel(events: eventModels, environment: environment)
 
         //

@@ -8,33 +8,37 @@ import XrayKit
 import UserNotifications
 
 
-extension KeyValuesProvider {
+extension ParametersProvider {
     
     /// Helper method to create all the parameter for the "device" api json
-    static func device() -> KeyValuesProvider {
-        return KeyValuesProvider(providers: [
-            TimeZoneProvider(),
-            SystemInfoProvider(),
-            NotificationStatusProvider(),
-            ScreenProvider()
+    static func device() -> ParametersProvider {
+        return ParametersProvider(providers: [
+            TimeZoneParameterProvider(),
+            SystemInfoParameterProvider(),
+            NotificationStatusParameterProvider(),
+            ScreenParameterProvider()
             ])
     }
     
     /// Helper method to create all the parameter for the "environment" api json
-    static func environment(appId: String, appInstanceId: String) -> KeyValuesProvider {
-        return KeyValuesProvider(providers: [
-            XrayKitProvider(appId: appId, appInstanceId: appInstanceId),
-            AppInfoProvider()
+    static func environment(appId: String, appInstanceId: String) -> ParametersProvider {
+        return ParametersProvider(providers: [
+            XrayKitVersionParameterProvider(appId: appId, appInstanceId: appInstanceId),
+            AppInfoParameterProvider()
             ])
     }
 }
 // MARK: - Parameter Providers
 
-protocol KeyValueProvider {
+/**
+    A key value providers provides a list of key values to be encoded and sent to the network
+    It allows a composition of different parameters.
+ */
+protocol ParameterProvider {
     var json: [String: JSONValue] { get }
 }
 
-private struct SingleKeyValueProvider: KeyValueProvider {
+private struct SingleKeyValueProvider: ParameterProvider {
     let json: [String: JSONValue]
     
     init(key: String, value: JSONValue) {
@@ -42,7 +46,7 @@ private struct SingleKeyValueProvider: KeyValueProvider {
     }
 }
 
-private struct TimeZoneProvider: KeyValueProvider {
+private struct TimeZoneParameterProvider: ParameterProvider {
     var json: [String: JSONValue] {
         var result = [String: JSONValue]()
         result["time_zone"] = JSONValue(NSTimeZone.system.identifier)
@@ -64,7 +68,7 @@ private struct TimeZoneProvider: KeyValueProvider {
     }
 }
 
-private struct SystemInfoProvider: KeyValueProvider {
+private struct SystemInfoParameterProvider: ParameterProvider {
     var json: [String: JSONValue] {
         let device = UIDevice.current
         var result = [String: JSONValue]()
@@ -95,7 +99,7 @@ private extension UIInterfaceOrientation {
         }
     }
 }
-private struct ScreenProvider: KeyValueProvider {
+private struct ScreenParameterProvider: ParameterProvider {
     
     var json: [String: JSONValue] {
         var result = [String: JSONValue]()
@@ -117,7 +121,7 @@ private struct ScreenProvider: KeyValueProvider {
     }
 }
 
-private struct ConnectionProvider: KeyValueProvider {
+private struct ConnectionParameterProvider: ParameterProvider {
     var json: [String: JSONValue] {
         var result = [String: JSONValue]()
         //todo
@@ -127,7 +131,7 @@ private struct ConnectionProvider: KeyValueProvider {
     
 }
 
-private struct AppInfoProvider: KeyValueProvider {
+private struct AppInfoParameterProvider: ParameterProvider {
     var json: [String: JSONValue] {
         let bundle = Bundle.main
         var result = [String: JSONValue]()
@@ -140,7 +144,7 @@ private struct AppInfoProvider: KeyValueProvider {
     }
 }
 
-private struct XrayKitProvider: KeyValueProvider {
+private struct XrayKitVersionParameterProvider: ParameterProvider {
     var json: [String: JSONValue]
     
     init(appId: String, appInstanceId: String) {
@@ -154,7 +158,7 @@ private struct XrayKitProvider: KeyValueProvider {
     }
 }
 
-private struct NotificationStatusProvider: KeyValueProvider {
+private struct NotificationStatusParameterProvider: ParameterProvider {
     var json: [String: JSONValue] {
         var result = [String: JSONValue]()
         

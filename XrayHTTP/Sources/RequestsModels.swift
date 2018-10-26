@@ -7,32 +7,34 @@ import Foundation
 import XrayKit
 import UserNotifications
 
-struct KeyValuesProvider: Encodable {
-    let providers: [KeyValueProvider]
-    
-    func encode(to encoder: Encoder) throws {
-        var encoder = encoder.singleValueContainer()
-        var device =  [String: JSONValue]()
-        
-        providers.forEach { provider in
-            device.merge(provider.json) { (current, _) in current }
-        }
-        try encoder.encode(device)
-    }
-}
 
 /**
- The encodable request body of each request
+ The encodable request top most body of an events request
  */
 class NetworkModel: Encodable {
     let events: [EventNetworkModel]
-    let device: KeyValuesProvider
-    let environment: KeyValuesProvider
+    let device: ParametersProvider
+    let environment: ParametersProvider
     
-    init(events: [EventNetworkModel], environment: KeyValuesProvider) {
+    init(events: [EventNetworkModel], environment: ParametersProvider) {
         self.events = events
         self.environment = environment
-        self.device = KeyValuesProvider.device()
+        self.device = ParametersProvider.device()
+    }
+}
+
+/// A group key value providers
+struct ParametersProvider: Encodable {
+    let providers: [ParameterProvider]
+    
+    func encode(to encoder: Encoder) throws {
+        var encoder = encoder.singleValueContainer()
+        var parameters =  [String: JSONValue]()
+        
+        providers.forEach { provider in
+            parameters.merge(provider.json) { (current, _) in current }
+        }
+        try encoder.encode(parameters)
     }
 }
 
