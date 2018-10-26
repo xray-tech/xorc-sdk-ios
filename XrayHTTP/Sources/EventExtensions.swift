@@ -10,4 +10,7 @@ extension Event {
     static func pushEvent(deviceToken: String) -> Event {
         return Event(name: "d360_push_token_update", properties: ["device_token": JSONValue(deviceToken)])
     }
+    static func registerEvent() -> Event {
+        return Event(name: "d360_register")
+    }
 }

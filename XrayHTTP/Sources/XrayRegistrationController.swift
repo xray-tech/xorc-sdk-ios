@@ -42,7 +42,7 @@ class XrayRegistrationController {
     private func sendRegister(completion: @escaping (Registration) -> Void) {
         let builder = XrayHTTPBuilder(options: options)
         
-        let registerEvent = Event(name: "d360_register")
+        let registerEvent = Event.registerEvent()
         guard let request = try? builder.build(events: [registerEvent]) else { fatalError("registration event should cound not be built") }
         
         let resource = Registration.post(request: request)
