@@ -51,7 +51,6 @@ public class EventService: NSObject {
 extension EventService: EventTransmitterDelegate {
     
     public func eventTransmitter(_ transmitter: EventTransmitter, didChangeState state: EventTransmitterState) {
-        // todo: ensure correct queue
         if state == .ready {
             eventQueue.async {
                 self.controller.flush()

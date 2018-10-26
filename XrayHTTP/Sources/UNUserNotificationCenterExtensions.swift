@@ -16,7 +16,6 @@ struct NotificationTypes: OptionSet {
 extension UNUserNotificationCenter {
     
     func currentNotificationSettings() -> (types: NotificationTypes, authorisationStatus: UNAuthorizationStatus) {
-        // todo implement
         
         var currentSettings: UNNotificationSettings?
         let semaphore = DispatchSemaphore(value: 0)
