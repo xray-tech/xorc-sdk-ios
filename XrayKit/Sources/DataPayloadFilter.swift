@@ -83,7 +83,7 @@ struct EventPropertyFilter: DataPayloadFilter {
                     print("Could not create a predicate from event trigger. Discarding payload", error)
                     mismatched.append(Mismatch(payload: payload, handle: .delete))
                 }
-            case .date:
+            case .date, .remote:
                 // not a event base trigger, keep it as it is
                 mismatched.append(Mismatch(payload: payload, handle: .keep))
             }

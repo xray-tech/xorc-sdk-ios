@@ -72,6 +72,8 @@ extension DataPayload: Insertable {
                 let string = String(data: data, encoding: .utf8) {
                 binds[table.columnEventFilter] = string as NSString
             }
+            
+        case .remote: break
         }
 
         if entryId != 0 {

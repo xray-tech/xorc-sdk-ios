@@ -15,6 +15,7 @@ public struct DataPayload {
     public enum Trigger {
         case event(EventTrigger)
         case date(Date)
+        case remote
     }
     /// The arbitrary data to be delivered to your app
     public let data: Data
