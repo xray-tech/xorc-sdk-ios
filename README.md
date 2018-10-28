@@ -81,6 +81,25 @@ SQLite.swift with CocoaPods:
 ## Usage 
 ### Starting the SDK
 
+Start the XrayKit preferably as soon as your application starts in your `AppDelegate`:
+
+```swift
+import XrayKit
+import XrayHTTP
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
+    // Register the event trasnmitter specific to the Xray backend.
+    let options = XrayCrmOptions(appId: "36", apiKey: "1aa867899db75d0967c6c77aaf5bf3d962d97fd1ffd3ee4aaae41d29dc0cee3f")
+    let crmTransmitter = XrayCrm(options: options)
+    Xray.events.register(transmitter: crm)
+    
+    // Start the XrayKit
+    Xray.start()
+    
+    return true
+}
+```
 ### Events
 
 #### Simple Events
