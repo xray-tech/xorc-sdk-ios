@@ -42,7 +42,10 @@ public final class Event: NSObject {
         case remote
     }
     
-    public var sequenceId: Int64
+    public var uid: Int64 {
+        return sequenceId
+    }
+    
     public let name: String
     public let properties: [String: JSONValue]?
     public let context: [String: JSONValue]?
@@ -50,6 +53,7 @@ public final class Event: NSObject {
     public let createdAt: Date
     var updatedAt: Date
     var nextRetryAt: Date?
+    var sequenceId: Int64
     
     var status: Status
     

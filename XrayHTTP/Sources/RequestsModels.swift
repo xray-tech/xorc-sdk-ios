@@ -65,7 +65,7 @@ struct EventNetworkModel: Encodable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(session.sessionId.uuidString, forKey: .sessionId)
-        try container.encode(String(event.sequenceId), forKey: .id)
+        try container.encode(String(event.uid), forKey: .id)
         try container.encode(event.name, forKey: .name)
         try container.encode(String(Int(event.createdAt.timeIntervalSince1970)), forKey: .timestamp)
         if let properties = event.properties {
