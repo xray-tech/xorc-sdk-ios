@@ -12,10 +12,7 @@
     "AND": [
       {
         "event.properties.item_name": {
-          "in": [
-            "iPhone",
-            "iPod"
-          ]
+          "BEGINSWITH": "iP"
         }
       },
       {
@@ -30,12 +27,12 @@
         "OR": [
           {
             "event.properties.item_sale": {
-              "eq": true
+              "==": true
             }
           },
           {
             "event.properties.item_inventory_count": {
-              "gt": 10
+              ">=": 11
             }
           }
         ]
