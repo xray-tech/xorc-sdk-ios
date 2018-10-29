@@ -1,0 +1,6 @@
+author: Xray
+github_url: https://github.com/xray-tech/xorc-sdk-ios
+module: XrayKit
+output: docs
+theme: apple
+

@@ -1,0 +1,58 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/docs
+# All available actions: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Actions.md
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+# fastlane_version '1.95.0'
+
+default_platform :ios
+
+@sdk_workspace = 'XrayKit.xcworkspace'
+
+@sdk_scheme = 'XrayKit'
+@sdk_project_dir = 'XrayKit'
+@sdk_project_name = 'XrayKit.xcodeproj'
+
+platform :ios do
+
+    desc 'Builds the Carthage SDK Unit Test dependencies'
+    desc 'You can optionnaly specify the xcode version'
+    desc "e.g 'fastlane kit_carthage_build xc_version:9.3'"
+    lane :kit_carthage_build do |options|
+        carthage(platform: "iOS", verbose: false, use_binaries: false,  cache_builds: true)
+    end
+
+    desc 'Runs all unit the tests and generates reports in `fastlane/reports`'
+    desc 'You can optionnaly specify the xcode version'
+    desc "e.g 'fastlane test xc_version:8.2'"
+    lane :kit_test do |options|
+        UI.message "Running tests"
+        scan(scheme: @sdk_scheme, workspace: "#{@sdk_workspace}", output_directory: @test_reports_dir, device: "iPhone 5s")
+    end
+
+    #
+    # SDK Lanes
+    #
+    desc "Compiles the SDK project"
+    desc "e.g: fastlane sdk_compile xc_version:7.3.1"
+    desc "To list all versions: xcenv versions"
+    lane :kit_compile do |options|
+        # ENV["XCENV_VERSION"] = xc_version
+        xcclean(scheme: @sdk_scheme, workspace: @sdk_workspace)
+        # we don't care about signing here, we just want to know if all compiles
+        xcodebuild(scheme: @sdk_scheme, workspace: @sdk_workspace, build_settings: { "CODE_SIGNING_REQUIRED" => "NO", "CODE_SIGN_IDENTITY" => "" })
+    end
+
+    desc "Runs SwiftLint"
+    lane :kit_swift_lint do |options|
+        swiftlint(strict: true)
+    end
+end

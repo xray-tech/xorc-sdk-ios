@@ -1,0 +1,5 @@
+#  carthage update --platform iOS
+# Tests
+github "Quick/Quick"
+github "Quick/Nimble"
+# github "AliSoftware/OHHTTPStubs"

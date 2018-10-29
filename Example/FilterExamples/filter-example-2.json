@@ -1,0 +1,31 @@
+{
+  "AND": [
+    {
+      "event.properties.item_name": {
+        "BEGINSWITH": "iP"
+      }
+    },
+    {
+      "event.properties.item_description": {
+        "in": [
+          "Apple",
+          "Google"
+        ]
+      }
+    },
+    {
+      "OR": [
+        {
+          "event.properties.item_sale": {
+            "==": true
+          }
+        },
+        {
+          "event.properties.item_inventory_count": {
+            ">=": 11
+          }
+        }
+      ]
+    }
+  ]
+}

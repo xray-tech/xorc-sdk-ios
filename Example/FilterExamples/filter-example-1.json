@@ -1,0 +1,44 @@
+{
+  "AND": [
+    {
+      "event.properties.item_name": {
+        "in": [
+          "Chateau Fonroque 2012",
+          "Chateau Fonroque 2011",
+          "Chateau Fonroque 2010"
+        ]
+      }
+    },
+    {
+      "event.properties.item_description": {
+        "contains": "grand Cru"
+      }
+    },
+    {
+      "OR": [
+        {
+          "AND": [
+            {
+              "event.properties.wine_age": {
+                "gt": 4
+              }
+            },
+            {
+              "event.properties.wine_brand": {
+                "in": [
+                  "Bordeaux",
+                  "St. Emilion"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "event.properties.item_sale": {
+            "eq": true
+          }
+        }
+      ]
+    }
+  ]
+}

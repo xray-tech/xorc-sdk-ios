@@ -1,0 +1,17 @@
+{
+  "event": "xray_app_shop_add_cart",
+  "filters": {
+    "AND": [
+      {
+        "event.properties.item_name": {
+          "eq": "iPhone"
+        }
+      },
+      {
+        "event.properties.item_description": {
+          "eq": "Apple"
+        }
+      }
+    ]
+  }
+}
